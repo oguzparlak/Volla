@@ -15,12 +15,19 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let displaySize: CGRect = UIScreen.main.bounds
+        let displayWidth = displaySize.width
+        let displayHeight = displaySize.height
+        
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
-                
+                // Reassign size of the frame
+                scene.size = CGSize(width: displayWidth, height: displayHeight)
+                // Change the bg color
+                scene.backgroundColor = Colors.clouds
                 // Present the scene
                 view.presentScene(scene)
             }
