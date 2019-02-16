@@ -11,8 +11,16 @@ import SpriteKit
 
 class Square : SKShapeNode {
     
-    // Determines whether this square is openly visible to user
-    var isOpen = false
+    enum State {
+        case opened, closed, disabled
+    }
+    
+    // A board comes with closed state by default
+    var state: State = .closed {
+        didSet {
+            updateAppearence()
+        }
+    }
     
     // The coordinates that this square is lays on
     var coordinates: (Int, Int) = (0, 0)
@@ -33,6 +41,18 @@ class Square : SKShapeNode {
         fillColor = Colors.alizarin
         strokeColor = .clear
         isAntialiased = true
+    }
+    
+    private func updateAppearence() {
+        switch state {
+        case .closed:
+            fillColor = Colors.alizarin
+        case .disabled:
+            fillColor = Colors.asbestos
+        case .opened:
+            print("Opened")
+            // fillColor = Colors.peterRiver
+        }
     }
     
     func reset() {

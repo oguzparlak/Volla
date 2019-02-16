@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SpriteKit
 
 enum NodeConstants {
     
@@ -15,10 +16,10 @@ enum NodeConstants {
     static let paddingOfSquares: CGFloat = 8
     
     // The number of squares fits for each row
-    static let numberOfSquaresForEachRow: CGFloat = 2
+    static let numberOfSquaresForEachRow: CGFloat = 5
     
     // The number of squares fits for each column
-    static let numberOfSquaresForEachColumn: CGFloat = 2
+    static let numberOfSquaresForEachColumn: CGFloat = 5
     
     // The corner radius of the squares
     static let cornerRadiusOfSquares: CGFloat = 4.0
@@ -42,4 +43,49 @@ enum NodeConstants {
         return (startX, startY)
     }
     
+    static func getTopMarginForTimer() -> CGFloat {
+        if UIDevice.current.hasNotch {
+            return 90
+        } else {
+            return 32
+        }
+    }
+    
+}
+
+func lerp(a : CGFloat, b : CGFloat, fraction : CGFloat) -> CGFloat
+{
+    return (b-a) * fraction + a
+}
+
+struct ColorComponents {
+    var red = CGFloat(0)
+    var green = CGFloat(0)
+    var blue = CGFloat(0)
+    var alpha = CGFloat(0)
+}
+
+extension UIColor {
+    func toComponents() -> ColorComponents {
+        var components = ColorComponents()
+        getRed(&components.red, green: &components.green, blue: &components.blue, alpha: &components.alpha)
+        return components
+    }
+}
+
+extension SKAction {
+    static func colorTransitionAction(fromColor : UIColor, toColor : UIColor, duration : Double = 0.4) -> SKAction
+    {
+        return SKAction.customAction(withDuration: duration, actionBlock: { (node : SKNode!, elapsedTime : CGFloat) -> Void in
+            let fraction = CGFloat(elapsedTime / CGFloat(duration))
+            let startColorComponents = fromColor.toComponents()
+            let endColorComponents = toColor.toComponents()
+            let transColor = UIColor(red: lerp(a: startColorComponents.red, b: endColorComponents.red, fraction: fraction),
+                                     green: lerp(a: startColorComponents.green, b: endColorComponents.green, fraction: fraction),
+                                     blue: lerp(a: startColorComponents.blue, b: endColorComponents.blue, fraction: fraction),
+                                     alpha: lerp(a: startColorComponents.alpha, b: endColorComponents.alpha, fraction: fraction))
+            (node as? SKShapeNode)?.fillColor = transColor
+        }
+        )
+    }
 }

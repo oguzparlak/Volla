@@ -13,12 +13,17 @@ class SquareBoard : Board<Square> {
     
     var squareDelegate: SquareDelegate?
     
-    func getX(of square: Square) -> CGFloat {
-        return square.frame.maxX
-    }
-    
-    func getY(of square: Square) -> CGFloat {
-        return square.frame.maxY
+    // If the board has odd element size
+    // Then the middle element should be disabled
+    // to finish the game
+    func disableMiddleIfNeeded() {
+        let squareCount = rows * columns
+        if squareCount % 2 == 0 { return }
+        let middleSquareCoordinates = ((rows - 1) / 2, (columns - 1) / 2)
+        do {
+            let squareAtTheMiddle = try getItem(at: middleSquareCoordinates)
+            squareAtTheMiddle.state = .disabled
+        } catch { print(error) }
     }
     
     func onSquareTapped(at position: (Int, Int)) {

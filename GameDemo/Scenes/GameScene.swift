@@ -15,6 +15,8 @@ class GameScene: SKScene, SquareDelegate {
     
     var squaresAsAWhole: Array<Square>!
     
+    var lastPickedSquare: Square?
+    
     override func didMove(to view: SKView) {
         // 3 * 3 board consists of squares
         board = MockUtils.generateMockSquareBoard(frameWidth: frame.width, frameHeight: frame.height)
@@ -34,18 +36,21 @@ class GameScene: SKScene, SquareDelegate {
         let padding = NodeConstants.paddingOfSquares
         // Draw squares
         drawSquares(squareContainer, startX, padding, middle, widthOfASquare)
-        // TODO Disable the middle square of a 3*1 board
-        // TODO Fix the centering issue
-        // TODO Create Git repo
+        
+        // Add Countdown Timer
+        let margin = NodeConstants.getTopMarginForTimer()
+        let countDownNode = CountDownNode(countFrom: 30, position: CGPoint(x: frame.midX, y: frame.height / 2 - margin))
+        addChild(countDownNode)
     }
     
     func onSquareTapped(at position: (Int, Int)) {
-        print(position)
+        lastPickedSquare?.state = .opened
+        lastPickedSquare?.run(SKAction.colorTransitionAction(fromColor: (lastPickedSquare?.fillColor)!, toColor: Colors.peterRiver))
+        lastPickedSquare?.run(SKAction.scale(by: 1.02, duration: 0.4))
         // Play Sound
-        let sound = SKAction.playSoundFileNamed("shot.wav", waitForCompletion: false)
-        run(sound)
+        // let sound = SKAction.playSoundFileNamed("shot.wav", waitForCompletion: false)
+        // run(sound)
     }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // Detect touches
@@ -60,6 +65,7 @@ class GameScene: SKScene, SquareDelegate {
             square.frame.contains(location)
         }
         if let tappedSquare = possibleSquare {
+            lastPickedSquare = tappedSquare
             board.onSquareTapped(at: tappedSquare.coordinates)
         }
     }

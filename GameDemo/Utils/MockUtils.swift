@@ -24,6 +24,7 @@ enum MockUtils {
                 do { try board.add(item: square, to: (i, j)) } catch { print(error) }
             }
         }
+        board.disableMiddleIfNeeded()
         return board
     }
     

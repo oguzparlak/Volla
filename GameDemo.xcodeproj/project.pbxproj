@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF45908222189DF600FC31E1 /* CountDownLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF45908122189DF600FC31E1 /* CountDownLabel.swift */; };
 		BF5F75DB220B4D25004D5F99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F75DA220B4D25004D5F99 /* AppDelegate.swift */; };
 		BF5F75DD220B4D25004D5F99 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BF5F75DC220B4D25004D5F99 /* GameScene.sks */; };
 		BF5F75DF220B4D25004D5F99 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = BF5F75DE220B4D25004D5F99 /* Actions.sks */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF45908122189DF600FC31E1 /* CountDownLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownLabel.swift; sourceTree = "<group>"; };
 		BF5F75D7220B4D25004D5F99 /* GameDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5F75DA220B4D25004D5F99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF5F75DC220B4D25004D5F99 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				BFCD74B2220C98FC006C3E79 /* Board.swift */,
 				BFCD74B8220C9DBA006C3E79 /* SquareBoard.swift */,
 				BFC8CE53220DEC3400A6A701 /* SquareDrawer.swift */,
+				BF45908122189DF600FC31E1 /* CountDownLabel.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				BFCD74A6220C955F006C3E79 /* NodeConstants.swift in Sources */,
 				BF5F75E3220B4D25004D5F99 /* GameViewController.swift in Sources */,
 				BFCD74B7220C9B09006C3E79 /* Errors.swift in Sources */,
+				BF45908222189DF600FC31E1 /* CountDownLabel.swift in Sources */,
 				BFCD74B3220C98FC006C3E79 /* Board.swift in Sources */,
 				BF5F75DB220B4D25004D5F99 /* AppDelegate.swift in Sources */,
 				BFCD74B5220C9A9A006C3E79 /* MockUtils.swift in Sources */,
@@ -578,7 +582,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.looperz.GameDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -596,7 +600,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.looperz.GameDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

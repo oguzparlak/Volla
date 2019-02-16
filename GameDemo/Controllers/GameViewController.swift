@@ -55,3 +55,10 @@ class GameViewController: UIViewController {
         return true
     }
 }
+
+
+extension UIDevice {
+    var hasNotch: Bool {
+        return UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0 > 20
+    }
+}

@@ -12,7 +12,9 @@ import UIKit
 enum Colors {
     
     static let peterRiver = UIColor(red: 52/255, green: 152/255, blue: 219/255, alpha: 1.0)
-    static let alizarin = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.0)
+    static let alizarin = UIColor(red: 0.91, green: 0.30, blue: 0.24, alpha: 1.0)
     static let clouds = UIColor(red: 236/255, green: 240/255, blue: 241/255, alpha: 1.0)
-    
+    static let asbestos = UIColor(red: 0.50, green: 0.55, blue: 0.55, alpha: 1.0)
+    static let emerald = UIColor(red: 0.18, green: 0.80, blue: 0.44, alpha: 1.0)
+
 }
