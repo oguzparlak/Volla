@@ -24,7 +24,12 @@ enum MockUtils {
                 do { try board.add(item: square, to: (i, j)) } catch { print(error) }
             }
         }
+        // Disable the middle square if the square size is odd number
         board.disableMiddleIfNeeded()
+        // Add content
+        let content = ContentFactory.createContent(with: .number, size: numberOfSquaresForEachRow * numberOfSquaresForEachColumn).generate()
+        // TODO Bind the values from the content with the square
+        // TODO Implement it later
         return board
     }
     

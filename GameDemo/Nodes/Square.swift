@@ -50,21 +50,13 @@ class Square : SKShapeNode {
         case .disabled:
             fillColor = Colors.asbestos
         case .opened:
-            print("Opened")
-            // fillColor = Colors.peterRiver
+            self.run(SKAction.colorTransitionAction(fromColor: self.fillColor, toColor: Colors.peterRiver))
+            // self.run(SKAction.scale(by: 1.01, duration: 0.4))
         }
-    }
-    
-    func reset() {
-        
     }
     
     func didTouch() {
         print(coordinates)
-    }
-    
-    deinit {
-        reset()
     }
     
 }

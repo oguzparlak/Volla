@@ -30,6 +30,7 @@
 		BFCD74B5220C9A9A006C3E79 /* MockUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD74B4220C9A9A006C3E79 /* MockUtils.swift */; };
 		BFCD74B7220C9B09006C3E79 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD74B6220C9B09006C3E79 /* Errors.swift */; };
 		BFCD74B9220C9DBA006C3E79 /* SquareBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD74B8220C9DBA006C3E79 /* SquareBoard.swift */; };
+		BFCDE06722196C5000A9484B /* ContentCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCDE06622196C5000A9484B /* ContentCreator.swift */; };
 		BFD154842215CE10007FC209 /* shot.wav in Resources */ = {isa = PBXBuildFile; fileRef = BFD154832215CE10007FC209 /* shot.wav */; };
 		BFD154862215CE1C007FC209 /* tick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFD154852215CE1C007FC209 /* tick.mp3 */; };
 		BFD154882215CE31007FC209 /* ping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFD154872215CE31007FC209 /* ping.mp3 */; };
@@ -82,6 +83,7 @@
 		BFCD74B4220C9A9A006C3E79 /* MockUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUtils.swift; sourceTree = "<group>"; };
 		BFCD74B6220C9B09006C3E79 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		BFCD74B8220C9DBA006C3E79 /* SquareBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareBoard.swift; sourceTree = "<group>"; };
+		BFCDE06622196C5000A9484B /* ContentCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCreator.swift; sourceTree = "<group>"; };
 		BFD154832215CE10007FC209 /* shot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shot.wav; sourceTree = "<group>"; };
 		BFD154852215CE1C007FC209 /* tick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tick.mp3; sourceTree = "<group>"; };
 		BFD154872215CE31007FC209 /* ping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ping.mp3; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				BFCD74AD220C9764006C3E79 /* Colors.swift */,
 				BFCD74B4220C9A9A006C3E79 /* MockUtils.swift */,
 				BFCD74B6220C9B09006C3E79 /* Errors.swift */,
+				BFCDE06622196C5000A9484B /* ContentCreator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				BF5F75E3220B4D25004D5F99 /* GameViewController.swift in Sources */,
 				BFCD74B7220C9B09006C3E79 /* Errors.swift in Sources */,
 				BF45908222189DF600FC31E1 /* CountDownLabel.swift in Sources */,
+				BFCDE06722196C5000A9484B /* ContentCreator.swift in Sources */,
 				BFCD74B3220C98FC006C3E79 /* Board.swift in Sources */,
 				BF5F75DB220B4D25004D5F99 /* AppDelegate.swift in Sources */,
 				BFCD74B5220C9A9A006C3E79 /* MockUtils.swift in Sources */,

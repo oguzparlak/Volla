@@ -13,13 +13,13 @@ import SpriteKit
 enum NodeConstants {
     
     // The padding between squares and the frame
-    static let paddingOfSquares: CGFloat = 8
+    static let paddingOfSquares: CGFloat = 16
     
     // The number of squares fits for each row
-    static let numberOfSquaresForEachRow: CGFloat = 5
+    static let numberOfSquaresForEachRow: CGFloat = 4
     
     // The number of squares fits for each column
-    static let numberOfSquaresForEachColumn: CGFloat = 5
+    static let numberOfSquaresForEachColumn: CGFloat = 3
     
     // The corner radius of the squares
     static let cornerRadiusOfSquares: CGFloat = 4.0
@@ -47,7 +47,7 @@ enum NodeConstants {
         if UIDevice.current.hasNotch {
             return 90
         } else {
-            return 32
+            return 48
         }
     }
     

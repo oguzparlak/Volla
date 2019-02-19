@@ -59,7 +59,7 @@ class SquareDrawer {
              currentRow += 1
         }
         // Animate square
-        square.applyPulseAnimation(with: 0.5)
+        square.applyPulseAnimation(with: 0.3)
         // Draw square
         rootNode.addChild(square)
     }

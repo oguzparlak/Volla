@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import UIKit
 
 class GameScene: SKScene, SquareDelegate {
     
@@ -16,6 +17,10 @@ class GameScene: SKScene, SquareDelegate {
     var squaresAsAWhole: Array<Square>!
     
     var lastPickedSquare: Square?
+    
+    var countDownNode: CountDownNode!
+    
+    var remainingTime = 30
     
     override func didMove(to view: SKView) {
         // 3 * 3 board consists of squares
@@ -36,20 +41,40 @@ class GameScene: SKScene, SquareDelegate {
         let padding = NodeConstants.paddingOfSquares
         // Draw squares
         drawSquares(squareContainer, startX, padding, middle, widthOfASquare)
-        
         // Add Countdown Timer
         let margin = NodeConstants.getTopMarginForTimer()
-        let countDownNode = CountDownNode(countFrom: 30, position: CGPoint(x: frame.midX, y: frame.height / 2 - margin))
+        countDownNode = CountDownNode(countFrom: 30, position: CGPoint(x: frame.midX, y: frame.height / 2 - margin))
         addChild(countDownNode)
+        // Start Timer
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(GameScene.updateTime), userInfo: nil, repeats: true)
+        // Add Helper text
+        let text = "Try to match\nthe numbers inside the squares"
+        let missionLabel = SKLabelNode(text: text)
+        missionLabel.fontName = "Avenir"
+        missionLabel.fontColor = Colors.peterRiver
+        missionLabel.fontSize = 24
+        missionLabel.position = CGPoint(x: frame.midX, y: -frame.height / 2 + 48)
+        missionLabel.numberOfLines = 3
+        missionLabel.horizontalAlignmentMode = .center
+        missionLabel.lineBreakMode = .byTruncatingMiddle
+        missionLabel.preferredMaxLayoutWidth = frame.width
+        addChild(missionLabel)
+        missionLabel.alpha = 0
+        missionLabel.run(SKAction.fadeIn(withDuration: 1.0))
+    }
+    
+    @objc func updateTime() {
+        // TODO Finish the game...
+        if remainingTime == 0 { return }
+        remainingTime -= 1
+        countDownNode.text = String(remainingTime)
     }
     
     func onSquareTapped(at position: (Int, Int)) {
         lastPickedSquare?.state = .opened
-        lastPickedSquare?.run(SKAction.colorTransitionAction(fromColor: (lastPickedSquare?.fillColor)!, toColor: Colors.peterRiver))
-        lastPickedSquare?.run(SKAction.scale(by: 1.02, duration: 0.4))
         // Play Sound
-        // let sound = SKAction.playSoundFileNamed("shot.wav", waitForCompletion: false)
-        // run(sound)
+        let sound = SKAction.playSoundFileNamed("shot.wav", waitForCompletion: false)
+        run(sound)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
