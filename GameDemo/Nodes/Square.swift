@@ -26,7 +26,9 @@ class Square : SKShapeNode {
     var coordinates: (Int, Int) = (0, 0)
     
     // The value behind this square
-    var value = 0
+    var value: Any?
+    
+    var isSimplyRepresentable = true
     
     required init?(coder aDecoder: NSCoder) {
         super.init()
@@ -46,7 +48,7 @@ class Square : SKShapeNode {
     private func updateAppearence() {
         switch state {
         case .closed:
-            fillColor = Colors.alizarin
+            self.run(SKAction.colorTransitionAction(fromColor: self.fillColor, toColor: Colors.alizarin))
         case .disabled:
             fillColor = Colors.asbestos
         case .opened:
@@ -59,4 +61,15 @@ class Square : SKShapeNode {
         print(coordinates)
     }
     
+}
+
+extension Square {
+    
+    func fadeIn() {
+        self.children[0].run(SKAction.fadeIn(withDuration: 0.5))
+    }
+    
+    func fadeOut() {
+        self.children[0].run(SKAction.fadeOut(withDuration: 0.5))
+    }
 }

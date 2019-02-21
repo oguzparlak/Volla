@@ -18,7 +18,6 @@
 		BF5F75EB220B4D26004D5F99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5F75E9220B4D26004D5F99 /* LaunchScreen.storyboard */; };
 		BF5F75F6220B4D26004D5F99 /* GameDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F75F5220B4D26004D5F99 /* GameDemoTests.swift */; };
 		BF5F7601220B4D26004D5F99 /* GameDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F7600220B4D26004D5F99 /* GameDemoUITests.swift */; };
-		BFC03FDD22135FAB00E660A9 /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFC03FDA22135FAB00E660A9 /* success.mp3 */; };
 		BFC03FDE22135FAB00E660A9 /* tada.wav in Resources */ = {isa = PBXBuildFile; fileRef = BFC03FDB22135FAB00E660A9 /* tada.wav */; };
 		BFC03FDF22135FAB00E660A9 /* sound_wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = BFC03FDC22135FAB00E660A9 /* sound_wrong.wav */; };
 		BFC8CE54220DEC3400A6A701 /* SquareDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8CE53220DEC3400A6A701 /* SquareDrawer.swift */; };
@@ -31,6 +30,7 @@
 		BFCD74B7220C9B09006C3E79 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD74B6220C9B09006C3E79 /* Errors.swift */; };
 		BFCD74B9220C9DBA006C3E79 /* SquareBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD74B8220C9DBA006C3E79 /* SquareBoard.swift */; };
 		BFCDE06722196C5000A9484B /* ContentCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCDE06622196C5000A9484B /* ContentCreator.swift */; };
+		BFCEBA1B221DCBEC008DA380 /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFCEBA1A221DCBEC008DA380 /* success.mp3 */; };
 		BFD154842215CE10007FC209 /* shot.wav in Resources */ = {isa = PBXBuildFile; fileRef = BFD154832215CE10007FC209 /* shot.wav */; };
 		BFD154862215CE1C007FC209 /* tick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFD154852215CE1C007FC209 /* tick.mp3 */; };
 		BFD154882215CE31007FC209 /* ping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFD154872215CE31007FC209 /* ping.mp3 */; };
@@ -71,7 +71,6 @@
 		BF5F75FC220B4D26004D5F99 /* GameDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5F7600220B4D26004D5F99 /* GameDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDemoUITests.swift; sourceTree = "<group>"; };
 		BF5F7602220B4D26004D5F99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BFC03FDA22135FAB00E660A9 /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = success.mp3; sourceTree = "<group>"; };
 		BFC03FDB22135FAB00E660A9 /* tada.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tada.wav; sourceTree = "<group>"; };
 		BFC03FDC22135FAB00E660A9 /* sound_wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound_wrong.wav; sourceTree = "<group>"; };
 		BFC8CE53220DEC3400A6A701 /* SquareDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareDrawer.swift; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 		BFCD74B6220C9B09006C3E79 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		BFCD74B8220C9DBA006C3E79 /* SquareBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareBoard.swift; sourceTree = "<group>"; };
 		BFCDE06622196C5000A9484B /* ContentCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCreator.swift; sourceTree = "<group>"; };
+		BFCEBA1A221DCBEC008DA380 /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = success.mp3; path = ../../../../../../../Downloads/success.mp3; sourceTree = "<group>"; };
 		BFD154832215CE10007FC209 /* shot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shot.wav; sourceTree = "<group>"; };
 		BFD154852215CE1C007FC209 /* tick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tick.mp3; sourceTree = "<group>"; };
 		BFD154872215CE31007FC209 /* ping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ping.mp3; sourceTree = "<group>"; };
@@ -171,11 +171,11 @@
 		BFC03FD922135FA000E660A9 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				BFCEBA1A221DCBEC008DA380 /* success.mp3 */,
 				BFD154872215CE31007FC209 /* ping.mp3 */,
 				BFD154852215CE1C007FC209 /* tick.mp3 */,
 				BFD154832215CE10007FC209 /* shot.wav */,
 				BFC03FDB22135FAB00E660A9 /* tada.wav */,
-				BFC03FDA22135FAB00E660A9 /* success.mp3 */,
 				BFC03FDC22135FAB00E660A9 /* sound_wrong.wav */,
 			);
 			path = Sounds;
@@ -187,7 +187,6 @@
 				BFCD74A3220C9426006C3E79 /* Square.swift */,
 				BFCD74B2220C98FC006C3E79 /* Board.swift */,
 				BFCD74B8220C9DBA006C3E79 /* SquareBoard.swift */,
-				BFC8CE53220DEC3400A6A701 /* SquareDrawer.swift */,
 				BF45908122189DF600FC31E1 /* CountDownLabel.swift */,
 			);
 			path = Nodes;
@@ -237,6 +236,7 @@
 				BFCD74B4220C9A9A006C3E79 /* MockUtils.swift */,
 				BFCD74B6220C9B09006C3E79 /* Errors.swift */,
 				BFCDE06622196C5000A9484B /* ContentCreator.swift */,
+				BFC8CE53220DEC3400A6A701 /* SquareDrawer.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -357,12 +357,12 @@
 				BF5F75E6220B4D25004D5F99 /* Main.storyboard in Resources */,
 				BFC03FDE22135FAB00E660A9 /* tada.wav in Resources */,
 				BF5F75DD220B4D25004D5F99 /* GameScene.sks in Resources */,
-				BFC03FDD22135FAB00E660A9 /* success.mp3 in Resources */,
 				BF5F75E8220B4D26004D5F99 /* Assets.xcassets in Resources */,
 				BFD154842215CE10007FC209 /* shot.wav in Resources */,
 				BFD154862215CE1C007FC209 /* tick.mp3 in Resources */,
 				BF5F75EB220B4D26004D5F99 /* LaunchScreen.storyboard in Resources */,
 				BF5F75DF220B4D25004D5F99 /* Actions.sks in Resources */,
+				BFCEBA1B221DCBEC008DA380 /* success.mp3 in Resources */,
 				BFD154882215CE31007FC209 /* ping.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

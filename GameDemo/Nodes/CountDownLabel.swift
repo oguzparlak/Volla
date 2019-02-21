@@ -11,11 +11,8 @@ import SpriteKit
 
 class CountDownNode: SKLabelNode {
     
-    var remainingTimeInSeconds: Int = 0
-    
     init(countFrom: Int, position: CGPoint) {
         super.init()
-        self.remainingTimeInSeconds = countFrom
         text = String(countFrom)
         fontName = "Avenir"
         fontColor = Colors.peterRiver

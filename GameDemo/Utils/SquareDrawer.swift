@@ -62,6 +62,22 @@ class SquareDrawer {
         square.applyPulseAnimation(with: 0.3)
         // Draw square
         rootNode.addChild(square)
+        // Draw content of square
+        drawContent(of: square)
+    }
+    
+    func drawContent(of square: Square) {
+        let isSimplyRepresentable = square.isSimplyRepresentable
+        if isSimplyRepresentable {
+            let value = square.value as? String ?? ""
+            let labelNode = SKLabelNode(text: value)
+            labelNode.fontName = "Avenir"
+            labelNode.fontColor = Colors.clouds
+            labelNode.fontSize = 24.0
+            let labelHeight = labelNode.frame.height
+            labelNode.position = CGPoint(x: square.frame.width / 2, y: square.frame.width / 2 - labelHeight / 2)
+            square.addChild(labelNode)
+        }
     }
     
 }

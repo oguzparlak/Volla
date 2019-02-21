@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Utils/MockUtils.swift"
-            timestampString = "572297015.364615"
+            timestampString = "572382953.8287179"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Nodes/Board.swift"
-            timestampString = "571697748.448351"
+            timestampString = "572467897.210824"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Nodes/Board.swift"
-            timestampString = "571697748.448411"
+            timestampString = "572467897.210879"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Utils/NodeConstants.swift"
-            timestampString = "572094509.279803"
+            timestampString = "572467981.246303"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Scenes/GameScene.swift"
-            timestampString = "572094509.280154"
+            timestampString = "572467981.246647"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "didMove(to:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Utils/MockUtils.swift"
-            timestampString = "572297015.365649"
+            timestampString = "572382953.829986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "generateMockSquareBoard(frameWidth:frameHeight:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,59 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Utils/MockUtils.swift"
-            timestampString = "572297015.365828"
+            timestampString = "572382953.8302881"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "generateMockSquareBoard(frameWidth:frameHeight:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static GameDemo.MockUtils.generateMockSquareBoard(frameWidth: CoreGraphics.CGFloat, frameHeight: CoreGraphics.CGFloat) -&gt; GameDemo.SquareBoard"
-                  moduleName = "GameDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/oguzparlak/Desktop/iOS/Game/GameDemo/GameDemo/Utils/MockUtils.swift"
-                  timestampString = "571400739.275575"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "1364">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static GameDemo.MockUtils.generateMockSquareBoard(frameWidth: CoreGraphics.CGFloat, frameHeight: CoreGraphics.CGFloat) -&gt; GameDemo.SquareBoard"
-                  moduleName = "GameDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/oguzparlak/Desktop/iOS/Game/GameDemo/GameDemo/Utils/MockUtils.swift"
-                  timestampString = "571400739.278995"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "1656">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GameDemo/Utils/MockUtils.swift"
-            timestampString = "572297015.366053"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "generateMockSquareBoard(frameWidth:frameHeight:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,61 +234,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Utils/MockUtils.swift"
-            timestampString = "572297015.3662111"
+            timestampString = "572382953.830393"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "generateMockSquareBoard(frameWidth:frameHeight:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GameDemo/Utils/MockUtils.swift"
-            timestampString = "572297015.366437"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "generateMockSquareBoard(frameWidth:frameHeight:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static GameDemo.MockUtils.generateMockSquareBoard(frameWidth: CoreGraphics.CGFloat, frameHeight: CoreGraphics.CGFloat) -&gt; GameDemo.SquareBoard"
-                  moduleName = "GameDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/oguzparlak/Desktop/iOS/Game/GameDemo/GameDemo/Utils/MockUtils.swift"
-                  timestampString = "571696644.815196"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "2126">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static GameDemo.MockUtils.generateMockSquareBoard(frameWidth: CoreGraphics.CGFloat, frameHeight: CoreGraphics.CGFloat) -&gt; GameDemo.SquareBoard"
-                  moduleName = "GameDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/oguzparlak/Desktop/iOS/Game/GameDemo/GameDemo/Utils/MockUtils.swift"
-                  timestampString = "571696644.8173209"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "2578">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -346,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Nodes/SquareBoard.swift"
-            timestampString = "572043150.165153"
+            timestampString = "572467981.246743"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "disableMiddleIfNeeded()"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,7 +266,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Utils/NodeConstants.swift"
-            timestampString = "572094509.281956"
+            timestampString = "572467981.246783"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
@@ -394,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Nodes/CountDownLabel.swift"
-            timestampString = "572089606.61967"
+            timestampString = "572467981.247015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
             landmarkName = "init(countFrom:position:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,12 +314,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Scenes/GameScene.swift"
-            timestampString = "572094509.282078"
+            timestampString = "572467981.247057"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "updateTime()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GameDemo/Utils/MockUtils.swift"
+            timestampString = "572382953.830919"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "generateMockSquareBoard(frameWidth:frameHeight:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GameDemo/Scenes/GameScene.swift"
+            timestampString = "572467981.247116"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "updateTime()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GameDemo/Scenes/GameScene.swift"
+            timestampString = "572467981.24716"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "finishLookUpSession()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GameDemo/Nodes/SquareBoard.swift"
+            timestampString = "572467981.247201"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "disableMiddleIfNeeded()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

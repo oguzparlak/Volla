@@ -20,7 +20,16 @@ class GameScene: SKScene, SquareDelegate {
     
     var countDownNode: CountDownNode!
     
-    var remainingTime = 30
+    var remainingTime = 5
+    
+    // TODO Change this create a real stack
+    var squareStack: [Square] = []
+    
+    // Look up session is a session which
+    // starts at the beginning of the game
+    // where user can see all the squares
+    // for a limited amount of time
+    var inLookUpSession = true
     
     override func didMove(to view: SKView) {
         // 3 * 3 board consists of squares
@@ -43,10 +52,10 @@ class GameScene: SKScene, SquareDelegate {
         drawSquares(squareContainer, startX, padding, middle, widthOfASquare)
         // Add Countdown Timer
         let margin = NodeConstants.getTopMarginForTimer()
-        countDownNode = CountDownNode(countFrom: 30, position: CGPoint(x: frame.midX, y: frame.height / 2 - margin))
+        countDownNode = CountDownNode(countFrom: remainingTime, position: CGPoint(x: frame.midX, y: frame.height / 2 - margin))
         addChild(countDownNode)
         // Start Timer
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(GameScene.updateTime), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameScene.updateTime), userInfo: nil, repeats: true)
         // Add Helper text
         let text = "Try to match\nthe numbers inside the squares"
         let missionLabel = SKLabelNode(text: text)
@@ -61,17 +70,43 @@ class GameScene: SKScene, SquareDelegate {
         addChild(missionLabel)
         missionLabel.alpha = 0
         missionLabel.run(SKAction.fadeIn(withDuration: 1.0))
+        // Show of the squares
+        NodeConstants.showAllContent(of: board)
     }
     
     @objc func updateTime() {
-        // TODO Finish the game...
-        if remainingTime == 0 { return }
+        // Decrement the remaining time
         remainingTime -= 1
+        // Display the countdown timer at each tick
         countDownNode.text = String(remainingTime)
+        if inLookUpSession {
+            if remainingTime == 0 {
+                finishLookUpSession()
+            }
+        } else {
+            if remainingTime == 0 {
+                finishGame()
+            }
+        }
+    }
+    
+    func finishGame() {
+        // TODO Finish the game
+    }
+    
+    func finishLookUpSession() {
+        // End the lookUpSession
+        inLookUpSession = false
+        // Reset the seconds
+        remainingTime = 30
+        // Reset the timer
+        countDownNode.text = String(remainingTime)
+        // Hide the content
+        NodeConstants.hideAllContent(of: board)
     }
     
     func onSquareTapped(at position: (Int, Int)) {
-        lastPickedSquare?.state = .opened
+        // lastPickedSquare?.state = .opened
         // Play Sound
         let sound = SKAction.playSoundFileNamed("shot.wav", waitForCompletion: false)
         run(sound)
@@ -85,12 +120,13 @@ class GameScene: SKScene, SquareDelegate {
     }
     
     func detectTouchForSquares(_ touch: UITouch) {
+        if inLookUpSession { return }
         let location = touch.location(in: self)
         let possibleSquare = squaresAsAWhole.first { (square) -> Bool in
             square.frame.contains(location)
         }
         if let tappedSquare = possibleSquare {
-            lastPickedSquare = tappedSquare
+            // TODO Use extensions to create animations and for the logic
             board.onSquareTapped(at: tappedSquare.coordinates)
         }
     }

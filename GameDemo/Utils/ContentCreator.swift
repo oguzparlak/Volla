@@ -91,9 +91,16 @@ class NumberContent: Content {
     }
     
     func generate() -> Array<Any> {
-        var result: [Int] = []
-        // TODO Implement it later
-        return result
+        var result: [String] = []
+        var index = size / 2
+        var numbers = Array(0...size).shuffled()
+        repeat {
+            let randomNumber = numbers.popLast()!
+            result.append(String(randomNumber))
+            result.append(String(randomNumber))
+            index -= 1
+        } while(index > 0)
+        return result.shuffled()
     }
     
     var isSimplyRepresentable = true

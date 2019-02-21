@@ -16,7 +16,7 @@ enum NodeConstants {
     static let paddingOfSquares: CGFloat = 16
     
     // The number of squares fits for each row
-    static let numberOfSquaresForEachRow: CGFloat = 4
+    static let numberOfSquaresForEachRow: CGFloat = 3
     
     // The number of squares fits for each column
     static let numberOfSquaresForEachColumn: CGFloat = 3
@@ -49,6 +49,24 @@ enum NodeConstants {
         } else {
             return 48
         }
+    }
+    
+    static func hideAllContent(of board: SquareBoard) {
+        for square in board.getAllSquares() {
+            let labelNode = square.children[0]
+            labelNode.run(SKAction.fadeOut(withDuration: 0.5))
+            square.state = .closed
+        }
+        board.disableMiddleIfNeeded()
+    }
+    
+    static func showAllContent(of board: SquareBoard) {
+        for square in board.getAllSquares() {
+            let labelNode = square.children[0]
+            labelNode.run(SKAction.fadeIn(withDuration: 0.5))
+            square.state = .opened
+        }
+        board.disableMiddleIfNeeded()
     }
     
 }

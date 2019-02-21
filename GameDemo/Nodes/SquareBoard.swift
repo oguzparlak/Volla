@@ -13,6 +13,8 @@ class SquareBoard : Board<Square> {
     
     var squareDelegate: SquareDelegate?
     
+    var content: Content?
+    
     // If the board has odd element size
     // Then the middle element should be disabled
     // to finish the game
@@ -24,6 +26,28 @@ class SquareBoard : Board<Square> {
             let squareAtTheMiddle = try getItem(at: middleSquareCoordinates)
             squareAtTheMiddle.state = .disabled
         } catch { print(error) }
+    }
+    
+    func placeContent() {
+        let squares = getAllSquares()
+        var values = content?.generate()
+        let middleCoordinates = getMiddleCoordinates()
+        for square in squares {
+            if (hasOddSize() && square.coordinates == middleCoordinates) {
+                continue
+            } else {
+                square.value = values?.popLast()!
+            }
+        }
+    }
+    
+    func getMiddleCoordinates() -> (Int, Int) {
+        return (x: (rows - 1) / 2, y: (columns - 1) / 2)
+    }
+    
+    func hasOddSize() -> Bool {
+        let squareCount = rows * columns
+        return squareCount % 2 == 1
     }
     
     func onSquareTapped(at position: (Int, Int)) {
