@@ -49,12 +49,20 @@ class Square : SKShapeNode {
         switch state {
         case .closed:
             self.run(SKAction.colorTransitionAction(fromColor: self.fillColor, toColor: Colors.alizarin))
+            fadeOut()
         case .disabled:
-            fillColor = Colors.asbestos
+            self.run(SKAction.colorTransitionAction(fromColor: self.fillColor, toColor: Colors.clouds))
         case .opened:
             self.run(SKAction.colorTransitionAction(fromColor: self.fillColor, toColor: Colors.peterRiver))
-            // self.run(SKAction.scale(by: 1.01, duration: 0.4))
+            fadeIn()
         }
+    }
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        let simpleValue = value as? String
+        let anotherSquare = object as? Square
+        let anotherSquareValue = anotherSquare?.value as? String
+        return anotherSquareValue == simpleValue
     }
     
     func didTouch() {

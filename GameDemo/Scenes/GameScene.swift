@@ -12,18 +12,25 @@ import UIKit
 
 class GameScene: SKScene, SquareDelegate {
     
+    // GameViewController
+    weak var viewController: GameViewController?
+    
+    // SquareBoard
     var board: SquareBoard!
     
+    // Array of Squares from squareBoard
     var squaresAsAWhole: Array<Square>!
     
-    var lastPickedSquare: Square?
-    
+    // Countdown Node
     var countDownNode: CountDownNode!
     
+    var levelDescriptionNode: LevelDescriptionNode!
+    
+    // Remaining time on countdown timer
     var remainingTime = 5
     
-    // TODO Change this create a real stack
-    var squareStack: [Square] = []
+    // Square Stack can hold maximum 2 squares
+    var squareStack = SquareStack()
     
     // Look up session is a session which
     // starts at the beginning of the game
@@ -31,7 +38,23 @@ class GameScene: SKScene, SquareDelegate {
     // for a limited amount of time
     var inLookUpSession = true
     
+    // The countdown timer
+    var timer: Timer!
+    
+    // The last touched square on the board
+    var lastTouchedSquare: Square?
+    
+    var clickEnabled = true
+    
+    var correctAnswerCount: Int! {
+        didSet {
+            detectFinish()
+        }
+    }
+    
     override func didMove(to view: SKView) {
+        // Disable multi touch
+        self.view?.isMultipleTouchEnabled = false
         // 3 * 3 board consists of squares
         board = MockUtils.generateMockSquareBoard(frameWidth: frame.width, frameHeight: frame.height)
         // Get whole squares once
@@ -55,23 +78,17 @@ class GameScene: SKScene, SquareDelegate {
         countDownNode = CountDownNode(countFrom: remainingTime, position: CGPoint(x: frame.midX, y: frame.height / 2 - margin))
         addChild(countDownNode)
         // Start Timer
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameScene.updateTime), userInfo: nil, repeats: true)
-        // Add Helper text
-        let text = "Try to match\nthe numbers inside the squares"
-        let missionLabel = SKLabelNode(text: text)
-        missionLabel.fontName = "Avenir"
-        missionLabel.fontColor = Colors.peterRiver
-        missionLabel.fontSize = 24
-        missionLabel.position = CGPoint(x: frame.midX, y: -frame.height / 2 + 48)
-        missionLabel.numberOfLines = 3
-        missionLabel.horizontalAlignmentMode = .center
-        missionLabel.lineBreakMode = .byTruncatingMiddle
-        missionLabel.preferredMaxLayoutWidth = frame.width
-        addChild(missionLabel)
-        missionLabel.alpha = 0
-        missionLabel.run(SKAction.fadeIn(withDuration: 1.0))
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameScene.updateTime), userInfo: nil, repeats: true)
+        // Add Description text
+        levelDescriptionNode = LevelDescriptionNode(text: "Try to match\nthe numbers inside the squares")
+        levelDescriptionNode.position = CGPoint(x: frame.midX, y: -frame.height / 2 + 48)
+        levelDescriptionNode.preferredMaxLayoutWidth = frame.width
+        levelDescriptionNode.run(SKAction.fadeIn(withDuration: 1.0))
+        addChild(levelDescriptionNode)
         // Show of the squares
         NodeConstants.showAllContent(of: board)
+        // Init correctAnswerCount
+        correctAnswerCount = board.hasOddSize() ? 1 : 0
     }
     
     @objc func updateTime() {
@@ -80,18 +97,40 @@ class GameScene: SKScene, SquareDelegate {
         // Display the countdown timer at each tick
         countDownNode.text = String(remainingTime)
         if inLookUpSession {
+            let ping = SKAction.playSoundFileNamed("ping.mp3", waitForCompletion: false)
+            run(ping)
             if remainingTime == 0 {
                 finishLookUpSession()
             }
         } else {
             if remainingTime == 0 {
-                finishGame()
+                finishGame(countDownEnded: true)
             }
         }
     }
     
-    func finishGame() {
-        // TODO Finish the game
+    func detectFinish() {
+        let shouldFinish = correctAnswerCount == board.getSize()
+        if shouldFinish { finishGame() }
+    }
+    
+    func finishGame(countDownEnded : Bool = false) {
+        timer.invalidate()
+        if countDownEnded {
+            
+        } else {
+            let tada = SKAction.playSoundFileNamed("tada.wav", waitForCompletion: false)
+            run(tada)
+            // Animate
+            countDownNode.run(SKAction.moveBy(x: 0, y: 120, duration: 1.0))
+            levelDescriptionNode.run(SKAction.moveBy(x: 0, y: -120, duration: 1.0))
+            // Lottie
+            viewController?.initLottie()
+            viewController?.playLottie {
+                print("Finished playing...")
+            }
+            
+        }
     }
     
     func finishLookUpSession() {
@@ -106,10 +145,58 @@ class GameScene: SKScene, SquareDelegate {
     }
     
     func onSquareTapped(at position: (Int, Int)) {
-        // lastPickedSquare?.state = .opened
+        if lastTouchedSquare?.state == .disabled { return }
         // Play Sound
-        let sound = SKAction.playSoundFileNamed("shot.wav", waitForCompletion: false)
-        run(sound)
+        let tapSound = SKAction.playSoundFileNamed("shot.wav", waitForCompletion: false)
+        run(tapSound)
+        // Open it
+        lastTouchedSquare?.state = .opened
+        clickEnabled = false
+        if let lastAddedSquare = squareStack.peek() {
+            // If select the same square, then close both
+            if lastAddedSquare.position == lastTouchedSquare?.position {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    // Close them both
+                    self.lastTouchedSquare?.state = .closed
+                    lastAddedSquare.state = .closed
+                    // Pop the stack
+                    self.lastTouchedSquare = self.squareStack.pop()
+                    // Enable click
+                    self.clickEnabled = true
+                }
+            } else {
+                // Check if there is a match
+                if lastAddedSquare.isEqual(lastTouchedSquare) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        // Disable both of them and clear stack
+                        self.lastTouchedSquare?.state = .disabled
+                        lastAddedSquare.state = .disabled
+                        self.squareStack.popAll()
+                        self.clickEnabled = true
+                        // play correct sound
+                        let correctSound = SKAction.playSoundFileNamed("success.mp3", waitForCompletion: false)
+                        self.run(correctSound)
+                        // Increment correct answer count
+                        self.correctAnswerCount += 2
+                    }
+                } else {
+                    // No match close them both
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        // Disable both of them and clear stack
+                        self.lastTouchedSquare?.state = .closed
+                        lastAddedSquare.state = .closed
+                        self.squareStack.popAll()
+                        self.clickEnabled = true
+                        // play false sound
+                        let falseSound = SKAction.playSoundFileNamed("sound_wrong.wav", waitForCompletion: false)
+                        self.run(falseSound)
+                    }
+                }
+            }
+        } else {
+            // Stack is empty, push the square into stack
+            squareStack.push(lastTouchedSquare!)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -126,7 +213,7 @@ class GameScene: SKScene, SquareDelegate {
             square.frame.contains(location)
         }
         if let tappedSquare = possibleSquare {
-            // TODO Use extensions to create animations and for the logic
+            lastTouchedSquare = tappedSquare
             board.onSquareTapped(at: tappedSquare.coordinates)
         }
     }

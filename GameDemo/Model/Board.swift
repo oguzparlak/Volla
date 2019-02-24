@@ -53,6 +53,10 @@ class Board<T> {
         return items[x][y]
     }
     
+    func getSize() -> Int {
+        return rows * columns
+    }
+    
     private func inBounds(position: (Int, Int)) -> Bool {
         return position.0 < rows && position.1 < columns
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hHg-8S-c50">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,12 +10,47 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Initial View Controller-->
+        <scene sceneID="THA-wQ-h89">
+            <objects>
+                <viewController id="hHg-8S-c50" customClass="InitialViewController" customModule="GameDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="89I-Ie-z3L">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18f-qj-Ygx">
+                                <rect key="frame" x="135" y="370.66666666666669" width="144" height="144.00000000000006"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="144" id="Ltp-qX-S4H"/>
+                                    <constraint firstAttribute="height" constant="144" id="pBp-HM-Rfk"/>
+                                </constraints>
+                                <state key="normal" image="ic_play_button"/>
+                                <connections>
+                                    <action selector="playButtonTapped:" destination="hHg-8S-c50" eventType="touchUpInside" id="IQ2-Ag-smn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="18f-qj-Ygx" firstAttribute="centerX" secondItem="qYe-oU-SJN" secondAttribute="centerX" id="esA-L0-CBW"/>
+                            <constraint firstItem="18f-qj-Ygx" firstAttribute="centerY" secondItem="qYe-oU-SJN" secondAttribute="centerY" constant="-10.5" id="nDS-yi-9Vz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qYe-oU-SJN"/>
+                    </view>
+                    <connections>
+                        <outlet property="playButton" destination="18f-qj-Ygx" id="Qik-CZ-RKF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RBt-fs-gLG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-678" y="133"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="GameDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="game_vc" id="BV1-FR-VrT" customClass="GameViewController" customModule="GameDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
@@ -23,6 +58,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="29" y="133"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_play_button" width="222" height="222"/>
+    </resources>
 </document>
