@@ -10,28 +10,26 @@ import Foundation
 import SpriteKit
 
 enum ContentType {
-    case letter
     case number
-    case shape
-    case image
-    case emoji
+    case smiley
 }
-
 protocol Content {
     
-    var size: Int { get }
-    
-    init(with size: Int)
-    
-    // The content is simply representable if
-    // It can be represented as a string
-    // If not then It will certainly represented as
-    // a SKNode or a subclass of SKNode
-    var isSimplyRepresentable: Bool { get }
+    var questionDescription: String { get }
     
     // Generates a content of Any type
     // depending the type of subclass
-    func generate() -> Array<Any>
+    func generate() -> Array<String>
+    
+}
+
+class AbstractContent {
+    
+    let size: Int
+    
+    init(with size: Int) {
+        self.size = size
+    }
     
 }
 
@@ -39,8 +37,8 @@ class ContentFactory {
     
     static func createContent(with type: ContentType, size: Int) -> Content {
         switch type {
-        case .emoji:
-            return EmojiContent(with: size)
+        case .smiley:
+            return SmileyContent(with: size)
         default:
             return NumberContent(with: size)
         }
@@ -48,49 +46,24 @@ class ContentFactory {
     
 }
 
-class LetterContent: Content {
+class SmileyContent: AbstractContent, Content {
     
-    var size: Int
+    // TODO Localization
+    var questionDescription = "Try to match\nsmileys with each other"
     
-    required init(with size: Int) {
-        self.size = size
+    func generate() -> Array<String> {
+        let smileys = ["🤩", "🤥", "😡", "🤔", "😴", "😱", "🤯", "😐", "🤫", "🤑", "😕", "😵", "🤒", "😤", "🤠", "😈", "😀", "😂", "😍", "👻", "🤣", "👽", "😇", "😼", "🤖", "🤪", "🤡", "🤓", "☠️", "👹", "🎃", "😎", "😁", "😋", "🤮"]
+        return smileys.pickRandom(size)
     }
-    
-    var isSimplyRepresentable = true
-    
-    func generate() -> Array<Any> {
-        let character: Character = Character("a")
-        return [character]
-    }
-    
     
 }
 
-class EmojiContent: Content {
+class NumberContent: AbstractContent, Content {
     
-    var size: Int
+    // TODO Localization
+    var questionDescription = "Try to match\nthe numbers inside the squares"
     
-    required init(with size: Int) {
-        self.size = size
-    }
-    
-    func generate() -> Array<Any> {
-        return ["asd", ""]
-    }
-    
-    var isSimplyRepresentable = true
-    
-}
-
-class NumberContent: Content {
-    
-    var size: Int
-    
-    required init(with size: Int) {
-        self.size = size
-    }
-    
-    func generate() -> Array<Any> {
+    func generate() -> Array<String> {
         var result: [String] = []
         var index = size / 2
         var numbers = Array(0...size).shuffled()
@@ -103,8 +76,20 @@ class NumberContent: Content {
         return result.shuffled()
     }
     
-    var isSimplyRepresentable = true
-    
 }
 
+extension Array where Element == String {
+    func pickRandom(_ elements: Int) -> [String] {
+        var maxCount = elements / 2
+        let copyOfElements = self.shuffled()
+        var result: [String] = []
+        copyOfElements.forEach { (value) in
+            if maxCount == 0 { return }
+            result.append(value)
+            result.append(value)
+            maxCount -= 1
+        }
+        return result.shuffled()
+    }
+}
 

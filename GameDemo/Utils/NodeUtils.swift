@@ -10,16 +10,18 @@ import Foundation
 import UIKit
 import SpriteKit
 
-enum NodeConstants {
+enum NodeUtils {
+    
+    static var darkModeEnabled = false
     
     // The padding between squares and the frame
     static let paddingOfSquares: CGFloat = 16
     
     // The number of squares fits for each row
-    static let numberOfSquaresForEachRow: CGFloat = 3
+    static let numberOfSquaresForEachRow: CGFloat = 2
     
     // The number of squares fits for each column
-    static let numberOfSquaresForEachColumn: CGFloat = 3
+    static let numberOfSquaresForEachColumn: CGFloat = 2
     
     // The corner radius of the squares
     static let cornerRadiusOfSquares: CGFloat = 4.0
@@ -67,6 +69,12 @@ enum NodeConstants {
             square.state = .opened
         }
         board.disableMiddleIfNeeded()
+    }
+    
+    static func setUserInteractionEnabledOf(squares: SquareBoard?, enabled: Bool) {
+        squares?.getAllSquares().forEach { (square) in
+            square.isUserInteractionEnabled = enabled
+        }
     }
     
 }

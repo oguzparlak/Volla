@@ -15,6 +15,8 @@ class SquareBoard : Board<Square> {
     
     var content: Content?
     
+    var contentType: ContentType?
+    
     // If the board has odd element size
     // Then the middle element should be disabled
     // to finish the game

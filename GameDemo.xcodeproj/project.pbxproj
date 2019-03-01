@@ -28,7 +28,7 @@
 		BFC03FDF22135FAB00E660A9 /* sound_wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = BFC03FDC22135FAB00E660A9 /* sound_wrong.wav */; };
 		BFC8CE54220DEC3400A6A701 /* SquareDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8CE53220DEC3400A6A701 /* SquareDrawer.swift */; };
 		BFCD74A4220C9426006C3E79 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD74A3220C9426006C3E79 /* Square.swift */; };
-		BFCD74A6220C955F006C3E79 /* NodeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD74A5220C955F006C3E79 /* NodeConstants.swift */; };
+		BFCD74A6220C955F006C3E79 /* NodeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD74A5220C955F006C3E79 /* NodeUtils.swift */; };
 		BFCD74AE220C9764006C3E79 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD74AD220C9764006C3E79 /* Colors.swift */; };
 		BFCD74B1220C980D006C3E79 /* SKProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD74B0220C980D006C3E79 /* SKProtocols.swift */; };
 		BFCD74B3220C98FC006C3E79 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD74B2220C98FC006C3E79 /* Board.swift */; };
@@ -40,6 +40,11 @@
 		BFD154842215CE10007FC209 /* shot.wav in Resources */ = {isa = PBXBuildFile; fileRef = BFD154832215CE10007FC209 /* shot.wav */; };
 		BFD154862215CE1C007FC209 /* tick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFD154852215CE1C007FC209 /* tick.mp3 */; };
 		BFD154882215CE31007FC209 /* ping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFD154872215CE31007FC209 /* ping.mp3 */; };
+		BFEA614A22272A95001E2876 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA614922272A95001E2876 /* Shape.swift */; };
+		BFEA614C22272B14001E2876 /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA614B22272B14001E2876 /* Value.swift */; };
+		BFECA47222295ED500332980 /* fail.json in Resources */ = {isa = PBXBuildFile; fileRef = BFECA47122295ED500332980 /* fail.json */; };
+		BFECA474222962F300332980 /* EndingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFECA473222962F300332980 /* EndingViewController.swift */; };
+		BFECA476222978AA00332980 /* sad_face.json in Resources */ = {isa = PBXBuildFile; fileRef = BFECA475222978A900332980 /* sad_face.json */; };
 		FF9E481D8A80C6736BEC8AE0 /* Pods_GameDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 934D58175ACC6339092C8BDA /* Pods_GameDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,7 +99,7 @@
 		BFC03FDC22135FAB00E660A9 /* sound_wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound_wrong.wav; sourceTree = "<group>"; };
 		BFC8CE53220DEC3400A6A701 /* SquareDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareDrawer.swift; sourceTree = "<group>"; };
 		BFCD74A3220C9426006C3E79 /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
-		BFCD74A5220C955F006C3E79 /* NodeConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeConstants.swift; sourceTree = "<group>"; };
+		BFCD74A5220C955F006C3E79 /* NodeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeUtils.swift; sourceTree = "<group>"; };
 		BFCD74AD220C9764006C3E79 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BFCD74B0220C980D006C3E79 /* SKProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKProtocols.swift; sourceTree = "<group>"; };
 		BFCD74B2220C98FC006C3E79 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
@@ -106,6 +111,11 @@
 		BFD154832215CE10007FC209 /* shot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shot.wav; sourceTree = "<group>"; };
 		BFD154852215CE1C007FC209 /* tick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tick.mp3; sourceTree = "<group>"; };
 		BFD154872215CE31007FC209 /* ping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ping.mp3; sourceTree = "<group>"; };
+		BFEA614922272A95001E2876 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		BFEA614B22272B14001E2876 /* Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
+		BFECA47122295ED500332980 /* fail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fail.json; sourceTree = "<group>"; };
+		BFECA473222962F300332980 /* EndingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndingViewController.swift; sourceTree = "<group>"; };
+		BFECA475222978A900332980 /* sad_face.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sad_face.json; sourceTree = "<group>"; };
 		DE133F9C6B937AC30FB82741 /* Pods-GameDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GameDemoTests/Pods-GameDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,6 +163,8 @@
 		BF2982012223030B00832123 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				BFECA475222978A900332980 /* sad_face.json */,
+				BFECA47122295ED500332980 /* fail.json */,
 				BF2982022223031400832123 /* success.json */,
 			);
 			path = Lottie;
@@ -244,6 +256,8 @@
 				BFCD74A3220C9426006C3E79 /* Square.swift */,
 				BF45908122189DF600FC31E1 /* CountDownLabel.swift */,
 				BF3A750222206A7700E5E2BD /* LevelDescriptionNode.swift */,
+				BFEA614922272A95001E2876 /* Shape.swift */,
+				BFEA614B22272B14001E2876 /* Value.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -261,6 +275,7 @@
 			children = (
 				BF5F75E2220B4D25004D5F99 /* GameViewController.swift */,
 				BF5F3FB32222ECE000794A19 /* InitialViewController.swift */,
+				BFECA473222962F300332980 /* EndingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -289,7 +304,7 @@
 		BFCD74AC220C9688006C3E79 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				BFCD74A5220C955F006C3E79 /* NodeConstants.swift */,
+				BFCD74A5220C955F006C3E79 /* NodeUtils.swift */,
 				BFCD74AD220C9764006C3E79 /* Colors.swift */,
 				BFCD74B4220C9A9A006C3E79 /* MockUtils.swift */,
 				BFCD74B6220C9B09006C3E79 /* Errors.swift */,
@@ -428,9 +443,11 @@
 				BFC03FDF22135FAB00E660A9 /* sound_wrong.wav in Resources */,
 				BF5F75E6220B4D25004D5F99 /* Main.storyboard in Resources */,
 				BFC03FDE22135FAB00E660A9 /* tada.wav in Resources */,
+				BFECA476222978AA00332980 /* sad_face.json in Resources */,
 				BF5F75DD220B4D25004D5F99 /* GameScene.sks in Resources */,
 				BF5F75E8220B4D26004D5F99 /* Assets.xcassets in Resources */,
 				BF2982032223031400832123 /* success.json in Resources */,
+				BFECA47222295ED500332980 /* fail.json in Resources */,
 				BFD154842215CE10007FC209 /* shot.wav in Resources */,
 				BFD154862215CE1C007FC209 /* tick.mp3 in Resources */,
 				BF5F75EB220B4D26004D5F99 /* LaunchScreen.storyboard in Resources */,
@@ -532,12 +549,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GameDemo/Pods-GameDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BubbleTransition/BubbleTransition.framework",
+				"${BUILT_PRODUCTS_DIR}/Comets/Comets.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BubbleTransition.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Comets.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,15 +578,18 @@
 				BFCD74AE220C9764006C3E79 /* Colors.swift in Sources */,
 				BF3A75062220703E00E5E2BD /* SquareStack.swift in Sources */,
 				BFCD74B9220C9DBA006C3E79 /* SquareBoard.swift in Sources */,
+				BFECA474222962F300332980 /* EndingViewController.swift in Sources */,
 				BFC8CE54220DEC3400A6A701 /* SquareDrawer.swift in Sources */,
 				BF5F75E1220B4D25004D5F99 /* GameScene.swift in Sources */,
 				BF5F3FB42222ECE000794A19 /* InitialViewController.swift in Sources */,
 				BFCD74B1220C980D006C3E79 /* SKProtocols.swift in Sources */,
-				BFCD74A6220C955F006C3E79 /* NodeConstants.swift in Sources */,
+				BFCD74A6220C955F006C3E79 /* NodeUtils.swift in Sources */,
 				BF5F75E3220B4D25004D5F99 /* GameViewController.swift in Sources */,
 				BFCD74B7220C9B09006C3E79 /* Errors.swift in Sources */,
 				BF45908222189DF600FC31E1 /* CountDownLabel.swift in Sources */,
+				BFEA614A22272A95001E2876 /* Shape.swift in Sources */,
 				BFCDE06722196C5000A9484B /* ContentCreator.swift in Sources */,
+				BFEA614C22272B14001E2876 /* Value.swift in Sources */,
 				BFCD74B3220C98FC006C3E79 /* Board.swift in Sources */,
 				BF5F75DB220B4D25004D5F99 /* AppDelegate.swift in Sources */,
 				BFCD74B5220C9A9A006C3E79 /* MockUtils.swift in Sources */,
@@ -747,6 +771,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HL7GD8S24Y;
 				INFOPLIST_FILE = GameDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -766,6 +791,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HL7GD8S24Y;
 				INFOPLIST_FILE = GameDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -1,16 +1,24 @@
 PODS:
+  - BubbleTransition (3.0.2)
+  - Comets (0.2.1)
   - lottie-ios (2.5.2)
 
 DEPENDENCIES:
+  - BubbleTransition (~> 3.0.0)
+  - Comets
   - lottie-ios
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - BubbleTransition
+    - Comets
     - lottie-ios
 
 SPEC CHECKSUMS:
+  BubbleTransition: 6bdf7d8af460b5c3696beb0adbf4bcb17176ee11
+  Comets: 3ef4bca8ecdf76e9389ef2feb8c89f9690df3387
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
 
-PODFILE CHECKSUM: ad2a1bc4c70676b0c869ed35da71f49795ad4b48
+PODFILE CHECKSUM: adfb906b0a81f2a51af6b6bcba463003d96608da
 
 COCOAPODS: 1.5.3

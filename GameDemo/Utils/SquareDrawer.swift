@@ -28,16 +28,16 @@ class SquareDrawer {
     
     var currentRow = 0 {
         didSet {
-            accumulatedY -= NodeConstants.calculateWidthOfASquare(screenWidth: rootNode.frame.width) + NodeConstants.paddingOfSquares
+            accumulatedY -= NodeUtils.calculateWidthOfASquare(screenWidth: rootNode.frame.width) + NodeUtils.paddingOfSquares
         }
     }
     
     var squareCount = 0 {
         didSet {
-            let remainder = squareCount % Int(NodeConstants.numberOfSquaresForEachRow)
-            let widthOfASquare = NodeConstants.calculateWidthOfASquare(screenWidth: rootNode.frame.width)
+            let remainder = squareCount % Int(NodeUtils.numberOfSquaresForEachRow)
+            let widthOfASquare = NodeUtils.calculateWidthOfASquare(screenWidth: rootNode.frame.width)
             let startingX = startingPoint.0
-            accumulatedX += widthOfASquare + NodeConstants.paddingOfSquares
+            accumulatedX += widthOfASquare + NodeUtils.paddingOfSquares
             if remainder == 0 { accumulatedX = startingX }
         }
     }
@@ -49,13 +49,13 @@ class SquareDrawer {
         self.startingPoint = startingPoint
     }
     
-    func drawSquare(_ square: Square) {
+    func drawSquare(_ square: Square, with contentType: ContentType) {
         square.position = CGPoint(x: accumulatedX, y: accumulatedY)
         // Increment square count
         squareCount += 1
         // If reached end of the row
         // Increment the currentRow
-        if squareCount % Int(NodeConstants.numberOfSquaresForEachRow) == 0 {
+        if squareCount % Int(NodeUtils.numberOfSquaresForEachRow) == 0 {
              currentRow += 1
         }
         // Animate square
@@ -63,21 +63,21 @@ class SquareDrawer {
         // Draw square
         rootNode.addChild(square)
         // Draw content of square
-        drawContent(of: square)
+        drawContent(of: square, with: contentType)
     }
     
-    func drawContent(of square: Square) {
-        let isSimplyRepresentable = square.isSimplyRepresentable
-        if isSimplyRepresentable {
-            let value = square.value as? String ?? ""
-            let labelNode = SKLabelNode(text: value)
+    func drawContent(of square: Square, with contentType: ContentType) {
+        let value = square.value
+        let labelNode = SKLabelNode(text: value)
+        if contentType == .number {
             labelNode.fontName = "Avenir"
             labelNode.fontColor = Colors.clouds
             labelNode.fontSize = 24.0
-            let labelHeight = labelNode.frame.height
-            labelNode.position = CGPoint(x: square.frame.width / 2, y: square.frame.width / 2 - labelHeight / 2)
-            square.addChild(labelNode)
         }
+        let labelHeight = labelNode.frame.height
+        let paddingTop = contentType == .number ? labelHeight / 2 : labelHeight / 2 - 5
+        labelNode.position = CGPoint(x: square.frame.width / 2, y: square.frame.width / 2 - paddingTop)
+        square.addChild(labelNode)
     }
     
 }

@@ -9,6 +9,7 @@
 import SpriteKit
 import GameplayKit
 import UIKit
+import BubbleTransition
 
 class GameScene: SKScene, SquareDelegate {
     
@@ -44,8 +45,6 @@ class GameScene: SKScene, SquareDelegate {
     // The last touched square on the board
     var lastTouchedSquare: Square?
     
-    var clickEnabled = true
-    
     var correctAnswerCount: Int! {
         didSet {
             detectFinish()
@@ -61,32 +60,32 @@ class GameScene: SKScene, SquareDelegate {
         squaresAsAWhole = board.getAllSquares()
         // Assign a delegate to board
         board.squareDelegate = self
-        let widthOfASquare = NodeConstants.calculateWidthOfASquare(screenWidth: frame.width)
+        let widthOfASquare = NodeUtils.calculateWidthOfASquare(screenWidth: frame.width)
         // Get upper left coordinates of the screen
-        let middle = NodeConstants.calculateMiddleLeftCoordinatesWithSquareSize(size: widthOfASquare, screenWidth: frame.width, screenHeight: frame.height)
+        let middle = NodeUtils.calculateMiddleLeftCoordinatesWithSquareSize(size: widthOfASquare, screenWidth: frame.width, screenHeight: frame.height)
         let startX = middle.0
         // Initialize the square container
         let squareContainer = SKShapeNode(rect: CGRect(x: 0, y: 0, width: frame.width, height: frame.width))
         squareContainer.strokeColor = .clear
         // Add Square Drawer to Frame
         addChild(squareContainer)
-        let padding = NodeConstants.paddingOfSquares
+        let padding = NodeUtils.paddingOfSquares
         // Draw squares
         drawSquares(squareContainer, startX, padding, middle, widthOfASquare)
         // Add Countdown Timer
-        let margin = NodeConstants.getTopMarginForTimer()
+        let margin = NodeUtils.getTopMarginForTimer()
         countDownNode = CountDownNode(countFrom: remainingTime, position: CGPoint(x: frame.midX, y: frame.height / 2 - margin))
         addChild(countDownNode)
         // Start Timer
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameScene.updateTime), userInfo: nil, repeats: true)
         // Add Description text
-        levelDescriptionNode = LevelDescriptionNode(text: "Try to match\nthe numbers inside the squares")
+        levelDescriptionNode = LevelDescriptionNode(text: board.content?.questionDescription)
         levelDescriptionNode.position = CGPoint(x: frame.midX, y: -frame.height / 2 + 48)
         levelDescriptionNode.preferredMaxLayoutWidth = frame.width
         levelDescriptionNode.run(SKAction.fadeIn(withDuration: 1.0))
         addChild(levelDescriptionNode)
         // Show of the squares
-        NodeConstants.showAllContent(of: board)
+        NodeUtils.showAllContent(of: board)
         // Init correctAnswerCount
         correctAnswerCount = board.hasOddSize() ? 1 : 0
     }
@@ -115,21 +114,30 @@ class GameScene: SKScene, SquareDelegate {
     }
     
     func finishGame(countDownEnded : Bool = false) {
+        // Stop timer
         timer.invalidate()
+        // Animate
+        countDownNode.run(SKAction.moveBy(x: 0, y: 160, duration: 1.0))
+        levelDescriptionNode.run(SKAction.moveBy(x: 0, y: -160, duration: 1.0))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+            self.viewController?.presentEndVC()
+        }
         if countDownEnded {
-            
+            // Disable all the squares
+            squaresAsAWhole.forEach { (square) in
+                square.state = .disabled
+            }
+            // TODO Play music
+            viewController?.playLottie(isSucess: false, completion: {
+                // TODO AnimateLottieView
+            })
         } else {
             let tada = SKAction.playSoundFileNamed("tada.wav", waitForCompletion: false)
             run(tada)
-            // Animate
-            countDownNode.run(SKAction.moveBy(x: 0, y: 120, duration: 1.0))
-            levelDescriptionNode.run(SKAction.moveBy(x: 0, y: -120, duration: 1.0))
             // Lottie
-            viewController?.initLottie()
             viewController?.playLottie {
-                print("Finished playing...")
+                // TODO Animate LottieView
             }
-            
         }
     }
     
@@ -141,7 +149,7 @@ class GameScene: SKScene, SquareDelegate {
         // Reset the timer
         countDownNode.text = String(remainingTime)
         // Hide the content
-        NodeConstants.hideAllContent(of: board)
+        NodeUtils.hideAllContent(of: board)
     }
     
     func onSquareTapped(at position: (Int, Int)) {
@@ -151,7 +159,7 @@ class GameScene: SKScene, SquareDelegate {
         run(tapSound)
         // Open it
         lastTouchedSquare?.state = .opened
-        clickEnabled = false
+        enableInteraction()
         if let lastAddedSquare = squareStack.peek() {
             // If select the same square, then close both
             if lastAddedSquare.position == lastTouchedSquare?.position {
@@ -161,8 +169,7 @@ class GameScene: SKScene, SquareDelegate {
                     lastAddedSquare.state = .closed
                     // Pop the stack
                     self.lastTouchedSquare = self.squareStack.pop()
-                    // Enable click
-                    self.clickEnabled = true
+                    self.disableInteraction()
                 }
             } else {
                 // Check if there is a match
@@ -172,30 +179,31 @@ class GameScene: SKScene, SquareDelegate {
                         self.lastTouchedSquare?.state = .disabled
                         lastAddedSquare.state = .disabled
                         self.squareStack.popAll()
-                        self.clickEnabled = true
                         // play correct sound
                         let correctSound = SKAction.playSoundFileNamed("success.mp3", waitForCompletion: false)
                         self.run(correctSound)
                         // Increment correct answer count
                         self.correctAnswerCount += 2
+                        self.disableInteraction()
                     }
                 } else {
                     // No match close them both
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        // Disable both of them and clear stack
+                        // Close both of them and clear stack
                         self.lastTouchedSquare?.state = .closed
                         lastAddedSquare.state = .closed
                         self.squareStack.popAll()
-                        self.clickEnabled = true
                         // play false sound
                         let falseSound = SKAction.playSoundFileNamed("sound_wrong.wav", waitForCompletion: false)
                         self.run(falseSound)
+                        self.disableInteraction()
                     }
                 }
             }
         } else {
             // Stack is empty, push the square into stack
             squareStack.push(lastTouchedSquare!)
+            self.disableInteraction()
         }
     }
     
@@ -229,7 +237,7 @@ class GameScene: SKScene, SquareDelegate {
     
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        // Called before each time a frame is rendered
     }
 }
 
@@ -249,14 +257,25 @@ extension GameScene {
     fileprivate func drawSquares(_ squareContainer: SKShapeNode, _ startX: CGFloat, _ padding: CGFloat, _ upperLeft: (CGFloat, CGFloat), _ widthOfASquare: CGFloat) {
         let squareDrawer = SquareDrawer(rootNode: squareContainer, startingPoint: (startX + padding , upperLeft.1 - widthOfASquare - padding))
         do {
-            for i in 0...Int(NodeConstants.numberOfSquaresForEachColumn - 1) {
-                for j in 0...Int(NodeConstants.numberOfSquaresForEachRow - 1) {
+            for i in 0...Int(NodeUtils.numberOfSquaresForEachColumn - 1) {
+                for j in 0...Int(NodeUtils.numberOfSquaresForEachRow - 1) {
                     let square = try board.getItem(at: (i, j))
-                    squareDrawer.drawSquare(square)
+                    squareDrawer.drawSquare(square, with: board.contentType!)
                 }
             }
         } catch {
             print(error)
         }
+    }
+}
+
+extension GameScene {
+    
+    private func disableInteraction() {
+        NodeUtils.setUserInteractionEnabledOf(squares: board, enabled: false)
+    }
+    
+    private func enableInteraction() {
+        NodeUtils.setUserInteractionEnabledOf(squares: board, enabled: true)
     }
 }

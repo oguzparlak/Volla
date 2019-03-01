@@ -29,9 +29,59 @@
                                     <action selector="playButtonTapped:" destination="hHg-8S-c50" eventType="touchUpInside" id="IQ2-Ag-smn"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AIl-76-SgJ">
+                                <rect key="frame" x="358" y="52" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="Ufy-R6-sKX"/>
+                                    <constraint firstAttribute="height" constant="36" id="khi-uv-tHk"/>
+                                </constraints>
+                                <state key="normal" image="ic_sun"/>
+                                <connections>
+                                    <action selector="themeButtonTapped:" destination="hHg-8S-c50" eventType="touchUpInside" id="bdX-G2-3gQ"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ERx-2p-dzw">
+                                <rect key="frame" x="132" y="806.33333333333337" width="150" height="35.666666666666629"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5Q-t3-t6L">
+                                        <rect key="frame" x="0.0" y="0.0" width="22" height="35.666666666666664"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="26"/>
+                                        <color key="textColor" red="0.84313725490000002" green="0.3411764706" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaJ-LG-wLj">
+                                        <rect key="frame" x="32" y="0.0" width="22" height="35.666666666666664"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="26"/>
+                                        <color key="textColor" red="0.84313725490000002" green="0.3411764706" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akE-WC-ooi">
+                                        <rect key="frame" x="64" y="0.0" width="22" height="35.666666666666664"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="26"/>
+                                        <color key="textColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fE-oD-kO1">
+                                        <rect key="frame" x="96" y="0.0" width="22" height="35.666666666666664"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="26"/>
+                                        <color key="textColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mck-bB-ZR8">
+                                        <rect key="frame" x="128" y="0.0" width="22" height="35.666666666666664"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="26"/>
+                                        <color key="textColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="qYe-oU-SJN" firstAttribute="trailing" secondItem="AIl-76-SgJ" secondAttribute="trailing" constant="20" id="Uas-Wt-jKH"/>
+                            <constraint firstItem="AIl-76-SgJ" firstAttribute="top" secondItem="qYe-oU-SJN" secondAttribute="top" constant="8" id="XBs-TN-Pbg"/>
+                            <constraint firstItem="qYe-oU-SJN" firstAttribute="bottom" secondItem="ERx-2p-dzw" secondAttribute="bottom" constant="20" id="ZKm-Wp-Atp"/>
+                            <constraint firstItem="ERx-2p-dzw" firstAttribute="centerX" secondItem="qYe-oU-SJN" secondAttribute="centerX" id="Zd9-fB-aso"/>
                             <constraint firstItem="18f-qj-Ygx" firstAttribute="centerX" secondItem="qYe-oU-SJN" secondAttribute="centerX" id="esA-L0-CBW"/>
                             <constraint firstItem="18f-qj-Ygx" firstAttribute="centerY" secondItem="qYe-oU-SJN" secondAttribute="centerY" constant="-10.5" id="nDS-yi-9Vz"/>
                         </constraints>
@@ -39,6 +89,7 @@
                     </view>
                     <connections>
                         <outlet property="playButton" destination="18f-qj-Ygx" id="Qik-CZ-RKF"/>
+                        <outlet property="themeButton" destination="AIl-76-SgJ" id="36W-ys-oVe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RBt-fs-gLG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -60,8 +111,71 @@
             </objects>
             <point key="canvasLocation" x="29" y="133"/>
         </scene>
+        <!--Ending View Controller-->
+        <scene sceneID="kxw-v9-nXN">
+            <objects>
+                <viewController storyboardIdentifier="ending_vc" id="VAJ-2s-MpT" customClass="EndingViewController" customModule="GameDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VJV-Si-KKG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCY-uN-vs6">
+                                <rect key="frame" x="370" y="68" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="BRQ-1A-iNC"/>
+                                    <constraint firstAttribute="height" constant="24" id="sUX-xR-hsW"/>
+                                </constraints>
+                                <state key="normal" image="ic_close"/>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="VAJ-2s-MpT" eventType="touchUpInside" id="CNt-4z-rfk"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="se4-vO-r0S">
+                                <rect key="frame" x="20" y="64" width="114" height="39"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="28"/>
+                                <color key="textColor" red="0.92549019607843142" green="0.94117647058823528" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIg-W4-PfN">
+                                <rect key="frame" x="20" y="792" width="374" height="48"/>
+                                <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="zEh-lF-qHP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Proceed">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="endButtonTapped:" destination="VAJ-2s-MpT" eventType="touchUpInside" id="DSu-qD-ZM6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="se4-vO-r0S" firstAttribute="leading" secondItem="tex-gx-VWo" secondAttribute="leading" constant="20" id="0SR-u8-7lk"/>
+                            <constraint firstItem="lCY-uN-vs6" firstAttribute="top" secondItem="tex-gx-VWo" secondAttribute="top" constant="24" id="26Z-Lg-lXx"/>
+                            <constraint firstItem="tex-gx-VWo" firstAttribute="bottom" secondItem="cIg-W4-PfN" secondAttribute="bottom" constant="22" id="3RL-ox-JFL"/>
+                            <constraint firstItem="tex-gx-VWo" firstAttribute="trailing" secondItem="cIg-W4-PfN" secondAttribute="trailing" constant="20" id="5Jf-LS-bfK"/>
+                            <constraint firstItem="se4-vO-r0S" firstAttribute="top" secondItem="tex-gx-VWo" secondAttribute="top" constant="20" id="DrN-BS-rFt"/>
+                            <constraint firstItem="lCY-uN-vs6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="se4-vO-r0S" secondAttribute="trailing" constant="8" symbolic="YES" id="aKO-Ao-Fro"/>
+                            <constraint firstItem="cIg-W4-PfN" firstAttribute="leading" secondItem="tex-gx-VWo" secondAttribute="leading" constant="20" id="bMh-k0-n5p"/>
+                            <constraint firstItem="tex-gx-VWo" firstAttribute="trailing" secondItem="lCY-uN-vs6" secondAttribute="trailing" constant="20" id="r9a-z4-rW5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tex-gx-VWo"/>
+                    </view>
+                    <connections>
+                        <outlet property="endButton" destination="cIg-W4-PfN" id="mra-cV-FBP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oas-J5-qQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="753.62318840579712" y="132.58928571428572"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="ic_close" width="22" height="22"/>
         <image name="ic_play_button" width="222" height="222"/>
+        <image name="ic_sun" width="34" height="34"/>
     </resources>
 </document>

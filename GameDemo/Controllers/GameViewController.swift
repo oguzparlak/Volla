@@ -10,10 +10,43 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import Lottie
+import BubbleTransition
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     var lottieAnimationView: LOTAnimationView!
+    
+    let userDefaults = UserDefaults.standard
+    
+    let transition = BubbleTransition()
+    
+    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination
+        controller.transitioningDelegate = self
+        controller.modalPresentationStyle = .custom
+    }
+    
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        transition.startingPoint = view.center
+        transition.bubbleColor = NodeUtils.darkModeEnabled ? Colors.midnightBlue : Colors.clouds
+        transition.duration = 0.5
+        return transition
+    }
+    
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .dismiss
+        transition.startingPoint = view.center
+        transition.bubbleColor = NodeUtils.darkModeEnabled ? Colors.midnightBlue : Colors.clouds
+        transition.duration = 0.5
+        return transition
+    }
+    
+    func presentEndVC() {
+        let endingVC = self.storyboard?.instantiateViewController(withIdentifier: "ending_vc") as! EndingViewController
+        self.present(endingVC, animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +64,10 @@ class GameViewController: UIViewController {
                 scene.scaleMode = .aspectFill
                 // Reassign size of the frame
                 scene.size = CGSize(width: displayWidth, height: displayHeight)
-                // Change the bg color
-                scene.backgroundColor = Colors.clouds
+                // UpdateUI according to theme preference
+                let isDarkModeEnabled = userDefaults.bool(forKey: "dark_mode_enabled")
+                let backgroundColor = isDarkModeEnabled ? Colors.midnightBlue : Colors.clouds
+                scene.backgroundColor = backgroundColor
                 // Present the scene
                 view.presentScene(scene)
             }
@@ -70,24 +105,17 @@ extension UIDevice {
 
 extension GameViewController {
     
-    func initLottie(isSucess: Bool = true) {
-        let lottieAsset = isSucess ? "success" : "success"
+    func playLottie(isSucess: Bool = true, completion: @escaping () -> ()) {
+        let lottieAsset = isSucess ? "success" : "fail"
         lottieAnimationView = LOTAnimationView(name: lottieAsset)
         lottieAnimationView.contentMode = .scaleAspectFit
         lottieAnimationView.frame = CGRect(x: view.frame.midX - 72 , y: view.frame.midY - 72, width: 144, height: 144)
         self.view.addSubview(lottieAnimationView)
-    }
-    
-    func playLottie(with callback: @escaping () -> ()) {
-        lottieAnimationView.play { (finished) in callback() }
+        lottieAnimationView.play { (finished) in completion() }
     }
     
     func hideLottie() {
         lottieAnimationView.isHidden = true
-    }
-    
-    func showLottie() {
-        lottieAnimationView.isHidden = false
     }
     
 }

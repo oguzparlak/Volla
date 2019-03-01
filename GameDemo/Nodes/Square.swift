@@ -26,9 +26,7 @@ class Square : SKShapeNode {
     var coordinates: (Int, Int) = (0, 0)
     
     // The value behind this square
-    var value: Any?
-    
-    var isSimplyRepresentable = true
+    var value: String?
     
     required init?(coder aDecoder: NSCoder) {
         super.init()
@@ -39,7 +37,7 @@ class Square : SKShapeNode {
     }
     
     convenience init(rect: CGRect) {
-        self.init(rect: rect, cornerRadius: NodeConstants.cornerRadiusOfSquares)
+        self.init(rect: rect, cornerRadius: NodeUtils.cornerRadiusOfSquares)
         fillColor = Colors.alizarin
         strokeColor = .clear
         isAntialiased = true
@@ -51,7 +49,9 @@ class Square : SKShapeNode {
             self.run(SKAction.colorTransitionAction(fromColor: self.fillColor, toColor: Colors.alizarin))
             fadeOut()
         case .disabled:
-            self.run(SKAction.colorTransitionAction(fromColor: self.fillColor, toColor: Colors.clouds))
+            let disabledSquareColor = NodeUtils.darkModeEnabled ? Colors.midnightBlue : Colors.clouds
+            self.run(SKAction.colorTransitionAction(fromColor: self.fillColor, toColor: disabledSquareColor))
+            fadeOut()
         case .opened:
             self.run(SKAction.colorTransitionAction(fromColor: self.fillColor, toColor: Colors.peterRiver))
             fadeIn()
@@ -59,9 +59,9 @@ class Square : SKShapeNode {
     }
     
     override func isEqual(_ object: Any?) -> Bool {
-        let simpleValue = value as? String
+        let simpleValue = value
         let anotherSquare = object as? Square
-        let anotherSquareValue = anotherSquare?.value as? String
+        let anotherSquareValue = anotherSquare?.value
         return anotherSquareValue == simpleValue
     }
     
@@ -74,10 +74,14 @@ class Square : SKShapeNode {
 extension Square {
     
     func fadeIn() {
-        self.children[0].run(SKAction.fadeIn(withDuration: 0.5))
+        if self.children.count < 1 { return }
+        let firstChild = self.children[0]
+        firstChild.run(SKAction.fadeIn(withDuration: 0.5))
     }
     
     func fadeOut() {
-        self.children[0].run(SKAction.fadeOut(withDuration: 0.5))
+        if self.children.count < 1 { return }
+        let firstChild = self.children[0]
+        firstChild.run(SKAction.fadeOut(withDuration: 0.5))
     }
 }
