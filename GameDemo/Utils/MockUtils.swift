@@ -17,7 +17,7 @@ enum MockUtils {
         let heightOfSquare = NodeUtils.calculateWidthOfASquare(numberOfSquaresForEachRow: CGFloat(level.cols), screenWidth: frameWidth)
         // Generate the content
         let contentType = ContentType(rawValue: level.contentType)
-        let content = ContentFactory.createContent(with: contentType ?? .number, size: level.rows * level.cols)
+        let content = ContentFactory.createContent(with: contentType ?? .numbers, size: level.rows * level.cols)
         board.content = content
         board.contentType = contentType
         for i in 0...level.rows - 1 {

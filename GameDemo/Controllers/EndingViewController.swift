@@ -17,6 +17,10 @@ class EndingViewController: UIViewController, UIViewControllerTransitioningDeleg
     
     var successfullyFinishedGame = true
     
+    var currentLevel: Int!
+    
+    var pointDictionary: [String : Any]?
+    
     weak var gameViewController: GameViewController!
 
     override func viewDidLoad() {
@@ -28,6 +32,9 @@ class EndingViewController: UIViewController, UIViewControllerTransitioningDeleg
         
         // Set transition delegate
         self.transitioningDelegate = self
+        
+        // Update UI according to finish
+        updateUI(when: successfullyFinishedGame)
         
         // Dismiss previous controller after some delay
         gameViewController.dismiss(animated: false, completion: nil)
@@ -56,6 +63,10 @@ class EndingViewController: UIViewController, UIViewControllerTransitioningDeleg
         transition.bubbleColor = Colors.emerald
         transition.duration = 0.25
         return transition
+    }
+    
+    private func updateUI(when success: Bool) {
+        
     }
 
 }

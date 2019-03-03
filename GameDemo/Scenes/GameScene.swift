@@ -99,6 +99,7 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
         correctAnswerCount = board.hasOddSize() ? 1 : 0
         // Init PointCalculator
         pointCalculator = PointCalculator(maximumTime: 30)
+        pointCalculator.difficulity = Difficulity(rawValue: currentRawLevel?.difficulity ?? "easy")
     }
     
     @objc func updateTime() {
@@ -129,6 +130,7 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
     }
     
     func finishGame(countDownEnded : Bool = false) {
+        pointCalculator.finishedTime = Double(remainingTime)
         // Stop timer
         timer.invalidate()
         // Animate
@@ -148,13 +150,30 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
             run(tada)
             // Lottie
             viewController?.playLottie(completion: nil)
-            presentEndViewController()
+            // Calculate Point based on time
+            let pointBasedOnTime = pointCalculator.calculateScoreBasedOnTime()
+            // Combo Points
+            let comboCount = pointCalculator.getComboCount()
+            // Difficulity multiplier
+            let difficulityMultiplier = GameUtils.getDifficulityMultiplierFor(difficulity: Difficulity(rawValue: (currentRawLevel?.difficulity)!)!)
+            // Total Point
+            let totalPoint = pointCalculator.calculateTotal()
+            // TODO Localization
+            let pointDictionary = [
+                "Score based on time" : pointBasedOnTime,
+                "Combo count" : comboCount,
+                "Difficulity multiplier": difficulityMultiplier,
+                "Total": totalPoint
+            ]
+            // Increment current level
+            GameUtils.incrementCurrentLevel()
+            presentEndViewController(isSuccess: true, extras: pointDictionary)
         }
     }
     
-    func presentEndViewController(isSuccess: Bool = true) {
+    func presentEndViewController(isSuccess: Bool = true, extras: Dictionary<String, Any>? = nil) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-            self.viewController?.presentEndVC(isSuccess: isSuccess)
+            self.viewController?.presentEndVC(isSuccess: isSuccess, extras: extras, level: (self.currentRawLevel?.level)!)
         }
     }
     

@@ -157,10 +157,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIg-W4-PfN">
-                                <rect key="frame" x="20" y="792" width="374" height="48"/>
+                                <rect key="frame" x="20" y="784" width="374" height="56"/>
                                 <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="zEh-lF-qHP"/>
+                                    <constraint firstAttribute="height" constant="56" id="zEh-lF-qHP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                 <state key="normal" title="Continue">

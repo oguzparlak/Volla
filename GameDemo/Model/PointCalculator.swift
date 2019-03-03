@@ -14,23 +14,23 @@ class PointCalculator {
     private var comboCount = 0
     
     // The countdown timer where it starts from
-    private let maximumTime: Int!
+    private let maximumTime: TimeInterval!
     
     // The time that player finished playing
-    private var finishedTime: Int?
+    var finishedTime: TimeInterval?
     
     // Accumulated combo points so far
     private var accumulatedPointFromComboPoints = 0
     
     // Difficulity of the current level
-    private var difficulity: Difficulity!
+    var difficulity: Difficulity!
     
-    init(maximumTime: Int) {
+    init(maximumTime: TimeInterval) {
         self.maximumTime = maximumTime
     }
     
     func calculateScoreBasedOnTime() -> Int {
-        return (finishedTime! / maximumTime) * 1000
+        return Int((finishedTime! / maximumTime) * 1000)
     }
     
     func calculateTotal() -> Int {
@@ -44,6 +44,10 @@ class PointCalculator {
     
     func resetComboCount() {
         comboCount = 0
+    }
+    
+    func getComboCount() -> Int {
+        return comboCount
     }
     
     

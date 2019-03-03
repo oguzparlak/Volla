@@ -40,10 +40,12 @@ class GameViewController: UIViewController, UIViewControllerTransitioningDelegat
         return transition
     }
     
-    func presentEndVC(isSuccess: Bool = true) {
+    func presentEndVC(isSuccess: Bool = true, extras: Dictionary<String, Any>? = nil, level: Int) {
         let endingVC = self.storyboard?.instantiateViewController(withIdentifier: "ending_vc") as! EndingViewController
         endingVC.gameViewController = self
         endingVC.successfullyFinishedGame = isSuccess
+        endingVC.currentLevel = level
+        endingVC.pointDictionary = extras
         self.present(endingVC, animated: true, completion: nil)
     }
 

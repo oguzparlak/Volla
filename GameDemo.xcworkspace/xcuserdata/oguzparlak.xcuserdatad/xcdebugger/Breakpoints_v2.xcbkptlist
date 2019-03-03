@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Controllers/GameViewController.swift"
-            timestampString = "573302422.011417"
+            timestampString = "573324851.458976"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "playLottie(isSucess:completion:)"
-            landmarkType = "7">
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "GameViewController"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Utils/ContentCreator.swift"
-            timestampString = "573311637.55682"
+            timestampString = "573324851.45904"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Utils/SquareDrawer.swift"
-            timestampString = "573311637.556891"
+            timestampString = "573324851.459087"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Controllers/GameViewController.swift"
-            timestampString = "573302422.013203"
+            timestampString = "573324851.4591269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Controllers/GameViewController.swift"
-            timestampString = "573302422.013371"
+            timestampString = "573324851.459165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
             endingLineNumber = "44"
-            landmarkName = "presentEndVC(isSuccess:)"
+            landmarkName = "presentEndVC(isSuccess:extras:level:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Controllers/GameViewController.swift"
-            timestampString = "573302422.013494"
+            timestampString = "573324851.4592021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Model/PointCalculator.swift"
-            timestampString = "573311637.557779"
+            timestampString = "573324851.459241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/AppDelegate.swift"
-            timestampString = "573311637.5578409"
+            timestampString = "573324851.459285"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Scenes/GameScene.swift"
-            timestampString = "573311637.557904"
+            timestampString = "573324851.459326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Utils/MockUtils.swift"
-            timestampString = "573311637.557959"
+            timestampString = "573324851.459718"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Scenes/GameScene.swift"
-            timestampString = "573311637.5580159"
+            timestampString = "573324851.4597631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "69"
@@ -234,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Utils/GameUtils.swift"
-            timestampString = "573311637.558129"
+            timestampString = "573324851.46004"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -250,12 +250,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameDemo/Utils/GameUtils.swift"
-            timestampString = "573311637.5581681"
+            timestampString = "573324851.460083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
             endingLineNumber = "49"
             landmarkName = "load(level:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GameDemo/Controllers/EndingViewController.swift"
+            timestampString = "573324851.461792"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GameDemo/Scenes/GameScene.swift"
+            timestampString = "573324851.461839"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "finishGame(countDownEnded:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GameDemo/Model/PointCalculator.swift"
+            timestampString = "573324851.462081"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "calculateScoreBasedOnTime()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

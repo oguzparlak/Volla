@@ -73,13 +73,13 @@ class SquareDrawer {
     func drawContent(of square: Square, with contentType: ContentType) {
         let value = square.value
         let labelNode = SKLabelNode(text: value)
-        if contentType == .number {
+        if contentType == .numbers {
             labelNode.fontName = "Avenir"
             labelNode.fontColor = Colors.clouds
             labelNode.fontSize = 24.0
         }
         let labelHeight = labelNode.frame.height
-        let paddingTop = contentType == .number ? labelHeight / 2 : labelHeight / 2 - 5
+        let paddingTop = contentType == .numbers ? labelHeight / 2 : labelHeight / 2 - 5
         labelNode.position = CGPoint(x: square.frame.width / 2, y: square.frame.width / 2 - paddingTop)
         square.addChild(labelNode)
     }

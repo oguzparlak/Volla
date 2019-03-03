@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 enum ContentType: String {
-    case number
+    case numbers
     case smiley
     case animals
 }
