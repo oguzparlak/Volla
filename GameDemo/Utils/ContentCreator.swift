@@ -9,9 +9,10 @@
 import Foundation
 import SpriteKit
 
-enum ContentType {
+enum ContentType: String {
     case number
     case smiley
+    case animals
 }
 protocol Content {
     
@@ -39,6 +40,8 @@ class ContentFactory {
         switch type {
         case .smiley:
             return SmileyContent(with: size)
+        case .animals:
+            return AnimalContent(with: size)
         default:
             return NumberContent(with: size)
         }
@@ -54,6 +57,17 @@ class SmileyContent: AbstractContent, Content {
     func generate() -> Array<String> {
         let smileys = ["🤩", "🤥", "😡", "🤔", "😴", "😱", "🤯", "😐", "🤫", "🤑", "😕", "😵", "🤒", "😤", "🤠", "😈", "😀", "😂", "😍", "👻", "🤣", "👽", "😇", "😼", "🤖", "🤪", "🤡", "🤓", "☠️", "👹", "🎃", "😎", "😁", "😋", "🤮"]
         return smileys.pickRandom(size)
+    }
+    
+}
+
+class AnimalContent: AbstractContent, Content {
+    
+    var questionDescription: String = "Try to match\nanimals with each other"
+    
+    func generate() -> Array<String> {
+        let animals = ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐽", "🐷", "🐮", "🦁", "🐯", "🐨", "🐼", "🐸", "🐵", "🙈", "🙉", "🙊", "🐒", "🐔", "🐥", "🐣", "🐤", "🐦", "🐧", "🦆", "🦅", "🐝", "🦄", "🐴", "🐗", "🐺", "🦉", "🐛", "🐌", "🐚", "🐞", "🐜", "🦗", "🦖", "🦎", "🐍", "🐢", "🦂", "🐙", "🦕", "🕷", "🦐", "🦑", "🦀", "🐡", "🐠", "🐟", "🐑", "🦒", "🐐", "🐃", "🦌", "🐂", "🐄", "🐕", "🦍", "🐘", "🐩", "🐎", "🐖", "🐈", "🐓", "🐏", "🐪", "🐫", "🐊"]
+        return animals.pickRandom(size)
     }
     
 }

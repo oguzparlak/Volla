@@ -18,17 +18,17 @@ enum NodeUtils {
     static let paddingOfSquares: CGFloat = 16
     
     // The number of squares fits for each row
-    static let numberOfSquaresForEachRow: CGFloat = 2
+    static let numberOfSquaresForEachRow: CGFloat = 3
     
     // The number of squares fits for each column
-    static let numberOfSquaresForEachColumn: CGFloat = 2
+    static let numberOfSquaresForEachColumn: CGFloat = 3
     
     // The corner radius of the squares
     static let cornerRadiusOfSquares: CGFloat = 4.0
     
     // Returns the width and also height of a square
-    static func calculateWidthOfASquare(screenWidth: CGFloat) -> CGFloat {
-        return (screenWidth - paddingOfSquares * (numberOfSquaresForEachRow + 1)) / numberOfSquaresForEachRow
+    static func calculateWidthOfASquare(numberOfSquaresForEachRow: CGFloat?, screenWidth: CGFloat) -> CGFloat {
+        return (screenWidth - paddingOfSquares * (numberOfSquaresForEachRow! + 1)) / numberOfSquaresForEachRow!
     }
     
     // Returns the upperLeftCorner of the device frame
@@ -39,7 +39,7 @@ enum NodeUtils {
     }
     
     // Returns the middleLeftCorner of the device frame
-    static func calculateMiddleLeftCoordinatesWithSquareSize(size: CGFloat, screenWidth: CGFloat, screenHeight: CGFloat) -> (CGFloat, CGFloat) {
+    static func calculateMiddleLeftCoordinatesWithSquareSize(numberOfSquaresForEachColumn: CGFloat, size: CGFloat, screenWidth: CGFloat, screenHeight: CGFloat) -> (CGFloat, CGFloat) {
         let startX = -screenWidth * 0.5
         let startY = size * 0.5 * numberOfSquaresForEachColumn + paddingOfSquares * numberOfSquaresForEachColumn
         return (startX, startY)
@@ -64,6 +64,7 @@ enum NodeUtils {
     
     static func showAllContent(of board: SquareBoard) {
         for square in board.getAllSquares() {
+            if square.children.isEmpty { break }
             let labelNode = square.children[0]
             labelNode.run(SKAction.fadeIn(withDuration: 0.5))
             square.state = .opened

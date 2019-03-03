@@ -15,6 +15,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Parse the levels file once
+        let userDefaults = UserDefaults.standard
+        let levelsParsed = userDefaults.bool(forKey: "levels_parsed")
+        if !levelsParsed {
+            if let path = Bundle.main.path(forResource: "levels", ofType: "json") {
+                do {
+                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                    let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                    if let levels = jsonResult as? Array<Dictionary<String, Any>> {
+                        // do stuff
+                        var rawLevels: [RawLevel] = []
+                        for level in levels {
+                            let rawLevel = RawLevel(json: level)
+                            rawLevels.append(rawLevel)
+                        }
+                        // Encode levels and save it to UserDefaults
+                        userDefaults.set(try? PropertyListEncoder().encode(rawLevels), forKey:"levels")
+                        // Save the starting level
+                        userDefaults.set(1, forKey: "current_level")
+                    }
+                } catch {
+                    // handle error
+                }
+            }
+        }
+        
         // Override point for customization after application launch.
         return true
     }

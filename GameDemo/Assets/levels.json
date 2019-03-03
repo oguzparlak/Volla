@@ -1,0 +1,93 @@
+[
+    {
+        "level": 1,
+        "rows": 1,
+        "cols": 2,
+        "contentType": "smiley",
+        "difficulity": "easy"
+    },
+    {
+        "level": 2,
+        "rows": 1,
+        "cols": 3,
+        "contentType": "animals",
+        "difficulity": "easy"
+    },
+    {
+        "level": 3,
+        "rows": 1,
+        "cols": 4,
+        "contentType": "smiley",
+        "difficulity": "easy"
+    },
+    {
+        "level": 4,
+        "rows": 1,
+        "cols": 5,
+        "contentType": "smiley",
+        "difficulity": "easy"
+    },
+    {
+        "level": 5,
+        "rows": 6,
+        "cols": 1,
+        "contentType": "smiley",
+        "difficulity": "easy"
+    },
+    {
+        "level": 6,
+        "rows": 2,
+        "cols": 2,
+        "contentType": "smiley",
+        "difficulity": "easy"
+    },
+    {
+        "level": 7,
+        "rows": 3,
+        "cols": 2,
+        "contentType": "smiley",
+        "difficulity": "easy"
+    },
+    {
+        "level": 8,
+        "rows": 4,
+        "cols": 2,
+        "contentType": "smiley",
+        "difficulity": "medium"
+    },
+    {
+        "level": 9,
+        "rows": 5,
+        "cols": 2,
+        "contentType": "smiley",
+        "difficulity": "medium"
+    },
+    {
+        "level": 10,
+        "rows": 6,
+        "cols": 2,
+        "contentType": "smiley",
+        "difficulity": "medium"
+    },
+    {
+        "level": 11,
+        "rows": 3,
+        "cols": 3,
+        "contentType": "smiley",
+        "difficulity": "medium"
+    },
+    {
+        "level": 12,
+        "rows": 3,
+        "cols": 3,
+        "contentType": "animals",
+        "difficulity": "medium"
+    },
+    {
+        "level": 13,
+        "rows": 3,
+        "cols": 3,
+        "contentType": "numbers",
+        "difficulity": "medium"
+    }
+]

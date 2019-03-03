@@ -26,16 +26,20 @@ class SquareDrawer {
     // Width of a square
     var widthOfASquare: CGFloat!
     
+    var numberOfSquaresForEachRow: Int!
+    
+    var numberOfSquaresForEachColumn: Int!
+    
     var currentRow = 0 {
         didSet {
-            accumulatedY -= NodeUtils.calculateWidthOfASquare(screenWidth: rootNode.frame.width) + NodeUtils.paddingOfSquares
+            accumulatedY -= NodeUtils.calculateWidthOfASquare(numberOfSquaresForEachRow: CGFloat(numberOfSquaresForEachRow), screenWidth: rootNode.frame.width) + NodeUtils.paddingOfSquares
         }
     }
     
     var squareCount = 0 {
         didSet {
-            let remainder = squareCount % Int(NodeUtils.numberOfSquaresForEachRow)
-            let widthOfASquare = NodeUtils.calculateWidthOfASquare(screenWidth: rootNode.frame.width)
+            let remainder = squareCount % Int(numberOfSquaresForEachRow)
+            let widthOfASquare = NodeUtils.calculateWidthOfASquare(numberOfSquaresForEachRow: CGFloat(numberOfSquaresForEachRow), screenWidth: rootNode.frame.width)
             let startingX = startingPoint.0
             accumulatedX += widthOfASquare + NodeUtils.paddingOfSquares
             if remainder == 0 { accumulatedX = startingX }
@@ -55,7 +59,7 @@ class SquareDrawer {
         squareCount += 1
         // If reached end of the row
         // Increment the currentRow
-        if squareCount % Int(NodeUtils.numberOfSquaresForEachRow) == 0 {
+        if squareCount % Int(numberOfSquaresForEachRow) == 0 {
              currentRow += 1
         }
         // Animate square

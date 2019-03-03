@@ -103,9 +103,29 @@
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dd5-v2-OIS">
+                                <rect key="frame" x="370" y="68" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="O0N-Et-yoz"/>
+                                    <constraint firstAttribute="width" constant="24" id="xtb-Dd-Zec"/>
+                                </constraints>
+                                <state key="normal" image="ic_close"/>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="BV1-FR-VrT" eventType="touchUpInside" id="p2K-l2-jZv"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dd5-v2-OIS" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="24" id="HnA-y0-DgC"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="dd5-v2-OIS" secondAttribute="trailing" constant="20" id="fOZ-a0-DQW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
+                    <connections>
+                        <outlet property="closeButton" destination="dd5-v2-OIS" id="unt-FQ-h9e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
@@ -143,7 +163,7 @@
                                     <constraint firstAttribute="height" constant="48" id="zEh-lF-qHP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                <state key="normal" title="Proceed">
+                                <state key="normal" title="Continue">
                                     <color key="titleColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -151,7 +171,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="se4-vO-r0S" firstAttribute="leading" secondItem="tex-gx-VWo" secondAttribute="leading" constant="20" id="0SR-u8-7lk"/>
                             <constraint firstItem="lCY-uN-vs6" firstAttribute="top" secondItem="tex-gx-VWo" secondAttribute="top" constant="24" id="26Z-Lg-lXx"/>

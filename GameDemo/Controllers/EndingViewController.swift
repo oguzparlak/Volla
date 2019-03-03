@@ -14,13 +14,23 @@ class EndingViewController: UIViewController, UIViewControllerTransitioningDeleg
     @IBOutlet weak var endButton: UIButton!
     
     let transition = BubbleTransition()
+    
+    var successfullyFinishedGame = true
+    
+    weak var gameViewController: GameViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = Colors.emerald
         
+        // Init or Update views
+        self.view.backgroundColor = successfullyFinishedGame ? Colors.emerald : Colors.alizarin
         endButton.layer.cornerRadius = 4.0
         
+        // Set transition delegate
+        self.transitioningDelegate = self
+        
+        // Dismiss previous controller after some delay
+        gameViewController.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func closeButtonTapped(_ sender: UIButton) {
@@ -28,26 +38,23 @@ class EndingViewController: UIViewController, UIViewControllerTransitioningDeleg
     }
     
     @IBAction func endButtonTapped(_ sender: UIButton) {
-        
-    }
-    
-    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let controller = segue.destination
-        controller.transitioningDelegate = self
-        controller.modalPresentationStyle = .custom
+        // If success go to next level
+        // If not re-play the existing level
     }
     
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .present
-        transition.startingPoint = CGPoint(x: view.frame.midX, y: view.frame.maxY)
+        transition.startingPoint = view.center
         transition.bubbleColor = Colors.emerald
+        transition.duration = 0.25
         return transition
     }
     
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .dismiss
-        transition.startingPoint = CGPoint(x: view.frame.midX, y: view.frame.maxY)
+        transition.startingPoint = view.center
         transition.bubbleColor = Colors.emerald
+        transition.duration = 0.25
         return transition
     }
 
