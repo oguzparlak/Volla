@@ -1,0 +1,23 @@
+"success" =  "Success !";
+
+"failure" = "Oooops !";
+
+"scoreBasedOnTime" = "Score based on time";
+
+"comboCount" = "Combo count";
+
+"difficulityMultiplier" = "Difficulity multiplier";
+
+"total" = "Total";
+
+"continue" = "Continue";
+
+"tryAgain" = "Try Again";
+
+"matchSmileys" = "Try to match\nsmileys with each other";
+
+"matchAnimals" = "Try to match\nanimals with each other";
+
+"matchNumbers" = "Try to match\nthe numbers inside the squares";
+
+"matchFoods" = "Try to match\nthe foods with each other";

@@ -1,0 +1,23 @@
+"success" =  "Tebrikler !";
+
+"failure" = "Oooops !";
+
+"scoreBasedOnTime" = "Zaman bazlı puan";
+
+"comboCount" = "Kombo sayın";
+
+"difficulityMultiplier" = "Zorluk çarpanı";
+
+"total" = "Toplam";
+
+"continue" = "Devam";
+
+"tryAgain" = "Tekrar Dene";
+
+"matchSmileys" = "Emojileri eşleştir";
+
+"matchAnimals" = "Hayvanları eşleştir";
+
+"matchNumbers" = "Sayıları eşleştir";
+
+"matchFoods" = "Yiyecekleri eşleştir";

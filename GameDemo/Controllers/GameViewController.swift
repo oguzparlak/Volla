@@ -24,6 +24,8 @@ class GameViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     var gameSceneDelegate: GameSceneDelegate!
     
+    weak var endingViewController: EndingViewController?
+    
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .present
         transition.startingPoint = view.center
@@ -52,6 +54,9 @@ class GameViewController: UIViewController, UIViewControllerTransitioningDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // If came from EndingViewController, dismiss the EndingViewController
+        endingViewController?.dismiss(animated: true, completion: nil)
+        
         let closeImage = NodeUtils.darkModeEnabled ? UIImage(named: "ic_close") : UIImage(named: "ic_close_blue")
         closeButton.setImage(closeImage, for: .normal)
         
@@ -79,11 +84,7 @@ class GameViewController: UIViewController, UIViewControllerTransitioningDelegat
                 // Present the scene
                 view.presentScene(scene)
             }
-            
             view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
         }
     }
     

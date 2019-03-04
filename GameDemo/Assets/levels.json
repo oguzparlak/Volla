@@ -17,7 +17,7 @@
         "level": 3,
         "rows": 1,
         "cols": 4,
-        "contentType": "smiley",
+        "contentType": "foods",
         "difficulity": "easy"
     },
     {
@@ -31,7 +31,7 @@
         "level": 5,
         "rows": 1,
         "cols": 6,
-        "contentType": "smiley",
+        "contentType": "foods",
         "difficulity": "easy"
     },
     {
@@ -45,14 +45,14 @@
         "level": 7,
         "rows": 2,
         "cols": 3,
-        "contentType": "smiley",
+        "contentType": "animals",
         "difficulity": "easy"
     },
     {
         "level": 8,
         "rows": 2,
         "cols": 4,
-        "contentType": "smiley",
+        "contentType": "numbers",
         "difficulity": "medium"
     },
     {
@@ -66,28 +66,42 @@
         "level": 10,
         "rows": 2,
         "cols": 6,
-        "contentType": "smiley",
+        "contentType": "foods",
         "difficulity": "medium"
     },
     {
         "level": 11,
         "rows": 3,
         "cols": 3,
-        "contentType": "smiley",
+        "contentType": "animals",
         "difficulity": "medium"
     },
     {
         "level": 12,
         "rows": 3,
         "cols": 3,
-        "contentType": "animals",
+        "contentType": "numbers",
         "difficulity": "medium"
     },
     {
         "level": 13,
         "rows": 3,
         "cols": 3,
-        "contentType": "numbers",
+        "contentType": "smiley",
+        "difficulity": "medium"
+    },
+    {
+        "level": 14,
+        "rows": 3,
+        "cols": 4,
+        "contentType": "foods",
+        "difficulity": "medium"
+    },
+    {
+        "level": 15,
+        "rows": 3,
+        "cols": 4,
+        "contentType": "animals",
         "difficulity": "medium"
     }
 ]

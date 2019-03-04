@@ -13,7 +13,9 @@ enum ContentType: String {
     case numbers
     case smiley
     case animals
+    case foods
 }
+
 protocol Content {
     
     var questionDescription: String { get }
@@ -42,6 +44,8 @@ class ContentFactory {
             return SmileyContent(with: size)
         case .animals:
             return AnimalContent(with: size)
+        case .foods:
+            return FoodContent(with: size)
         default:
             return NumberContent(with: size)
         }
@@ -49,10 +53,20 @@ class ContentFactory {
     
 }
 
+class FoodContent: AbstractContent, Content {
+    
+    var questionDescription = NSLocalizedString("matchFoods", comment: "")
+    
+    func generate() -> Array<String> {
+        let foods = ["🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🥝", "🥥", "🍍", "🥭", "🍑", "🍒", "🍈", "🍓", "🍅", "🍆", "🥑", "🥦", "🥬", "🥒", "🌶", "🌽", "🥨", "🥖", "🍞", "🥯", "🥐", "🍠", "🥔", "🥕", "🧀", "🥚", "🍳", "🦴", "🌭", "🍔", "🍟", "🥞", "🥓", "🍕", "🥪", "🥩", "🍗", "🥙", "🌮", "🍖", "🥠", "🍣", "🧁", "🌯", "🍰", "🥮", "🍱", "🥗", "🎂", "🍢", "🥟", "🥘", "🥫", "🍡", "🍤", "🍮", "🍭", "🍧", "🍙", "🍝", "🍜", "🍚", "🍨", "🍬" ,"🍫", "🍦", "🍘", "🍲", "🍥", "🍛", "🥧", "🍿", "🍩", "🍪", "🌰"]
+        return foods.pickRandom(size)
+    }
+    
+}
+
 class SmileyContent: AbstractContent, Content {
     
-    // TODO Localization
-    var questionDescription = "Try to match\nsmileys with each other"
+    var questionDescription = NSLocalizedString("matchSmileys", comment: "")
     
     func generate() -> Array<String> {
         let smileys = ["🤩", "🤥", "😡", "🤔", "😴", "😱", "🤯", "😐", "🤫", "🤑", "😕", "😵", "🤒", "😤", "🤠", "😈", "😀", "😂", "😍", "👻", "🤣", "👽", "😇", "😼", "🤖", "🤪", "🤡", "🤓", "☠️", "👹", "🎃", "😎", "😁", "😋", "🤮"]
@@ -63,7 +77,7 @@ class SmileyContent: AbstractContent, Content {
 
 class AnimalContent: AbstractContent, Content {
     
-    var questionDescription: String = "Try to match\nanimals with each other"
+    var questionDescription: String = NSLocalizedString("matchAnimals", comment: "")
     
     func generate() -> Array<String> {
         let animals = ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐽", "🐷", "🐮", "🦁", "🐯", "🐨", "🐼", "🐸", "🐵", "🙈", "🙉", "🙊", "🐒", "🐔", "🐥", "🐣", "🐤", "🐦", "🐧", "🦆", "🦅", "🐝", "🦄", "🐴", "🐗", "🐺", "🦉", "🐛", "🐌", "🐚", "🐞", "🐜", "🦗", "🦖", "🦎", "🐍", "🐢", "🦂", "🐙", "🦕", "🕷", "🦐", "🦑", "🦀", "🐡", "🐠", "🐟", "🐑", "🦒", "🐐", "🐃", "🦌", "🐂", "🐄", "🐕", "🦍", "🐘", "🐩", "🐎", "🐖", "🐈", "🐓", "🐏", "🐪", "🐫", "🐊"]
@@ -74,8 +88,7 @@ class AnimalContent: AbstractContent, Content {
 
 class NumberContent: AbstractContent, Content {
     
-    // TODO Localization
-    var questionDescription = "Try to match\nthe numbers inside the squares"
+    var questionDescription = NSLocalizedString("matchNumbers", comment: "")
     
     func generate() -> Array<String> {
         var result: [String] = []

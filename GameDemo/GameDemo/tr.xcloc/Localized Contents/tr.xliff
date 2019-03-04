@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="GameDemo/Assets/Base.lproj/LaunchScreen.storyboard" source-language="en" datatype="plaintext" target-language="tr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="10.1" build-num="10B61"/>
+    </header>
+    <body>
+      <trans-unit id="96F-FB-iiM.text">
+        <source>L</source>
+        <target>L</target>
+        <note>Class = "UILabel"; text = "L"; ObjectID = "96F-FB-iiM";</note>
+      </trans-unit>
+      <trans-unit id="GHf-kg-1ey.text">
+        <source>L</source>
+        <target>L</target>
+        <note>Class = "UILabel"; text = "L"; ObjectID = "GHf-kg-1ey";</note>
+      </trans-unit>
+      <trans-unit id="QYE-Uj-LvN.text">
+        <source>A</source>
+        <target>A</target>
+        <note>Class = "UILabel"; text = "A"; ObjectID = "QYE-Uj-LvN";</note>
+      </trans-unit>
+      <trans-unit id="Tdo-dr-Rhm.text">
+        <source>V</source>
+        <target>V</target>
+        <note>Class = "UILabel"; text = "V"; ObjectID = "Tdo-dr-Rhm";</note>
+      </trans-unit>
+      <trans-unit id="vIz-Cr-0fL.text">
+        <source>O</source>
+        <target>O</target>
+        <note>Class = "UILabel"; text = "O"; ObjectID = "vIz-Cr-0fL";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="GameDemo/Assets/Base.lproj/Main.storyboard" source-language="en" datatype="plaintext" target-language="tr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="10.1" build-num="10B61"/>
+    </header>
+    <body>
+      <trans-unit id="9fE-oD-kO1.text">
+        <source>L</source>
+        <target>L</target>
+        <note>Class = "UILabel"; text = "L"; ObjectID = "9fE-oD-kO1";</note>
+      </trans-unit>
+      <trans-unit id="Mck-bB-ZR8.text">
+        <source>A</source>
+        <target>A</target>
+        <note>Class = "UILabel"; text = "A"; ObjectID = "Mck-bB-ZR8";</note>
+      </trans-unit>
+      <trans-unit id="OaJ-LG-wLj.text">
+        <source>O</source>
+        <target>O</target>
+        <note>Class = "UILabel"; text = "O"; ObjectID = "OaJ-LG-wLj";</note>
+      </trans-unit>
+      <trans-unit id="akE-WC-ooi.text">
+        <source>L</source>
+        <target>L</target>
+        <note>Class = "UILabel"; text = "L"; ObjectID = "akE-WC-ooi";</note>
+      </trans-unit>
+      <trans-unit id="cIg-W4-PfN.normalTitle">
+        <source>Continue</source>
+        <target>Continue</target>
+        <note>Class = "UIButton"; normalTitle = "Continue"; ObjectID = "cIg-W4-PfN";</note>
+      </trans-unit>
+      <trans-unit id="se4-vO-r0S.text">
+        <source>Success !</source>
+        <target>Success !</target>
+        <note>Class = "UILabel"; text = "Success !"; ObjectID = "se4-vO-r0S";</note>
+      </trans-unit>
+      <trans-unit id="w5Q-t3-t6L.text">
+        <source>V</source>
+        <target>V</target>
+        <note>Class = "UILabel"; text = "V"; ObjectID = "w5Q-t3-t6L";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="GameDemo/en.lproj/InfoPlist.strings" datatype="plaintext" source-language="en" target-language="tr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="10.1" build-num="10B61"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName">
+        <source>Volla</source>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+        <note>Bundle name</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="GameDemo/en.lproj/Localizable.strings" datatype="plaintext" source-language="en" target-language="tr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="10.1" build-num="10B61"/>
+    </header>
+    <body>
+      <trans-unit id="failure">
+        <source>failure</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="success">
+        <source>success</source>
+        <note>Success</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -160,10 +160,10 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
             let totalPoint = pointCalculator.calculateTotal()
             // TODO Localization
             let pointDictionary = [
-                "Score based on time" : pointBasedOnTime,
-                "Combo count" : comboCount,
-                "Difficulity multiplier": difficulityMultiplier,
-                "Total": totalPoint
+                "scoreBasedOnTime" : pointBasedOnTime,
+                "comboCount" : comboCount,
+                "difficulityMultiplier": difficulityMultiplier,
+                "total": totalPoint
             ]
             // Increment current level
             GameUtils.incrementCurrentLevel()
