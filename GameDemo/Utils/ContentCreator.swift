@@ -14,6 +14,10 @@ enum ContentType: String {
     case smiley
     case animals
     case foods
+    case plants
+    case sports
+    case technology
+    case clothes
 }
 
 protocol Content {
@@ -46,9 +50,60 @@ class ContentFactory {
             return AnimalContent(with: size)
         case .foods:
             return FoodContent(with: size)
+        case .plants:
+            return PlantsContent(with: size)
+        case .sports:
+            return SportContent(with: size)
+        case .technology:
+            return TechnologyContent(with: size)
+        case .clothes:
+            return ClothesContent(with: size)
         default:
             return NumberContent(with: size)
         }
+    }
+}
+
+class ClothesContent: AbstractContent, Content {
+    
+    var questionDescription = NSLocalizedString("matchClothes", comment: "")
+    
+    func generate() -> Array<String> {
+        let clothes = ["🧥", "🥼", "👚", "👕", "👖", "👔", "👗", "👙", "👟", "👞", "👢", "👡", "👠", "🥿", "👘", "🥾", "🧦", "🧤", "🧣", "🎩", "🧢", "👒", "👜", "👛", "👝", "💍", "👑", "⛑", "🎓", "💼", "🎒", "🧳", "🕶", "🥽", "🌂", "👓"]
+        return clothes.pickRandom(size)
+    }
+    
+}
+
+class TechnologyContent: AbstractContent, Content {
+    
+    var questionDescription = NSLocalizedString("matchObjects", comment: "")
+    
+    func generate() -> Array<String> {
+        let objects = ["⌚️", "📱", "💻", "⌨️", "🖥", "🖨", "💿", "💾", "🗜", "🕹", "🖲", "🖱", "📼", "📷", "📹", "🎥", "📽", "📻", "📺", "📠", "📟", "☎️", "📞", "🎙", "🎞", "🎚", "🎛", "🧭", "⏱", "⏲", "⏰", "🔋", "🔌", "📡", "🔦", "🕰", "🛢", "🧯"]
+        return objects.pickRandom(size)
+    }
+    
+}
+
+class SportContent: AbstractContent, Content {
+    
+    var questionDescription = NSLocalizedString("matchObjects", comment: "")
+    
+    func generate() -> Array<String> {
+        let sportsContent = ["⚽️", "🏈", "⚾️", "🥎", "🎾", "🏐", "🏑", "🏒", "🏸", "🏓", "🎱", "🥏", "🏉", "🥍", "🏏", "🥅", "⛳️", "🏹", "🎣", "🥊", "🥋", "🎽", "🛹", "🛷", "⛸", "🥌", "🎿"]
+        return sportsContent.pickRandom(size)
+    }
+
+}
+
+class PlantsContent: AbstractContent, Content {
+    
+    var questionDescription = NSLocalizedString("matchPlants", comment: "")
+    
+    func generate() -> Array<String> {
+        let plants = ["🌵", "🎄", "🌲", "🌳", "🌴", "🌱", "🌿", "☘️", "🍀", "🐚", "🍄", "🍁", "🍂", "🍃", "🎋", "🎍", "🌾", "💐", "🌷", "🌹", "🥀", "🌺", "🌸", "🌼", "🌻"]
+        return plants.pickRandom(size)
     }
     
 }

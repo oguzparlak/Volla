@@ -8,6 +8,7 @@
 
 import UIKit
 import BubbleTransition
+import Lottie
 
 class EndingViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
@@ -31,7 +32,7 @@ class EndingViewController: UIViewController, UIViewControllerTransitioningDeleg
     var pointDictionary: [String : Any]?
     
     weak var gameViewController: GameViewController!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,7 +48,16 @@ class EndingViewController: UIViewController, UIViewControllerTransitioningDeleg
         
         // Dismiss previous controller after some delay
         gameViewController.dismiss(animated: false, completion: nil)
-
+        
+        // TODO This is not right way updating a label from a different VC
+        // Create a present - dismiss mechanism to overcome this problem.
+        let rootViewController = UIApplication.shared.keyWindow!.rootViewController as! InitialViewController
+        rootViewController.updateLevelLabel()
+        
+        // If fail then play sad Lottie Animation
+        if !successfullyFinishedGame {
+            showSadFaceAnimation()
+        }
     }
     
     @IBAction func closeButtonTapped(_ sender: UIButton) {
@@ -106,6 +116,16 @@ class EndingViewController: UIViewController, UIViewControllerTransitioningDeleg
         let endButtonFontColor = success ? Colors.emerald : Colors.peterRiver
         endButton.setTitleColor(endButtonFontColor, for: .normal)
         
+    }
+    
+    func showSadFaceAnimation() {
+        let sadFaceAnimation = LOTAnimationView(name: "sad_face")
+        sadFaceAnimation.contentMode = .scaleAspectFit
+        sadFaceAnimation.loopAnimation = true
+        let widthOfLottie: CGFloat = 248
+        sadFaceAnimation.frame = CGRect(x: view.frame.midX - widthOfLottie / 2, y: view.frame.midY - widthOfLottie / 2, width: widthOfLottie, height: widthOfLottie)
+        self.view.addSubview(sadFaceAnimation)
+        sadFaceAnimation.play()
     }
 
 }

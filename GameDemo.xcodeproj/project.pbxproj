@@ -12,6 +12,7 @@
 		BF2982032223031400832123 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = BF2982022223031400832123 /* success.json */; };
 		BF3A750322206A7700E5E2BD /* LevelDescriptionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A750222206A7700E5E2BD /* LevelDescriptionNode.swift */; };
 		BF3A75062220703E00E5E2BD /* SquareStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A75052220703E00E5E2BD /* SquareStack.swift */; };
+		BF3EB7E32232E357009BA132 /* game_lost.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF3EB7E22232E357009BA132 /* game_lost.mp3 */; };
 		BF45908222189DF600FC31E1 /* CountDownLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF45908122189DF600FC31E1 /* CountDownLabel.swift */; };
 		BF5F3FB42222ECE000794A19 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F3FB32222ECE000794A19 /* InitialViewController.swift */; };
 		BF5F75DB220B4D25004D5F99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F75DA220B4D25004D5F99 /* AppDelegate.swift */; };
@@ -82,6 +83,7 @@
 		BF2982022223031400832123 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		BF3A750222206A7700E5E2BD /* LevelDescriptionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDescriptionNode.swift; sourceTree = "<group>"; };
 		BF3A75052220703E00E5E2BD /* SquareStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareStack.swift; sourceTree = "<group>"; };
+		BF3EB7E22232E357009BA132 /* game_lost.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_lost.mp3; sourceTree = "<group>"; };
 		BF45908122189DF600FC31E1 /* CountDownLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownLabel.swift; sourceTree = "<group>"; };
 		BF5F3FB32222ECE000794A19 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		BF5F75D7220B4D25004D5F99 /* GameDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -257,6 +259,7 @@
 		BFC03FD922135FA000E660A9 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				BF3EB7E22232E357009BA132 /* game_lost.mp3 */,
 				BF7232B6222A9AE400E7D785 /* success.mp3 */,
 				BFD154872215CE31007FC209 /* ping.mp3 */,
 				BFD154852215CE1C007FC209 /* tick.mp3 */,
@@ -364,6 +367,7 @@
 				BF5F75D4220B4D25004D5F99 /* Frameworks */,
 				BF5F75D5220B4D25004D5F99 /* Resources */,
 				C358C65A795F9B6CB07C9BC3 /* [CP] Embed Pods Frameworks */,
+				BFE422F1223470940064AED8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -463,6 +467,7 @@
 				BFC03FDF22135FAB00E660A9 /* sound_wrong.wav in Resources */,
 				BFB9F5BF222BF8CE007364BE /* levels.json in Resources */,
 				BF5F75E6220B4D25004D5F99 /* Main.storyboard in Resources */,
+				BF3EB7E32232E357009BA132 /* game_lost.mp3 in Resources */,
 				BFC03FDE22135FAB00E660A9 /* tada.wav in Resources */,
 				BFECA476222978AA00332980 /* sad_face.json in Resources */,
 				BF7232B7222A9AE400E7D785 /* success.mp3 in Resources */,
@@ -561,6 +566,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		BFE422F1223470940064AED8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" f7882257fab16956d3eae0e9a9cfaac684c6c0ed b1ae11afd08dc524e84430ab2901d1f26079a9ae8765f8aa7e4586af33f05984\n";
 		};
 		C358C65A795F9B6CB07C9BC3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -808,7 +831,8 @@
 			baseConfigurationReference = 15AC5A44FA6CB512BB753595 /* Pods-GameDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = HL7GD8S24Y;
 				INFOPLIST_FILE = GameDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -816,8 +840,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.looperz.GameDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.memorygame.volla;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = volla_dev;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -828,7 +853,8 @@
 			baseConfigurationReference = 1354C0EDEE375A98DD8D038C /* Pods-GameDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = HL7GD8S24Y;
 				INFOPLIST_FILE = GameDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -836,8 +862,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.looperz.GameDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.memorygame.volla;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = volla_dist;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -21,3 +21,11 @@
 "matchNumbers" = "Sayıları eşleştir";
 
 "matchFoods" = "Yiyecekleri eşleştir";
+
+"matchClothes" = "Kıyafetleri eşleştir";
+
+"matchObjects" = "Objeleri eşleştir";
+
+"matchPlants" = "Bitkileri eşleştir";
+
+"level" = "Lv. %d";

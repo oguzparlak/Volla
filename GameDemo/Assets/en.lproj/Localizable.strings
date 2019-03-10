@@ -21,3 +21,11 @@
 "matchNumbers" = "Try to match\nthe numbers inside the squares";
 
 "matchFoods" = "Try to match\nthe foods with each other";
+
+"matchClothes" = "Try to match\nthe clothes with each other";
+
+"matchObjects" = "Try to match\nthe objects with each other";
+
+"matchPlants" = "Try to match\nthe plants with each other";
+
+"level" = "Lv. %d";

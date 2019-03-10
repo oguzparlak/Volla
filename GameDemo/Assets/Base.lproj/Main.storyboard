@@ -75,9 +75,17 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lv. 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ww3-dY-xFb">
+                                <rect key="frame" x="19.999999999999996" y="60.000000000000007" width="40.666666666666657" height="27.333333333333336"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                <color key="textColor" red="0.32156862745098036" green="0.58638620376586914" blue="0.83532619476318359" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Ww3-dY-xFb" firstAttribute="top" secondItem="qYe-oU-SJN" secondAttribute="top" constant="16" id="5HV-Ci-APe"/>
+                            <constraint firstItem="Ww3-dY-xFb" firstAttribute="leading" secondItem="qYe-oU-SJN" secondAttribute="leading" constant="20" id="LI1-1T-ZK6"/>
                             <constraint firstItem="qYe-oU-SJN" firstAttribute="trailing" secondItem="AIl-76-SgJ" secondAttribute="trailing" constant="20" id="Uas-Wt-jKH"/>
                             <constraint firstItem="AIl-76-SgJ" firstAttribute="top" secondItem="qYe-oU-SJN" secondAttribute="top" constant="8" id="XBs-TN-Pbg"/>
                             <constraint firstItem="qYe-oU-SJN" firstAttribute="bottom" secondItem="ERx-2p-dzw" secondAttribute="bottom" constant="20" id="ZKm-Wp-Atp"/>
@@ -88,6 +96,7 @@
                         <viewLayoutGuide key="safeArea" id="qYe-oU-SJN"/>
                     </view>
                     <connections>
+                        <outlet property="levelIndicatorLabel" destination="Ww3-dY-xFb" id="AGn-bn-Aju"/>
                         <outlet property="playButton" destination="18f-qj-Ygx" id="Qik-CZ-RKF"/>
                         <outlet property="themeButton" destination="AIl-76-SgJ" id="36W-ys-oVe"/>
                     </connections>

@@ -8,11 +8,13 @@
 
 import UIKit
 import Comets
+import Crashlytics
 
 class InitialViewController: UIViewController {
 
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var themeButton: UIButton!
+    @IBOutlet weak var levelIndicatorLabel: UILabel!
     
     private var userDefaults = UserDefaults.standard
     
@@ -23,6 +25,7 @@ class InitialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startParticleAnimation()
+        
         // Read the theme preference from UserDefaults
         isDarkModeEnabled = userDefaults.bool(forKey: "dark_mode_enabled")
         NodeUtils.darkModeEnabled = isDarkModeEnabled
@@ -32,15 +35,19 @@ class InitialViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.playButton.alpha = 1.0
         }
+        // TODO Change this
+        updateLevelLabel()
     }
     
     func updateUI(_ isDarkModeEnabled: Bool) {
         let backgroundColor = isDarkModeEnabled ? Colors.midnightBlue : Colors.clouds
         let image = isDarkModeEnabled ? UIImage(named: "ic_moon") : UIImage(named: "ic_sun")
         let cometLineColor = isDarkModeEnabled ? Colors.clouds.withAlphaComponent(0.2) : Colors.midnightBlue.withAlphaComponent(0.2)
+        let levelLabelColor = isDarkModeEnabled ? Colors.clouds : Colors.peterRiver
         themeButton.setImage(image, for: .normal)
         UIView.animate(withDuration: 0.5) {
             self.view.backgroundColor = backgroundColor
+            self.levelIndicatorLabel.textColor = levelLabelColor
             // Animate Particles
             for i in 0...self.comets.count - 1 {
                 var comet = self.comets[i]
@@ -56,9 +63,14 @@ class InitialViewController: UIViewController {
         // update UI
         updateUI(isDarkModeEnabled)
         NodeUtils.darkModeEnabled = isDarkModeEnabled
+        // Send a log to Fabric
+        Answers.logCustomEvent(withName: "themeChanged", customAttributes: ["darkModeEnabled" : isDarkModeEnabled])
     }
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
+        // Log an Event to Fabric
+        let currentLevel = userDefaults.integer(forKey: "current_level")
+        Answers.logLevelStart(currentLevel.description, customAttributes: nil)
         let gameViewController = storyboard?.instantiateViewController(withIdentifier: "game_vc") as! GameViewController
         self.present(gameViewController, animated: true, completion: nil)
     }
@@ -96,4 +108,12 @@ class InitialViewController: UIViewController {
         }
     }
     
+}
+
+extension InitialViewController {
+    func updateLevelLabel() {
+        // Level Label
+        let currentLevel = userDefaults.integer(forKey: "current_level")
+        levelIndicatorLabel.text = NSLocalizedString("level", comment: "").replacingOccurrences(of: "%d", with: currentLevel.description)
+    }
 }

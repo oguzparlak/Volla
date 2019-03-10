@@ -9,7 +9,9 @@ target 'GameDemo' do
   pod 'lottie-ios'
   pod 'Comets'
   pod 'BubbleTransition', '~> 3.0.0'
-
+  pod 'Fabric'
+  pod 'Crashlytics'
+  
   target 'GameDemoTests' do
     inherit! :search_paths
     # Pods for testing

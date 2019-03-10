@@ -51,6 +51,8 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
     
     var currentRawLevel: RawLevel?
     
+    var maximumTime: Int?
+    
     var correctAnswerCount: Int! {
         didSet {
             detectFinish()
@@ -97,8 +99,10 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
         NodeUtils.showAllContent(of: board)
         // Init correctAnswerCount
         correctAnswerCount = board.hasOddSize() ? 1 : 0
+        // Get maximum time needed for the current level
+        maximumTime = GameUtils.getCountDownFor(difficulity: Difficulity(rawValue: (currentRawLevel?.difficulity)!)!)
         // Init PointCalculator
-        pointCalculator = PointCalculator(maximumTime: 30)
+        pointCalculator = PointCalculator(maximumTime: TimeInterval(maximumTime!))
         pointCalculator.difficulity = Difficulity(rawValue: currentRawLevel?.difficulity ?? "easy")
     }
     
@@ -108,8 +112,6 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
         // Display the countdown timer at each tick
         countDownNode.text = String(remainingTime)
         if inLookUpSession {
-            let ping = SKAction.playSoundFileNamed("ping.mp3", waitForCompletion: false)
-            run(ping)
             if remainingTime == 0 {
                 finishLookUpSession()
             }
@@ -117,6 +119,10 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
             if remainingTime == 0 {
                 finishGame(countDownEnded: true)
             }
+        }
+        if remainingTime < 5 {
+            let ping = SKAction.playSoundFileNamed("ping.mp3", waitForCompletion: false)
+            run(ping)
         }
     }
     
@@ -143,6 +149,8 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
                 square.state = .disabled
             }
             // TODO Play music
+            let gameLostSound = SKAction.playSoundFileNamed("game_lost", waitForCompletion: false)
+            run(gameLostSound)
             viewController?.playLottie(isSucess: false, completion: nil)
             presentEndViewController(isSuccess: false)
         } else {
@@ -158,7 +166,6 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
             let difficulityMultiplier = GameUtils.getDifficulityMultiplierFor(difficulity: Difficulity(rawValue: (currentRawLevel?.difficulity)!)!)
             // Total Point
             let totalPoint = pointCalculator.calculateTotal()
-            // TODO Localization
             let pointDictionary = [
                 "scoreBasedOnTime" : pointBasedOnTime,
                 "comboCount" : comboCount,
@@ -181,7 +188,7 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
         // End the lookUpSession
         inLookUpSession = false
         // Reset the seconds
-        remainingTime = 30
+        remainingTime = maximumTime!
         // Reset the timer
         countDownNode.text = String(remainingTime)
         // Hide the content
@@ -218,13 +225,13 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
                         // play correct sound
                         let correctSound = SKAction.playSoundFileNamed("success.mp3", waitForCompletion: false)
                         self.run(correctSound)
-                        // Increment correct answer count
-                        self.correctAnswerCount += 2
                         self.disableInteraction()
                         if self.isLastAnswerTrue {
                             self.pointCalculator.incrementComboCount()
                         }
                         self.isLastAnswerTrue = true
+                        // Increment correct answer count
+                        self.correctAnswerCount += 2
                     }
                 } else {
                     // No match close them both

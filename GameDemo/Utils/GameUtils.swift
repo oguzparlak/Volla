@@ -14,6 +14,17 @@ enum Difficulity: String {
 
 enum GameUtils {
     
+    static func getCountDownFor(difficulity: Difficulity) -> Int {
+        switch difficulity {
+        case .easy:
+            return 30
+        case .medium:
+            return 90
+        case .hard:
+            return 120
+        }
+    }
+    
     static func getDifficulityMultiplierFor(difficulity: Difficulity) -> Int {
         switch difficulity {
         case .easy:
