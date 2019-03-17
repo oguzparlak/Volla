@@ -49,11 +49,6 @@ class EndingViewController: UIViewController, UIViewControllerTransitioningDeleg
         // Dismiss previous controller after some delay
         gameViewController.dismiss(animated: false, completion: nil)
         
-        // TODO This is not right way updating a label from a different VC
-        // Create a present - dismiss mechanism to overcome this problem.
-        let rootViewController = UIApplication.shared.keyWindow!.rootViewController as! InitialViewController
-        rootViewController.updateLevelLabel()
-        
         // If fail then play sad Lottie Animation
         if !successfullyFinishedGame {
             showSadFaceAnimation()

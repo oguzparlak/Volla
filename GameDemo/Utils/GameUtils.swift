@@ -7,12 +7,45 @@
 //
 
 import Foundation
+import UIKit
 
 enum Difficulity: String {
     case easy, medium, hard
 }
 
 enum GameUtils {
+    
+    // Selected difficulity
+    static var currentDifficulity: Difficulity?
+    
+    // Current level that will be played when user hits play button
+    static var currentLevel: RawLevel?
+    
+    // Returns difficulity
+    // with specified label
+    static func getDifficulityFor(label: String) -> Difficulity {
+        switch label {
+        case NSLocalizedString("easy", comment: ""):
+            return .easy
+        case NSLocalizedString("medium", comment: ""):
+            return .medium
+        case NSLocalizedString("hard", comment: ""):
+            return .hard
+        default:
+            return .easy
+        }
+    }
+    
+    static func updateDifficulity(_ difficulity: Difficulity) {
+        currentDifficulity = difficulity
+        UserDefaults.standard.set(difficulity.rawValue, forKey: Keys.currentDifficulityKey)
+    }
+    
+    static func updateCurrentLevel(_ level: RawLevel, with difficulity: Difficulity) {
+        currentLevel = level
+        let difficulityKeyForLevel = StandardUtils.getKeyFor(difficulity: difficulity)
+        UserDefaults.standard.set(currentLevel?.level, forKey: difficulityKeyForLevel)
+    }
     
     static func getCountDownFor(difficulity: Difficulity) -> Int {
         switch difficulity {
@@ -22,6 +55,18 @@ enum GameUtils {
             return 90
         case .hard:
             return 120
+        }
+    }
+    
+    // Returns the color of the specified difficulity
+    static func getColorFor(difficulity: Difficulity) -> UIColor {
+        switch difficulity {
+        case .easy:
+            return Colors.peterRiver
+        case .medium:
+            return Colors.emerald
+        case .hard:
+            return Colors.alizarin
         }
     }
     
@@ -80,7 +125,7 @@ enum GameUtils {
                         // Encode levels and save it to UserDefaults
                         userDefaults.set(try? PropertyListEncoder().encode(rawLevels), forKey:"levels")
                         // Save the starting level
-                        userDefaults.set(1, forKey: "current_level")
+                        userDefaults.set(1, forKey: Keys.currentLevelKeyForEasy)
                         // Update levels_parsed key
                         userDefaults.set(true, forKey: "levels_parsed")
                     }
@@ -91,6 +136,7 @@ enum GameUtils {
         }
     }
     
+    // TODO Change it according to difficulity
     static func incrementCurrentLevel() {
         let userDefaults = UserDefaults.standard
         let currentLevel = userDefaults.integer(forKey: "current_level")

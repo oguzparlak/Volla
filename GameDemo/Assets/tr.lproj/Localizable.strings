@@ -29,3 +29,9 @@
 "matchPlants" = "Bitkileri eşleştir";
 
 "level" = "Lv. %d";
+
+"easy" = "Kolay";
+
+"medium" = "Orta";
+
+"hard" = "Zor";

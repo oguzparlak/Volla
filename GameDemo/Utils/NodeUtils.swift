@@ -17,12 +17,6 @@ enum NodeUtils {
     // The padding between squares and the frame
     static let paddingOfSquares: CGFloat = 16
     
-    // The number of squares fits for each row
-    static let numberOfSquaresForEachRow: CGFloat = 3
-    
-    // The number of squares fits for each column
-    static let numberOfSquaresForEachColumn: CGFloat = 3
-    
     // The corner radius of the squares
     static let cornerRadiusOfSquares: CGFloat = 4.0
     

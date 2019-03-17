@@ -29,3 +29,9 @@
 "matchPlants" = "Try to match\nthe plants with each other";
 
 "level" = "Lv. %d";
+
+"easy" = "Easy";
+
+"medium" = "Medium";
+
+"hard" = "Hard";

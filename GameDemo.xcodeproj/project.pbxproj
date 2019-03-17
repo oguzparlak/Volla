@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		263134734B003A427E7D5B27 /* Pods_GameDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84CB0AC1396AC3DA921DC210 /* Pods_GameDemoTests.framework */; };
 		70A9B9CBBA13B2A2D78F4111 /* Pods_GameDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FCA33D4519D9356C220165E /* Pods_GameDemoUITests.framework */; };
+		BF23AD3B223D2CFC00F64556 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23AD3A223D2CFC00F64556 /* ProgressViewController.swift */; };
+		BF23AD3E223D2DF000F64556 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23AD3D223D2DF000F64556 /* TabView.swift */; };
 		BF2982032223031400832123 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = BF2982022223031400832123 /* success.json */; };
 		BF3A750322206A7700E5E2BD /* LevelDescriptionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A750222206A7700E5E2BD /* LevelDescriptionNode.swift */; };
 		BF3A75062220703E00E5E2BD /* SquareStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A75052220703E00E5E2BD /* SquareStack.swift */; };
@@ -46,6 +48,7 @@
 		BFD154842215CE10007FC209 /* shot.wav in Resources */ = {isa = PBXBuildFile; fileRef = BFD154832215CE10007FC209 /* shot.wav */; };
 		BFD154862215CE1C007FC209 /* tick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFD154852215CE1C007FC209 /* tick.mp3 */; };
 		BFD154882215CE31007FC209 /* ping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFD154872215CE31007FC209 /* ping.mp3 */; };
+		BFE45D53223EC6EE009DCB0C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE45D52223EC6EE009DCB0C /* Constants.swift */; };
 		BFEA614A22272A95001E2876 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA614922272A95001E2876 /* Shape.swift */; };
 		BFEA614C22272B14001E2876 /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA614B22272B14001E2876 /* Value.swift */; };
 		BFECA47222295ED500332980 /* fail.json in Resources */ = {isa = PBXBuildFile; fileRef = BFECA47122295ED500332980 /* fail.json */; };
@@ -80,6 +83,8 @@
 		79F81B0550319999137A6DE2 /* Pods-GameDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GameDemoTests/Pods-GameDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		84CB0AC1396AC3DA921DC210 /* Pods_GameDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GameDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		934D58175ACC6339092C8BDA /* Pods_GameDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GameDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF23AD3A223D2CFC00F64556 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
+		BF23AD3D223D2DF000F64556 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		BF2982022223031400832123 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		BF3A750222206A7700E5E2BD /* LevelDescriptionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDescriptionNode.swift; sourceTree = "<group>"; };
 		BF3A75052220703E00E5E2BD /* SquareStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareStack.swift; sourceTree = "<group>"; };
@@ -128,6 +133,7 @@
 		BFD154832215CE10007FC209 /* shot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shot.wav; sourceTree = "<group>"; };
 		BFD154852215CE1C007FC209 /* tick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tick.mp3; sourceTree = "<group>"; };
 		BFD154872215CE31007FC209 /* ping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ping.mp3; sourceTree = "<group>"; };
+		BFE45D52223EC6EE009DCB0C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BFEA614922272A95001E2876 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		BFEA614B22272B14001E2876 /* Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
 		BFECA47122295ED500332980 /* fail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fail.json; sourceTree = "<group>"; };
@@ -177,6 +183,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BF23AD3C223D2DC600F64556 /* UiComponents */ = {
+			isa = PBXGroup;
+			children = (
+				BF23AD3D223D2DF000F64556 /* TabView.swift */,
+			);
+			path = UiComponents;
+			sourceTree = "<group>";
+		};
 		BF2982012223030B00832123 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +238,7 @@
 		BF5F75D9220B4D25004D5F99 /* GameDemo */ = {
 			isa = PBXGroup;
 			children = (
+				BF23AD3C223D2DC600F64556 /* UiComponents */,
 				BF3A75042220702500E5E2BD /* Model */,
 				BF5F75DA220B4D25004D5F99 /* AppDelegate.swift */,
 				BF5F75EC220B4D26004D5F99 /* Info.plist */,
@@ -296,6 +311,7 @@
 				BF5F75E2220B4D25004D5F99 /* GameViewController.swift */,
 				BF5F3FB32222ECE000794A19 /* InitialViewController.swift */,
 				BFECA473222962F300332980 /* EndingViewController.swift */,
+				BF23AD3A223D2CFC00F64556 /* ProgressViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -333,6 +349,7 @@
 				BFCDE06622196C5000A9484B /* ContentCreator.swift */,
 				BFC8CE53220DEC3400A6A701 /* SquareDrawer.swift */,
 				BFB9F5BA222BE962007364BE /* GameUtils.swift */,
+				BFE45D52223EC6EE009DCB0C /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -621,9 +638,11 @@
 				BF3A750322206A7700E5E2BD /* LevelDescriptionNode.swift in Sources */,
 				BFCD74A4220C9426006C3E79 /* Square.swift in Sources */,
 				BFCD74AE220C9764006C3E79 /* Colors.swift in Sources */,
+				BF23AD3B223D2CFC00F64556 /* ProgressViewController.swift in Sources */,
 				BFB9F5C1222BFCDA007364BE /* RawLevel.swift in Sources */,
 				BF3A75062220703E00E5E2BD /* SquareStack.swift in Sources */,
 				BFCD74B9220C9DBA006C3E79 /* SquareBoard.swift in Sources */,
+				BFE45D53223EC6EE009DCB0C /* Constants.swift in Sources */,
 				BFB9F5B9222BE87A007364BE /* PointCalculator.swift in Sources */,
 				BFECA474222962F300332980 /* EndingViewController.swift in Sources */,
 				BFC8CE54220DEC3400A6A701 /* SquareDrawer.swift in Sources */,
@@ -637,6 +656,7 @@
 				BFEA614A22272A95001E2876 /* Shape.swift in Sources */,
 				BFCDE06722196C5000A9484B /* ContentCreator.swift in Sources */,
 				BFEA614C22272B14001E2876 /* Value.swift in Sources */,
+				BF23AD3E223D2DF000F64556 /* TabView.swift in Sources */,
 				BFB9F5BB222BE962007364BE /* GameUtils.swift in Sources */,
 				BFCD74B3220C98FC006C3E79 /* Board.swift in Sources */,
 				BF5F75DB220B4D25004D5F99 /* AppDelegate.swift in Sources */,

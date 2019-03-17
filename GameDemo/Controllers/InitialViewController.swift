@@ -14,7 +14,11 @@ class InitialViewController: UIViewController {
 
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var themeButton: UIButton!
-    @IBOutlet weak var levelIndicatorLabel: UILabel!
+    @IBOutlet weak var progressButton: UIButton!
+    @IBOutlet weak var circularLevelIndicator: UIView!
+    @IBOutlet weak var difficulityStackView: UIStackView!
+    @IBOutlet weak var difficulityLabel: UILabel!
+    @IBOutlet weak var currentLevelLabel: UILabel!
     
     private var userDefaults = UserDefaults.standard
     
@@ -35,19 +39,61 @@ class InitialViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.playButton.alpha = 1.0
         }
-        // TODO Change this
-        updateLevelLabel()
+        // Update LevelIndicator
+        circularLevelIndicator.layer.cornerRadius = circularLevelIndicator.frame.size.width / 2
+        circularLevelIndicator.clipsToBounds = true
+        // Difficulity Tap Handler
+        difficulityStackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onDifficulitySelected(_:))))
+
+    }
+    
+    @IBAction func difficulityViewTapped(_ sender: Any) {
+        onDifficulitySelected(sender as AnyObject)
+    }
+    
+    @objc func onDifficulitySelected(_ sender: AnyObject) {
+        // Open an ActionSheet to choose desired difficulity
+        let alertController = UIAlertController(title: nil, message: "Choose difficulity", preferredStyle: .actionSheet)
+        // Create actions
+        let easyAction = UIAlertAction(title: "Easy", style: .default, handler: handleOnActionSelected)
+        let mediumAction = UIAlertAction(title: "Medium", style: .default, handler: handleOnActionSelected)
+        let hardAction = UIAlertAction(title: "Hard", style: .default, handler: handleOnActionSelected)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        // Add actions
+        alertController.addAction(easyAction)
+        alertController.addAction(mediumAction)
+        alertController.addAction(hardAction)
+        alertController.addAction(cancelAction)
+        // Present
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func handleOnActionSelected(selectedAction: UIAlertAction) {
+        let title = selectedAction.title
+        let difficulity = GameUtils.getDifficulityFor(label: title!)
+        GameUtils.updateDifficulity(difficulity)
+        updateUiOnDifficulityChanged()
+    }
+    
+    func updateUiOnDifficulityChanged() {
+        let difficulity = GameUtils.currentDifficulity
+        let color = GameUtils.getColorFor(difficulity: difficulity ?? .easy)
+        circularLevelIndicator.backgroundColor = color
+        currentLevelLabel.textColor = color
+        difficulityLabel.textColor = color
+        difficulityLabel.text = title
+        difficulityLabel.sizeToFit()
     }
     
     func updateUI(_ isDarkModeEnabled: Bool) {
         let backgroundColor = isDarkModeEnabled ? Colors.midnightBlue : Colors.clouds
         let image = isDarkModeEnabled ? UIImage(named: "ic_moon") : UIImage(named: "ic_sun")
+        let progressImage = isDarkModeEnabled ? UIImage(named: "ic_progress") : UIImage(named: "ic_progress_blue")
+        progressButton.setImage(progressImage, for: .normal)
         let cometLineColor = isDarkModeEnabled ? Colors.clouds.withAlphaComponent(0.2) : Colors.midnightBlue.withAlphaComponent(0.2)
-        let levelLabelColor = isDarkModeEnabled ? Colors.clouds : Colors.peterRiver
         themeButton.setImage(image, for: .normal)
         UIView.animate(withDuration: 0.5) {
             self.view.backgroundColor = backgroundColor
-            self.levelIndicatorLabel.textColor = levelLabelColor
             // Animate Particles
             for i in 0...self.comets.count - 1 {
                 var comet = self.comets[i]
@@ -65,6 +111,10 @@ class InitialViewController: UIViewController {
         NodeUtils.darkModeEnabled = isDarkModeEnabled
         // Send a log to Fabric
         Answers.logCustomEvent(withName: "themeChanged", customAttributes: ["darkModeEnabled" : isDarkModeEnabled])
+    }
+    @IBAction func progressButtonTapped(_ sender: UIButton) {
+        let progressViewController = storyboard?.instantiateViewController(withIdentifier: "progress_vc") as! ProgressViewController
+        present(progressViewController, animated: true, completion: nil)
     }
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
@@ -108,12 +158,4 @@ class InitialViewController: UIViewController {
         }
     }
     
-}
-
-extension InitialViewController {
-    func updateLevelLabel() {
-        // Level Label
-        let currentLevel = userDefaults.integer(forKey: "current_level")
-        levelIndicatorLabel.text = NSLocalizedString("level", comment: "").replacingOccurrences(of: "%d", with: currentLevel.description)
-    }
 }
