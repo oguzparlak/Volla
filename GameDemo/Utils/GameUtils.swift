@@ -13,38 +13,48 @@ enum Difficulity: String {
     case easy, medium, hard
 }
 
+enum Difficulities {
+    
+    static let easy = NSLocalizedString("easy", comment: "")
+    
+    static let medium = NSLocalizedString("medium", comment: "")
+    
+    static let hard = NSLocalizedString("hard", comment: "")
+    
+}
+
 enum GameUtils {
     
     // Selected difficulity
     static var currentDifficulity: Difficulity?
     
     // Current level that will be played when user hits play button
-    static var currentLevel: RawLevel?
+    static var currentLevel: Int?
     
     // Returns difficulity
     // with specified label
     static func getDifficulityFor(label: String) -> Difficulity {
         switch label {
-        case NSLocalizedString("easy", comment: ""):
+        case Difficulities.easy:
             return .easy
-        case NSLocalizedString("medium", comment: ""):
+        case Difficulities.medium:
             return .medium
-        case NSLocalizedString("hard", comment: ""):
+        case Difficulities.hard:
             return .hard
         default:
             return .easy
         }
     }
     
-    static func updateDifficulity(_ difficulity: Difficulity) {
-        currentDifficulity = difficulity
-        UserDefaults.standard.set(difficulity.rawValue, forKey: Keys.currentDifficulityKey)
-    }
-    
-    static func updateCurrentLevel(_ level: RawLevel, with difficulity: Difficulity) {
-        currentLevel = level
-        let difficulityKeyForLevel = StandardUtils.getKeyFor(difficulity: difficulity)
-        UserDefaults.standard.set(currentLevel?.level, forKey: difficulityKeyForLevel)
+    static func getTitleFor(difficulity: Difficulity) -> String {
+        switch difficulity {
+        case .easy:
+            return Difficulities.easy
+        case .medium:
+            return Difficulities.medium
+        case .hard:
+            return Difficulities.hard
+        }
     }
     
     static func getCountDownFor(difficulity: Difficulity) -> Int {
@@ -96,6 +106,24 @@ enum GameUtils {
         }
     }
     
+    // Updates the current level with specified difficulity
+    static func updateCurrentLevel(_ level: RawLevel, with difficulity: Difficulity) {
+        GameUtils.currentLevel = level.level
+        let difficulityKeyForLevel = StandardUtils.getKeyFor(difficulity: difficulity)
+        UserDefaults.standard.set(GameUtils.currentLevel, forKey: difficulityKeyForLevel)
+    }
+    
+    static func load(level: Int, with difficulity: Difficulity) -> RawLevel? {
+        if let data = UserDefaults.standard.value(forKey: "levels") as? Data {
+            let rawLevels = try? PropertyListDecoder().decode(Array<RawLevel>.self, from: data)
+            let rawLevel = rawLevels?.first(where: { (rawLevel) -> Bool in
+                rawLevel.level == level && rawLevel.difficulity == difficulity.rawValue
+            })
+            return rawLevel
+        }
+        return nil
+    }
+    
     static func load(level: Int) -> RawLevel? {
         if let data = UserDefaults.standard.value(forKey:"levels") as? Data {
             let rawLevels = try? PropertyListDecoder().decode(Array<RawLevel>.self, from: data)
@@ -135,18 +163,25 @@ enum GameUtils {
             }
         }
     }
-    
-    // TODO Change it according to difficulity
+
     static func incrementCurrentLevel() {
         let userDefaults = UserDefaults.standard
-        let currentLevel = userDefaults.integer(forKey: "current_level")
+        let difficulityKey = StandardUtils.getKeyFor(difficulity: GameUtils.currentDifficulity ?? .easy)
+        let currentLevel = userDefaults.integer(forKey: difficulityKey)
+        let nextLevel = currentLevel + 1
         if let data = UserDefaults.standard.value(forKey:"levels") as? Data {
             let rawLevels = try? PropertyListDecoder().decode(Array<RawLevel>.self, from: data)
-            if currentLevel + 1 > (rawLevels?.count)! {
+            let filteredLevelsBasedOnDifficulity = rawLevels?.filter({ (level) -> Bool in
+                level.difficulity == GameUtils.currentDifficulity?.rawValue
+            })
+            if nextLevel > (filteredLevelsBasedOnDifficulity?.count)! {
                 return
             }
         }
-        userDefaults.set(currentLevel + 1, forKey: "current_level")
+        // TODO When there is nowhere to go or reached checkpoint
+        // Switch to next level
+        GameUtils.currentLevel = nextLevel
+        userDefaults.set(nextLevel, forKey: difficulityKey)
     }
     
 }

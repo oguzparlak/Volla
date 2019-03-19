@@ -44,6 +44,8 @@ class InitialViewController: UIViewController {
         circularLevelIndicator.clipsToBounds = true
         // Difficulity Tap Handler
         difficulityStackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onDifficulitySelected(_:))))
+        // Update UI
+        updateUiOnDifficulityChanged()
 
     }
     
@@ -55,10 +57,13 @@ class InitialViewController: UIViewController {
         // Open an ActionSheet to choose desired difficulity
         let alertController = UIAlertController(title: nil, message: "Choose difficulity", preferredStyle: .actionSheet)
         // Create actions
-        let easyAction = UIAlertAction(title: "Easy", style: .default, handler: handleOnActionSelected)
-        let mediumAction = UIAlertAction(title: "Medium", style: .default, handler: handleOnActionSelected)
-        let hardAction = UIAlertAction(title: "Hard", style: .default, handler: handleOnActionSelected)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let easyAction = UIAlertAction(title: Difficulities.easy, style: .default, handler: handleOnActionSelected)
+        let mediumAction = UIAlertAction(title: Difficulities.medium, style: .default, handler: handleOnActionSelected)
+        let hardAction = UIAlertAction(title: Difficulities.hard, style: .default, handler: handleOnActionSelected)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil)
+        // Check availability of the levels
+        mediumAction.isEnabled = StandardUtils.isDifficulityLocked(.medium)
+        hardAction.isEnabled = StandardUtils.isDifficulityLocked(.hard)
         // Add actions
         alertController.addAction(easyAction)
         alertController.addAction(mediumAction)
@@ -71,18 +76,23 @@ class InitialViewController: UIViewController {
     private func handleOnActionSelected(selectedAction: UIAlertAction) {
         let title = selectedAction.title
         let difficulity = GameUtils.getDifficulityFor(label: title!)
-        GameUtils.updateDifficulity(difficulity)
+        StandardUtils.updateDifficulity(difficulity)
         updateUiOnDifficulityChanged()
     }
     
     func updateUiOnDifficulityChanged() {
+        // Update difficulity
         let difficulity = GameUtils.currentDifficulity
         let color = GameUtils.getColorFor(difficulity: difficulity ?? .easy)
+        let difficulityDescription = GameUtils.getTitleFor(difficulity: difficulity ?? .easy)
         circularLevelIndicator.backgroundColor = color
         currentLevelLabel.textColor = color
         difficulityLabel.textColor = color
-        difficulityLabel.text = title
-        difficulityLabel.sizeToFit()
+        difficulityLabel.text = difficulityDescription
+        // Update level
+        let currentLevel = StandardUtils.getCurrentLevelWith(difficulity: difficulity ?? .easy)
+        GameUtils.currentLevel = currentLevel
+        updateLevelLabel(level: currentLevel)
     }
     
     func updateUI(_ isDarkModeEnabled: Bool) {
@@ -156,6 +166,11 @@ class InitialViewController: UIViewController {
             view.layer.addSublayer(comet.drawLine())
             view.layer.addSublayer(comet.animate())
         }
+    }
+    
+    func updateLevelLabel(level: Int) {
+        let currentLevelDescription = String(format: NSLocalizedString("level", comment: ""), level)
+        currentLevelLabel.text = currentLevelDescription
     }
     
 }

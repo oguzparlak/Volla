@@ -18,6 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Load all the levels
         GameUtils.loadLevels()
+        // Set current difficulity
+        StandardUtils.setCurrentDifficulity()
+        // Set current level
+        StandardUtils.setCurrentLevel()
+        // Unlock easy no matter what
+        StandardUtils.unlockEasy()
         // Init Fabric
         Fabric.with([Crashlytics.self, Answers.self])
         return true

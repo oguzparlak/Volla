@@ -18,6 +18,10 @@ enum Keys {
     
     static let currentDifficulityKey = "current_difficulity"
     
+    static func getIsLockedKey(_ difficulity: Difficulity) -> String {
+        return "is_locked_\(difficulity.rawValue)"
+    }
+    
 }
 
 enum StandardUtils {
@@ -31,6 +35,51 @@ enum StandardUtils {
         case .hard:
             return Keys.currentLevelKeyForHard
         }
+    }
+    
+    // Updates the current difficulity
+    static func updateDifficulity(_ difficulity: Difficulity) {
+        GameUtils.currentDifficulity = difficulity
+        UserDefaults.standard.set(difficulity.rawValue, forKey: Keys.currentDifficulityKey)
+    }
+    
+    // Returns the current level with specified difficulity
+    static func getCurrentLevelWith(difficulity: Difficulity) -> Int {
+        let userDefaults = UserDefaults.standard
+        return userDefaults.integer(forKey: StandardUtils.getKeyFor(difficulity: difficulity))
+    }
+    
+    // Called only once in the AppDelegate
+    static func setCurrentDifficulity() {
+        let userDefaults = UserDefaults.standard
+        let difficulityAsString = userDefaults.string(forKey: Keys.currentDifficulityKey)
+        let difficulity = Difficulity(rawValue: difficulityAsString ?? "easy")
+        GameUtils.currentDifficulity = difficulity
+    }
+    
+    // Called only once in the AppDelegate
+    static func setCurrentLevel() {
+        let userDefaults = UserDefaults.standard
+        let difficulity = GameUtils.currentDifficulity
+        let difficulityKeyForLevel = StandardUtils.getKeyFor(difficulity: difficulity ?? .easy)
+        let level = userDefaults.integer(forKey: difficulityKeyForLevel)
+        GameUtils.currentLevel = level
+    }
+    
+    // Returns true if the difficulity is locked
+    static func isDifficulityLocked(_ difficulity: Difficulity) -> Bool {
+        let userDefaults = UserDefaults.standard
+        return userDefaults.bool(forKey: Keys.getIsLockedKey(difficulity))
+    }
+    
+    static func enableDifficulity(_ difficulity: Difficulity) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(true, forKey: Keys.getIsLockedKey(difficulity))
+    }
+    
+    // Called only once in the AppDelegate
+    static func unlockEasy() {
+        enableDifficulity(.easy)
     }
     
 }

@@ -63,8 +63,7 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
         // Disable multi touch
         self.view?.isMultipleTouchEnabled = false
         // Get current level
-        let currentLevel = UserDefaults.standard.integer(forKey: "current_level")
-        currentRawLevel = GameUtils.load(level: currentLevel)
+        currentRawLevel = GameUtils.load(level: GameUtils.currentLevel ?? 1, with: GameUtils.currentDifficulity ?? .easy)
         // Generate board
         board = MockUtils.generateMockSquareBoard(level: currentRawLevel!, frameWidth: frame.width, frameHeight: frame.height)
         // Get whole squares once
@@ -144,38 +143,49 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
         levelDescriptionNode.run(SKAction.moveBy(x: 0, y: -160, duration: 1.0))
         viewController?.animateCloseButton()
         if countDownEnded {
-            // Disable all the squares
-            squaresAsAWhole.forEach { (square) in
-                square.state = .disabled
-            }
-            // TODO Play music
-            let gameLostSound = SKAction.playSoundFileNamed("game_lost", waitForCompletion: false)
-            run(gameLostSound)
-            viewController?.playLottie(isSucess: false, completion: nil)
-            presentEndViewController(isSuccess: false)
+            onLose()
         } else {
-            let tada = SKAction.playSoundFileNamed("tada.wav", waitForCompletion: false)
-            run(tada)
-            // Lottie
-            viewController?.playLottie(completion: nil)
-            // Calculate Point based on time
-            let pointBasedOnTime = pointCalculator.calculateScoreBasedOnTime()
-            // Combo Points
-            let comboCount = pointCalculator.getComboCount()
-            // Difficulity multiplier
-            let difficulityMultiplier = GameUtils.getDifficulityMultiplierFor(difficulity: Difficulity(rawValue: (currentRawLevel?.difficulity)!)!)
-            // Total Point
-            let totalPoint = pointCalculator.calculateTotal()
-            let pointDictionary = [
-                "scoreBasedOnTime" : pointBasedOnTime,
-                "comboCount" : comboCount,
-                "difficulityMultiplier": difficulityMultiplier,
-                "total": totalPoint
-            ]
-            // Increment current level
-            GameUtils.incrementCurrentLevel()
-            presentEndViewController(isSuccess: true, extras: pointDictionary)
+            onWin()
         }
+    }
+    
+    private func onLose() {
+        // Disable all the squares
+        squaresAsAWhole.forEach { (square) in
+            square.state = .disabled
+        }
+        // TODO Play music
+        let gameLostSound = SKAction.playSoundFileNamed("game_lost", waitForCompletion: false)
+        run(gameLostSound)
+        viewController?.playLottie(isSucess: false, completion: nil)
+        presentEndViewController(isSuccess: false)
+    }
+    
+    private func onWin() {
+        let tada = SKAction.playSoundFileNamed("tada.wav", waitForCompletion: false)
+        run(tada)
+        // Lottie
+        viewController?.playLottie(completion: nil)
+        // Calculate Point based on time
+        let pointBasedOnTime = pointCalculator.calculateScoreBasedOnTime()
+        // Combo Points
+        let comboCount = pointCalculator.getComboCount()
+        // Difficulity multiplier
+        let difficulityMultiplier = GameUtils.getDifficulityMultiplierFor(difficulity: Difficulity(rawValue: (currentRawLevel?.difficulity)!)!)
+        // Total Point
+        let totalPoint = pointCalculator.calculateTotal()
+        let pointDictionary = [
+            "scoreBasedOnTime" : pointBasedOnTime,
+            "comboCount" : comboCount,
+            "difficulityMultiplier": difficulityMultiplier,
+            "total": totalPoint
+        ]
+        // Increment current level
+        GameUtils.incrementCurrentLevel()
+        // Update Level Label
+        let initialViewController = self.view?.window?.rootViewController as! InitialViewController
+        initialViewController.updateLevelLabel(level: GameUtils.currentLevel ?? 1)
+        presentEndViewController(isSuccess: true, extras: pointDictionary)
     }
     
     func presentEndViewController(isSuccess: Bool = true, extras: Dictionary<String, Any>? = nil) {
