@@ -1,0 +1,16 @@
+[
+    {
+        "level": 1,
+        "rows": 1,
+        "cols": 2,
+        "contentType": "smiley",
+        "difficulity": "easy"
+    },
+    {
+        "level": 2,
+        "rows": 1,
+        "cols": 4,
+        "contentType": "animals",
+        "difficulity": "easy"
+    }
+]

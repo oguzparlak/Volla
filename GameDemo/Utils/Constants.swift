@@ -18,6 +18,14 @@ enum Keys {
     
     static let currentDifficulityKey = "current_difficulity"
     
+    static let easyLevelsKey = "easy_levels"
+    
+    static let mediumLevelsKey = "medium_levels"
+    
+    static let hardLevelsKey = "hard_levels"
+    
+    static let levelsParsedKey = "levels_parsed"
+    
     static func getIsLockedKey(_ difficulity: Difficulity) -> String {
         return "is_locked_\(difficulity.rawValue)"
     }
@@ -25,6 +33,17 @@ enum Keys {
 }
 
 enum StandardUtils {
+    
+    static func getKeyOfLevelLabel(by difficulity: Difficulity) -> String {
+        switch difficulity {
+        case .easy:
+            return Keys.easyLevelsKey
+        case .medium:
+            return Keys.mediumLevelsKey
+        case .hard:
+            return Keys.hardLevelsKey
+        }
+    }
     
     static func getKeyFor(difficulity: Difficulity) -> String {
         switch difficulity {
@@ -46,7 +65,8 @@ enum StandardUtils {
     // Returns the current level with specified difficulity
     static func getCurrentLevelWith(difficulity: Difficulity) -> Int {
         let userDefaults = UserDefaults.standard
-        return userDefaults.integer(forKey: StandardUtils.getKeyFor(difficulity: difficulity))
+        let level = userDefaults.integer(forKey: StandardUtils.getKeyFor(difficulity: difficulity))
+        return level == 0 ? 1 : level
     }
     
     // Called only once in the AppDelegate

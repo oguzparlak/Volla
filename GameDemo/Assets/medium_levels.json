@@ -1,0 +1,163 @@
+[
+    {
+        "level": 1,
+        "rows": 2,
+        "cols": 4,
+        "contentType": "numbers",
+        "difficulity": "medium"
+    },
+    {
+        "level": 2,
+        "rows": 2,
+        "cols": 5,
+        "contentType": "smiley",
+        "difficulity": "medium"
+    },
+    {
+        "level": 3,
+        "rows": 2,
+        "cols": 6,
+        "contentType": "foods",
+        "difficulity": "medium"
+    },
+    {
+        "level": 4,
+        "rows": 3,
+        "cols": 3,
+        "contentType": "sports",
+        "difficulity": "medium"
+    },
+    {
+        "level": 5,
+        "rows": 3,
+        "cols": 3,
+        "contentType": "numbers",
+        "difficulity": "medium"
+    },
+    {
+        "level": 6,
+        "rows": 3,
+        "cols": 3,
+        "contentType": "smiley",
+        "difficulity": "medium"
+    },
+    {
+        "level": 7,
+        "rows": 3,
+        "cols": 4,
+        "contentType": "technology",
+        "difficulity": "medium"
+    },
+    {
+        "level": 8,
+        "rows": 3,
+        "cols": 4,
+        "contentType": "foods",
+        "difficulity": "medium"
+    },
+    {
+        "level": 9,
+        "rows": 3,
+        "cols": 4,
+        "contentType": "animals",
+        "difficulity": "medium"
+    },
+    {
+        "level": 10,
+        "rows": 3,
+        "cols": 5,
+        "contentType": "numbers",
+        "difficulity": "medium"
+    },
+    {
+        "level": 11,
+        "rows": 3,
+        "cols": 5,
+        "contentType": "plants",
+        "difficulity": "medium"
+    },
+    {
+        "level": 12,
+        "rows": 3,
+        "cols": 5,
+        "contentType": "clothes",
+        "difficulity": "medium"
+    },
+    {
+        "level": 13,
+        "rows": 3,
+        "cols": 6,
+        "contentType": "technology",
+        "difficulity": "medium"
+    },
+    {
+        "level": 14,
+        "rows": 4,
+        "cols": 6,
+        "contentType": "sports",
+        "difficulity": "medium"
+    },
+    {
+        "level": 15,
+        "rows": 4,
+        "cols": 6,
+        "contentType": "numbers",
+        "difficulity": "medium"
+    },
+    {
+        "level": 16,
+        "rows": 4,
+        "cols": 6,
+        "contentType": "animals",
+        "difficulity": "medium"
+    },
+    {
+        "level": 17,
+        "rows": 4,
+        "cols": 6,
+        "contentType": "plants",
+        "difficulity": "medium"
+    },
+    {
+        "level": 18,
+        "rows": 5,
+        "cols": 6,
+        "contentType": "smiley",
+        "difficulity": "medium"
+    },
+    {
+        "level": 19,
+        "rows": 5,
+        "cols": 6,
+        "contentType": "technology",
+        "difficulity": "medium"
+    },
+    {
+        "level": 20,
+        "rows": 5,
+        "cols": 6,
+        "contentType": "smiley",
+        "difficulity": "medium"
+    },
+    {
+        "level": 21,
+        "rows": 5,
+        "cols": 6,
+        "contentType": "sports",
+        "difficulity": "medium"
+    },
+    {
+        "level": 22,
+        "rows": 5,
+        "cols": 6,
+        "contentType": "numbers",
+        "difficulity": "medium"
+    },
+    {
+        "level": 23,
+        "rows": 5,
+        "cols": 6,
+        "contentType": "plants",
+        "difficulity": "medium"
+    }
+]    

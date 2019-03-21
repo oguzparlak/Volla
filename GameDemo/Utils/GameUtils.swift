@@ -11,6 +11,17 @@ import UIKit
 
 enum Difficulity: String {
     case easy, medium, hard
+    
+    func next() -> Difficulity? {
+        switch self {
+        case .easy:
+            return .medium
+        case .medium:
+            return .hard
+        case .hard:
+            return nil
+        }
+    }
 }
 
 enum Difficulities {
@@ -114,7 +125,7 @@ enum GameUtils {
     }
     
     static func load(level: Int, with difficulity: Difficulity) -> RawLevel? {
-        if let data = UserDefaults.standard.value(forKey: "levels") as? Data {
+        if let data = UserDefaults.standard.value(forKey: StandardUtils.getKeyOfLevelLabel(by: difficulity)) as? Data {
             let rawLevels = try? PropertyListDecoder().decode(Array<RawLevel>.self, from: data)
             let rawLevel = rawLevels?.first(where: { (rawLevel) -> Bool in
                 rawLevel.level == level && rawLevel.difficulity == difficulity.rawValue
@@ -124,42 +135,42 @@ enum GameUtils {
         return nil
     }
     
-    static func load(level: Int) -> RawLevel? {
-        if let data = UserDefaults.standard.value(forKey:"levels") as? Data {
-            let rawLevels = try? PropertyListDecoder().decode(Array<RawLevel>.self, from: data)
-            let rawLevel = rawLevels?.first(where: { (rawLevel) -> Bool in
-                rawLevel.level == level
-            })
-            return rawLevel
-        }
-        return nil
-    }
-    
     static func loadLevels() {
         let userDefaults = UserDefaults.standard
-        let levelsParsed = userDefaults.bool(forKey: "levels_parsed")
+        let levelsParsed = userDefaults.bool(forKey: Keys.levelsParsedKey)
+        // If levels are not parsed yet
         if !levelsParsed {
-            if let path = Bundle.main.path(forResource: "levels", ofType: "json") {
-                do {
-                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                    let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                    if let levels = jsonResult as? Array<Dictionary<String, Any>> {
-                        // do stuff
-                        var rawLevels: [RawLevel] = []
-                        for level in levels {
-                            let rawLevel = RawLevel(json: level)
-                            rawLevels.append(rawLevel)
-                        }
-                        // Encode levels and save it to UserDefaults
-                        userDefaults.set(try? PropertyListEncoder().encode(rawLevels), forKey:"levels")
-                        // Save the starting level
-                        userDefaults.set(1, forKey: Keys.currentLevelKeyForEasy)
-                        // Update levels_parsed key
-                        userDefaults.set(true, forKey: "levels_parsed")
+            // Parse levels for each category
+            parseLevels(with: Keys.easyLevelsKey)
+            parseLevels(with: Keys.mediumLevelsKey)
+            parseLevels(with: Keys.hardLevelsKey)
+            // Update levels_parsed key
+            userDefaults.set(true, forKey: Keys.levelsParsedKey)
+            // Save the starting level
+            userDefaults.set(1, forKey: Keys.currentLevelKeyForEasy)
+            userDefaults.set(1, forKey: Keys.currentLevelKeyForMedium)
+            userDefaults.set(1, forKey: Keys.currentLevelKeyForHard)
+        }
+    }
+    
+    private static func parseLevels(with fileName: String) {
+        let userDefaults = UserDefaults.standard
+        if let path = Bundle.main.path(forResource: fileName, ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let levels = jsonResult as? Array<Dictionary<String, Any>> {
+                    // do stuff
+                    var rawLevels: [RawLevel] = []
+                    for level in levels {
+                        let rawLevel = RawLevel(json: level)
+                        rawLevels.append(rawLevel)
                     }
-                } catch {
-                    // handle error
+                    // Encode levels and save it to UserDefaults
+                    userDefaults.set(try? PropertyListEncoder().encode(rawLevels), forKey: fileName)
                 }
+            } catch {
+                // handle error
             }
         }
     }
@@ -169,16 +180,22 @@ enum GameUtils {
         let difficulityKey = StandardUtils.getKeyFor(difficulity: GameUtils.currentDifficulity ?? .easy)
         let currentLevel = userDefaults.integer(forKey: difficulityKey)
         let nextLevel = currentLevel + 1
-        if let data = UserDefaults.standard.value(forKey:"levels") as? Data {
+        if let data = UserDefaults.standard.value(forKey: StandardUtils.getKeyOfLevelLabel(by: GameUtils.currentDifficulity ?? .easy)) as? Data {
             let rawLevels = try? PropertyListDecoder().decode(Array<RawLevel>.self, from: data)
             let filteredLevelsBasedOnDifficulity = rawLevels?.filter({ (level) -> Bool in
                 level.difficulity == GameUtils.currentDifficulity?.rawValue
             })
             if nextLevel > (filteredLevelsBasedOnDifficulity?.count)! {
+                if let nextDifficulity = GameUtils.currentDifficulity?.next() {
+                    let newLevel = StandardUtils.getCurrentLevelWith(difficulity: nextDifficulity)
+                    GameUtils.currentLevel = newLevel
+                    StandardUtils.updateDifficulity(nextDifficulity)
+                    // Unlock
+                    StandardUtils.enableDifficulity(nextDifficulity)
+                }
                 return
             }
         }
-        // TODO When there is nowhere to go or reached checkpoint
         // Switch to next level
         GameUtils.currentLevel = nextLevel
         userDefaults.set(nextLevel, forKey: difficulityKey)

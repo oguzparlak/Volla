@@ -185,6 +185,7 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
         // Update Level Label
         let initialViewController = self.view?.window?.rootViewController as! InitialViewController
         initialViewController.updateLevelLabel(level: GameUtils.currentLevel ?? 1)
+        initialViewController.updateUiOnDifficulityChanged()
         presentEndViewController(isSuccess: true, extras: pointDictionary)
     }
     

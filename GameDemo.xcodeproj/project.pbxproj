@@ -31,7 +31,7 @@
 		BFAE0259222DABF20000B48C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BFAE025B222DABF20000B48C /* Localizable.strings */; };
 		BFB9F5B9222BE87A007364BE /* PointCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB9F5B8222BE87A007364BE /* PointCalculator.swift */; };
 		BFB9F5BB222BE962007364BE /* GameUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB9F5BA222BE962007364BE /* GameUtils.swift */; };
-		BFB9F5BF222BF8CE007364BE /* levels.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB9F5BE222BF8CE007364BE /* levels.json */; };
+		BFB9F5BF222BF8CE007364BE /* easy_levels.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB9F5BE222BF8CE007364BE /* easy_levels.json */; };
 		BFB9F5C1222BFCDA007364BE /* RawLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB9F5C0222BFCDA007364BE /* RawLevel.swift */; };
 		BFC03FDE22135FAB00E660A9 /* tada.wav in Resources */ = {isa = PBXBuildFile; fileRef = BFC03FDB22135FAB00E660A9 /* tada.wav */; };
 		BFC03FDF22135FAB00E660A9 /* sound_wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = BFC03FDC22135FAB00E660A9 /* sound_wrong.wav */; };
@@ -48,6 +48,8 @@
 		BFD154842215CE10007FC209 /* shot.wav in Resources */ = {isa = PBXBuildFile; fileRef = BFD154832215CE10007FC209 /* shot.wav */; };
 		BFD154862215CE1C007FC209 /* tick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFD154852215CE1C007FC209 /* tick.mp3 */; };
 		BFD154882215CE31007FC209 /* ping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFD154872215CE31007FC209 /* ping.mp3 */; };
+		BFD391CF2242B0AB003FCED2 /* medium_levels.json in Resources */ = {isa = PBXBuildFile; fileRef = BFD391CD2242B0AB003FCED2 /* medium_levels.json */; };
+		BFD391D02242B0AB003FCED2 /* hard_levels.json in Resources */ = {isa = PBXBuildFile; fileRef = BFD391CE2242B0AB003FCED2 /* hard_levels.json */; };
 		BFE45D53223EC6EE009DCB0C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE45D52223EC6EE009DCB0C /* Constants.swift */; };
 		BFEA614A22272A95001E2876 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA614922272A95001E2876 /* Shape.swift */; };
 		BFEA614C22272B14001E2876 /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA614B22272B14001E2876 /* Value.swift */; };
@@ -116,7 +118,7 @@
 		BFAE025C222DABF80000B48C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BFB9F5B8222BE87A007364BE /* PointCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCalculator.swift; sourceTree = "<group>"; };
 		BFB9F5BA222BE962007364BE /* GameUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUtils.swift; sourceTree = "<group>"; };
-		BFB9F5BE222BF8CE007364BE /* levels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = levels.json; sourceTree = "<group>"; };
+		BFB9F5BE222BF8CE007364BE /* easy_levels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = easy_levels.json; sourceTree = "<group>"; };
 		BFB9F5C0222BFCDA007364BE /* RawLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawLevel.swift; sourceTree = "<group>"; };
 		BFC03FDB22135FAB00E660A9 /* tada.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tada.wav; sourceTree = "<group>"; };
 		BFC03FDC22135FAB00E660A9 /* sound_wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound_wrong.wav; sourceTree = "<group>"; };
@@ -133,6 +135,8 @@
 		BFD154832215CE10007FC209 /* shot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shot.wav; sourceTree = "<group>"; };
 		BFD154852215CE1C007FC209 /* tick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tick.mp3; sourceTree = "<group>"; };
 		BFD154872215CE31007FC209 /* ping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ping.mp3; sourceTree = "<group>"; };
+		BFD391CD2242B0AB003FCED2 /* medium_levels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = medium_levels.json; sourceTree = "<group>"; };
+		BFD391CE2242B0AB003FCED2 /* hard_levels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hard_levels.json; sourceTree = "<group>"; };
 		BFE45D52223EC6EE009DCB0C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BFEA614922272A95001E2876 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		BFEA614B22272B14001E2876 /* Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
@@ -328,7 +332,9 @@
 		BFCD74AB220C9676006C3E79 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				BFB9F5BE222BF8CE007364BE /* levels.json */,
+				BFD391CE2242B0AB003FCED2 /* hard_levels.json */,
+				BFD391CD2242B0AB003FCED2 /* medium_levels.json */,
+				BFB9F5BE222BF8CE007364BE /* easy_levels.json */,
 				BF2982012223030B00832123 /* Lottie */,
 				BFC03FD922135FA000E660A9 /* Sounds */,
 				BF5F75E4220B4D25004D5F99 /* Main.storyboard */,
@@ -482,16 +488,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFC03FDF22135FAB00E660A9 /* sound_wrong.wav in Resources */,
-				BFB9F5BF222BF8CE007364BE /* levels.json in Resources */,
+				BFB9F5BF222BF8CE007364BE /* easy_levels.json in Resources */,
 				BF5F75E6220B4D25004D5F99 /* Main.storyboard in Resources */,
 				BF3EB7E32232E357009BA132 /* game_lost.mp3 in Resources */,
 				BFC03FDE22135FAB00E660A9 /* tada.wav in Resources */,
 				BFECA476222978AA00332980 /* sad_face.json in Resources */,
 				BF7232B7222A9AE400E7D785 /* success.mp3 in Resources */,
+				BFD391CF2242B0AB003FCED2 /* medium_levels.json in Resources */,
 				BF5F75DD220B4D25004D5F99 /* GameScene.sks in Resources */,
 				BF5F75E8220B4D26004D5F99 /* Assets.xcassets in Resources */,
 				BF2982032223031400832123 /* success.json in Resources */,
 				BFECA47222295ED500332980 /* fail.json in Resources */,
+				BFD391D02242B0AB003FCED2 /* hard_levels.json in Resources */,
 				BFD154842215CE10007FC209 /* shot.wav in Resources */,
 				BFD154862215CE1C007FC209 /* tick.mp3 in Resources */,
 				BF5F75EB220B4D26004D5F99 /* LaunchScreen.storyboard in Resources */,
@@ -611,6 +619,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GameDemo/Pods-GameDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ActivityRings/ActivityRings.framework",
 				"${BUILT_PRODUCTS_DIR}/BubbleTransition/BubbleTransition.framework",
 				"${BUILT_PRODUCTS_DIR}/Comets/Comets.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
@@ -619,6 +628,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActivityRings.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BubbleTransition.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Comets.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",

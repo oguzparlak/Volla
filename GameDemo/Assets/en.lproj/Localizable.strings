@@ -28,6 +28,8 @@
 
 "matchPlants" = "Try to match\nthe plants with each other";
 
+"matchSymbols" = "Try to match\nthe symbols with each other";
+
 "level" = "Lv. %d";
 
 "easy" = "Easy";

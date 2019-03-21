@@ -28,6 +28,8 @@
 
 "matchPlants" = "Bitkileri eşleştir";
 
+"matchSymbols" = "Sembolleri eşleştir";
+
 "level" = "Lv. %d";
 
 "easy" = "Kolay";

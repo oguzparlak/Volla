@@ -1,0 +1,6 @@
+framework module ActivityRings {
+  umbrella header "ActivityRings-umbrella.h"
+
+  export *
+  module * { export * }
+}

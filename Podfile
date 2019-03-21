@@ -11,6 +11,7 @@ target 'GameDemo' do
   pod 'BubbleTransition', '~> 3.0.0'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'ActivityRings'
   
   target 'GameDemoTests' do
     inherit! :search_paths

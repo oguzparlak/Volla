@@ -18,6 +18,9 @@ enum ContentType: String {
     case sports
     case technology
     case clothes
+    case weather
+    case transport
+    case symbol
 }
 
 protocol Content {
@@ -58,8 +61,14 @@ class ContentFactory {
             return TechnologyContent(with: size)
         case .clothes:
             return ClothesContent(with: size)
+        case .weather:
+            return WeatherContent(with: size)
+        case .transport:
+            return TransportContent(with: size)
+        case .symbol:
+            return SymbolContent(with: size)
         default:
-            return NumberContent(with: size)
+            return SmileyContent(with: size)
         }
     }
 }
@@ -97,6 +106,17 @@ class SportContent: AbstractContent, Content {
 
 }
 
+class TransportContent: AbstractContent, Content {
+    
+    var questionDescription = NSLocalizedString("matchObjects", comment: "")
+    
+    func generate() -> Array<String> {
+        let transports = ["🚗", "🚕", "🚙", "🚌", "🚎", "🏎", "🚓", "🚑", "🚐", "🚚", "🚛", "🚜", "🛴", "🚲", "🛵", "🚠", "🚡", "🚖", "🚘", "🚍", "🚔", "🏍", "🚟", "🚃", "🚋", "🚂", "🚆", "🚇", "🚊", "🚝", "🚉", "🚀", "✈️", "🚄", "🛫", "🚅", "🛩", "🚤", "🛥", "🛳", "⛴", "🚢", "⚓️", "⛽️", "🚧", "⛵️"]
+        return transports.pickRandom(size)
+    }
+    
+}
+
 class PlantsContent: AbstractContent, Content {
     
     var questionDescription = NSLocalizedString("matchPlants", comment: "")
@@ -104,6 +124,17 @@ class PlantsContent: AbstractContent, Content {
     func generate() -> Array<String> {
         let plants = ["🌵", "🎄", "🌲", "🌳", "🌴", "🌱", "🌿", "☘️", "🍀", "🐚", "🍄", "🍁", "🍂", "🍃", "🎋", "🎍", "🌾", "💐", "🌷", "🌹", "🥀", "🌺", "🌸", "🌼", "🌻"]
         return plants.pickRandom(size)
+    }
+    
+}
+
+class SymbolContent: AbstractContent, Content {
+    
+    var questionDescription = NSLocalizedString("matchSymbols", comment: "")
+    
+    func generate() -> Array<String> {
+        let symbols = ["⚪️", "⚫️", "🔴", "🔵", "🔺", "🔻", "🔸", "🔶", "🔷", "🔳", "🔲", "⬛️", "🔈", "🔔", "📣", "💬", "💭", "🗯", "♠️", "♣️", "♥️", "♦️", "🃏", "🎴", "🀄️", "🕐", "‼️", "🔅", "⚠️", "〽️", "🚸", "🔱", "⚜️", "🌐", "💠", "♻️", "🔰", "✳️", "❎", "🌀", "❤️", "🧡", "💚", "💙", "💜", "💖", "💞", "💝", "🖤"]
+        return symbols.pickRandom(size)
     }
     
 }
@@ -137,6 +168,18 @@ class AnimalContent: AbstractContent, Content {
     func generate() -> Array<String> {
         let animals = ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐽", "🐷", "🐮", "🦁", "🐯", "🐨", "🐼", "🐸", "🐵", "🙈", "🙉", "🙊", "🐒", "🐔", "🐥", "🐣", "🐤", "🐦", "🐧", "🦆", "🦅", "🐝", "🦄", "🐴", "🐗", "🐺", "🦉", "🐛", "🐌", "🐚", "🐞", "🐜", "🦗", "🦖", "🦎", "🐍", "🐢", "🦂", "🐙", "🦕", "🕷", "🦐", "🦑", "🦀", "🐡", "🐠", "🐟", "🐑", "🦒", "🐐", "🐃", "🦌", "🐂", "🐄", "🐕", "🦍", "🐘", "🐩", "🐎", "🐖", "🐈", "🐓", "🐏", "🐪", "🐫", "🐊"]
         return animals.pickRandom(size)
+    }
+    
+}
+
+
+class WeatherContent: AbstractContent, Content {
+    
+    var questionDescription = NSLocalizedString("matchObjects", comment: "")
+    
+    func generate() -> Array<String> {
+        let objects = ["🌞", "🌝", "🌛", "🌜", "🌚", "🌕", "🌖", "🌘", "🌑", "🌒", "🌓", "🌙", "🌎", "💫", "⭐️", "⚡️", "☄️", "💥", "🔥", "🌪", "🌈", "🌤", "🌧", "❄️", "☃️", "🌬", "💨", "💧", "💦", "☔️", "☂️", "🌊"]
+        return objects.pickRandom(size)
     }
     
 }

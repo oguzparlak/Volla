@@ -1,4 +1,5 @@
 PODS:
+  - ActivityRings (2.0.1)
   - BubbleTransition (3.0.2)
   - Comets (0.2.1)
   - Crashlytics (3.11.1):
@@ -7,6 +8,7 @@ PODS:
   - lottie-ios (2.5.2)
 
 DEPENDENCIES:
+  - ActivityRings
   - BubbleTransition (~> 3.0.0)
   - Comets
   - Crashlytics
@@ -15,6 +17,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - ActivityRings
     - BubbleTransition
     - Comets
     - Crashlytics
@@ -22,12 +25,13 @@ SPEC REPOS:
     - lottie-ios
 
 SPEC CHECKSUMS:
+  ActivityRings: f4cf172a0198c1994f4a5a1ff0bd88fd2d05b913
   BubbleTransition: 6bdf7d8af460b5c3696beb0adbf4bcb17176ee11
   Comets: 3ef4bca8ecdf76e9389ef2feb8c89f9690df3387
   Crashlytics: ca7ab4bc304aa216bdc2e4c1a96389ee77252203
   Fabric: d2b22f443ba195d8a7cc204da230977c72733b40
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
 
-PODFILE CHECKSUM: 190f74a2ca3ba4c04a0da5538e8c8fdd835bb35f
+PODFILE CHECKSUM: f6069b497ecf24ab4b63c12bda07a24d2bcd9c6b
 
 COCOAPODS: 1.5.3
