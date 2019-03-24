@@ -49,6 +49,10 @@ class InitialViewController: UIViewController {
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     @IBAction func difficulityViewTapped(_ sender: Any) {
         onDifficulitySelected(sender as AnyObject)
     }
@@ -62,8 +66,8 @@ class InitialViewController: UIViewController {
         let hardAction = UIAlertAction(title: Difficulities.hard, style: .default, handler: handleOnActionSelected)
         let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil)
         // Check availability of the levels
-        mediumAction.isEnabled = StandardUtils.isDifficulityLocked(.medium)
-        hardAction.isEnabled = StandardUtils.isDifficulityLocked(.hard)
+        mediumAction.isEnabled = StandardUtils.isDifficulityEnabled(.medium)
+        hardAction.isEnabled = StandardUtils.isDifficulityEnabled(.hard)
         // Add actions
         alertController.addAction(easyAction)
         alertController.addAction(mediumAction)

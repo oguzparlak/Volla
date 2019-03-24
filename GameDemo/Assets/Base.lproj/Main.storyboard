@@ -148,7 +148,7 @@
                                     <constraint firstAttribute="height" constant="36" id="g8a-ki-V9a"/>
                                     <constraint firstAttribute="width" constant="36" id="tzM-66-qTx"/>
                                 </constraints>
-                                <state key="normal" image="ic_close_blue"/>
+                                <state key="normal" image="ic_close_red"/>
                                 <connections>
                                     <action selector="closeButtonTapped:" destination="8cB-1o-ldJ" eventType="touchUpInside" id="jRM-fV-pGC"/>
                                 </connections>
@@ -170,7 +170,7 @@
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4nk-3b-4I4">
                                 <rect key="frame" x="117" y="189" width="180" height="180"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="cOa-Ya-edD"/>
                                     <constraint firstAttribute="width" constant="180" id="uup-u0-TGd"/>
@@ -242,8 +242,10 @@
                         <viewLayoutGuide key="safeArea" id="CSP-qy-SZY"/>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="Zq8-C1-U0V" id="E0o-OY-eH8"/>
                         <outlet property="highScoreLabel" destination="q9V-ga-GBH" id="83T-zH-EfI"/>
                         <outlet property="highScoreValueLabel" destination="oVU-yo-5It" id="Ffa-eG-7ct"/>
+                        <outlet property="progressTitleLabel" destination="Y2L-M4-9cZ" id="LrO-hy-kDP"/>
                         <outlet property="remainingLevelsLabel" destination="jrx-Y9-Adh" id="RJs-eG-Pe4"/>
                         <outlet property="ringContainer" destination="4nk-3b-4I4" id="r6W-uN-nq3"/>
                         <outlet property="segmentedControl" destination="UDR-fl-IXm" id="2aA-wP-qJJ"/>
@@ -434,7 +436,7 @@
     </scenes>
     <resources>
         <image name="ic_close" width="22" height="22"/>
-        <image name="ic_close_blue" width="22" height="22"/>
+        <image name="ic_close_red" width="22" height="22"/>
         <image name="ic_play_button" width="222" height="222"/>
         <image name="ic_progress" width="77" height="77"/>
         <image name="ic_sun" width="34" height="34"/>

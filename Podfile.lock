@@ -5,6 +5,7 @@ PODS:
   - Crashlytics (3.11.1):
     - Fabric (~> 1.8.1)
   - Fabric (1.8.2)
+  - JSSAlertView (4.2.0)
   - lottie-ios (2.5.2)
 
 DEPENDENCIES:
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - Comets
   - Crashlytics
   - Fabric
+  - JSSAlertView
   - lottie-ios
 
 SPEC REPOS:
@@ -22,6 +24,7 @@ SPEC REPOS:
     - Comets
     - Crashlytics
     - Fabric
+    - JSSAlertView
     - lottie-ios
 
 SPEC CHECKSUMS:
@@ -30,8 +33,9 @@ SPEC CHECKSUMS:
   Comets: 3ef4bca8ecdf76e9389ef2feb8c89f9690df3387
   Crashlytics: ca7ab4bc304aa216bdc2e4c1a96389ee77252203
   Fabric: d2b22f443ba195d8a7cc204da230977c72733b40
+  JSSAlertView: 84ec53a0cbcfaa25a09293751356afed09484023
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
 
-PODFILE CHECKSUM: f6069b497ecf24ab4b63c12bda07a24d2bcd9c6b
+PODFILE CHECKSUM: 40f636ec2e80254f6bda06410c2776d1b118083b
 
 COCOAPODS: 1.5.3

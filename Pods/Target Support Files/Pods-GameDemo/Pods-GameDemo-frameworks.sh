@@ -146,12 +146,14 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ActivityRings/ActivityRings.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BubbleTransition/BubbleTransition.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Comets/Comets.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/JSSAlertView/JSSAlertView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ActivityRings/ActivityRings.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BubbleTransition/BubbleTransition.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Comets/Comets.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/JSSAlertView/JSSAlertView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

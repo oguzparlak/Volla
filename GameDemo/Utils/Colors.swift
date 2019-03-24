@@ -17,5 +17,6 @@ enum Colors {
     static let asbestos = UIColor(red: 0.50, green: 0.55, blue: 0.55, alpha: 1.0)
     static let emerald = UIColor(red: 0.18, green: 0.80, blue: 0.44, alpha: 1.0)
     static let midnightBlue = UIColor(red: 0.17, green: 0.24, blue: 0.31, alpha: 1.0)
+    static let wisteria = UIColor(red: 0.56, green: 0.27, blue: 0.68, alpha: 1.0)
 
 }

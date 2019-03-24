@@ -11,7 +11,7 @@ import GameplayKit
 import UIKit
 import BubbleTransition
 
-class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
+class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate {
     
     var pointCalculator: PointCalculator!
     
@@ -27,7 +27,9 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
     // Countdown Node
     var countDownNode: CountDownNode!
     
-    var levelDescriptionNode: LevelDescriptionNode!
+    var bottomLabel: LevelDescriptionNode!
+    
+    var remainingLivesNode: RemainingLivesNode!
     
     // Remaining time on countdown timer
     var remainingTime = 5
@@ -52,6 +54,8 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
     var currentRawLevel: RawLevel?
     
     var maximumTime: Int?
+    
+    var alertPresenter: AlertPresenter!
     
     var correctAnswerCount: Int! {
         didSet {
@@ -89,11 +93,11 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
         // Start Timer
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameScene.updateTime), userInfo: nil, repeats: true)
         // Add Description text
-        levelDescriptionNode = LevelDescriptionNode(text: board.content?.questionDescription)
-        levelDescriptionNode.position = CGPoint(x: frame.midX, y: -frame.height / 2 + 48)
-        levelDescriptionNode.preferredMaxLayoutWidth = frame.width
-        levelDescriptionNode.run(SKAction.fadeIn(withDuration: 1.0))
-        addChild(levelDescriptionNode)
+        bottomLabel = LevelDescriptionNode(text: board.content?.questionDescription)
+        bottomLabel.position = CGPoint(x: frame.midX, y: -frame.height / 2 + 48)
+        bottomLabel.preferredMaxLayoutWidth = frame.width
+        bottomLabel.run(SKAction.fadeIn(withDuration: 1.0))
+        addChild(bottomLabel)
         // Show of the squares
         NodeUtils.showAllContent(of: board)
         // Init correctAnswerCount
@@ -103,6 +107,14 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
         // Init PointCalculator
         pointCalculator = PointCalculator(maximumTime: TimeInterval(maximumTime!))
         pointCalculator.difficulity = Difficulity(rawValue: currentRawLevel?.difficulity ?? "easy")
+        // Init RemainingLivesNode
+        let remainingLives = GameUtils.getRemainingLivesFor(difficulity: GameUtils.currentDifficulity ?? .easy)
+        remainingLivesNode = RemainingLivesNode(currentLives: remainingLives)
+        remainingLivesNode.position = CGPoint(x: -frame.width / 2 + NodeUtils.paddingOfSquares * 2 + 8, y: frame.height / 2 - margin + 8)
+        remainingLivesNode.livesDelegate = self
+        addChild(remainingLivesNode)
+        // Init AlertPresenter
+        self.alertPresenter = AlertPresenter(with: viewController!)
     }
     
     @objc func updateTime() {
@@ -113,6 +125,7 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
         if inLookUpSession {
             if remainingTime == 0 {
                 finishLookUpSession()
+                updateBottomLabel(with: NSLocalizedString("goodLuck", comment: ""))
             }
         } else {
             if remainingTime == 0 {
@@ -125,8 +138,21 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
         }
     }
     
+    func updateBottomLabel(with text: String) {
+        bottomLabel.fadeOutAndIn()
+        bottomLabel.text = text
+    }
+    
     func onCloseButtonTapped() {
-        viewController?.dismiss(animated: true, completion: nil)
+        alertPresenter.showWarningDialog(onStayTapped: {
+            // Stay tapped
+            // do nothing just close the dialog
+        }) {
+            // Exit Tapped
+            // TODO Decrement the current level by 1
+            // Dismiss the GameVC
+            self.viewController?.dismiss(animated: true, completion: nil)
+        }
     }
     
     func detectFinish() {
@@ -140,7 +166,7 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
         timer.invalidate()
         // Animate
         countDownNode.run(SKAction.moveBy(x: 0, y: 160, duration: 1.0))
-        levelDescriptionNode.run(SKAction.moveBy(x: 0, y: -160, duration: 1.0))
+        bottomLabel.run(SKAction.moveBy(x: 0, y: -160, duration: 1.0))
         viewController?.animateCloseButton()
         if countDownEnded {
             onLose()
@@ -159,6 +185,19 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
         run(gameLostSound)
         viewController?.playLottie(isSucess: false, completion: nil)
         presentEndViewController(isSuccess: false)
+    }
+    
+    func onLivesEnd() {
+        finishGame(countDownEnded: true)
+    }
+    
+    private func showComboPoint(with point: Int) {
+        let comboNode = LevelDescriptionNode(text: "+\(point.description)")
+        comboNode.position = CGPoint(x: frame.midX, y: -frame.height / 2 + 90)
+        comboNode.preferredMaxLayoutWidth = frame.width
+        comboNode.fadeOutAndIn(with: 0.8, reverse: true)
+        comboNode.fontSize = 28
+        addChild(comboNode)
     }
     
     private func onWin() {
@@ -233,16 +272,22 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
                         self.lastTouchedSquare?.state = .disabled
                         lastAddedSquare.state = .disabled
                         self.squareStack.popAll()
-                        // play correct sound
-                        let correctSound = SKAction.playSoundFileNamed("success.mp3", waitForCompletion: false)
-                        self.run(correctSound)
                         self.disableInteraction()
+                        let sound: SKAction!
                         if self.isLastAnswerTrue {
+                            sound = SKAction.playSoundFileNamed("bonus.wav", waitForCompletion: false)
                             self.pointCalculator.incrementComboCount()
+                            self.showComboPoint(with: GameUtils.getComboPointFor(comboCount: self.pointCalculator.getComboCount()))
+                        } else {
+                            sound = SKAction.playSoundFileNamed("success.mp3", waitForCompletion: false)
                         }
+                        self.run(sound)
                         self.isLastAnswerTrue = true
                         // Increment correct answer count
                         self.correctAnswerCount += 2
+                        let currentPoint = self.pointCalculator.calculatePointOnCorrectGuess()
+                        // Update label
+                        self.updateBottomLabel(with: currentPoint.description)
                     }
                 } else {
                     // No match close them both
@@ -256,6 +301,9 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate {
                         self.run(falseSound)
                         self.disableInteraction()
                         self.isLastAnswerTrue = false
+                        self.pointCalculator.resetComboCount()
+                        // TODO Handle on zero
+                        self.remainingLivesNode.decrementLive()
                     }
                 }
             }
@@ -309,6 +357,13 @@ extension SKNode {
                                SKAction.scale(to: 1.0, duration: timeInterval)])
         )
     }
+    
+    func fadeOutAndIn(with time: TimeInterval = 0.3, reverse: Bool = false) {
+        let firstAnimation = reverse ? SKAction.fadeIn(withDuration: time) : SKAction.fadeOut(withDuration: time)
+        let secondAnimation = reverse ? SKAction.fadeOut(withDuration: time) : SKAction.fadeIn(withDuration: time)
+        self.run(SKAction.sequence([firstAnimation, secondAnimation]))
+    }
+    
 }
 
 extension GameScene {

@@ -20,6 +20,9 @@ enum NodeUtils {
     // The corner radius of the squares
     static let cornerRadiusOfSquares: CGFloat = 4.0
     
+    // The radius of remaining lives node
+    static let radiusOfLivesRemaingingCircle: CGFloat = 24
+    
     // Returns the width and also height of a square
     static func calculateWidthOfASquare(numberOfSquaresForEachRow: CGFloat?, screenWidth: CGFloat) -> CGFloat {
         return (screenWidth - paddingOfSquares * (numberOfSquaresForEachRow! + 1)) / numberOfSquaresForEachRow!

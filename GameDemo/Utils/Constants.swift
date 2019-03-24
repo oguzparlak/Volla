@@ -87,7 +87,7 @@ enum StandardUtils {
     }
     
     // Returns true if the difficulity is locked
-    static func isDifficulityLocked(_ difficulity: Difficulity) -> Bool {
+    static func isDifficulityEnabled(_ difficulity: Difficulity) -> Bool {
         let userDefaults = UserDefaults.standard
         return userDefaults.bool(forKey: Keys.getIsLockedKey(difficulity))
     }

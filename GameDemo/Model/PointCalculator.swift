@@ -22,6 +22,8 @@ class PointCalculator {
     // Accumulated combo points so far
     private var accumulatedPointFromComboPoints = 0
     
+    private var totalPointFromBasePoint = 0
+    
     // Difficulity of the current level
     var difficulity: Difficulity!
     
@@ -42,8 +44,18 @@ class PointCalculator {
         accumulatedPointFromComboPoints += GameUtils.getComboPointFor(comboCount: comboCount)
     }
     
+    func getAccumulatedComboPoints() -> Int {
+        return accumulatedPointFromComboPoints
+    }
+    
+    func calculatePointOnCorrectGuess() -> Int {
+        totalPointFromBasePoint += GameUtils.getBasePointFor(difficulity: difficulity)
+        return accumulatedPointFromComboPoints + totalPointFromBasePoint
+    }
+    
     func resetComboCount() {
         comboCount = 0
+        accumulatedPointFromComboPoints = 0
     }
     
     func getComboCount() -> Int {

@@ -28,14 +28,6 @@ class Square : SKShapeNode {
     // The value behind this square
     var value: String?
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init()
-    }
-    
-    override init() {
-        super.init()
-    }
-    
     convenience init(rect: CGRect) {
         self.init(rect: rect, cornerRadius: NodeUtils.cornerRadiusOfSquares)
         fillColor = Colors.alizarin

@@ -12,5 +12,40 @@
         "cols": 4,
         "contentType": "animals",
         "difficulity": "easy"
+    },
+    {
+        "level": 3,
+        "rows": 1,
+        "cols": 5,
+        "contentType": "foods",
+        "difficulity": "easy"
+    },
+    {
+        "level": 4,
+        "rows": 1,
+        "cols": 5,
+        "contentType": "technology",
+        "difficulity": "easy"
+    },
+    {
+        "level": 5,
+        "rows": 1,
+        "cols": 6,
+        "contentType": "clothes",
+        "difficulity": "easy"
+    },
+    {
+        "level": 6,
+        "rows": 2,
+        "cols": 3,
+        "contentType": "sports",
+        "difficulity": "easy"
+    },
+    {
+        "level": 7,
+        "rows": 2,
+        "cols": 3,
+        "contentType": "plants",
+        "difficulity": "easy"
     }
 ]

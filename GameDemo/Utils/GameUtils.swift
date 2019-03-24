@@ -42,6 +42,34 @@ enum GameUtils {
     // Current level that will be played when user hits play button
     static var currentLevel: Int?
     
+    // 40 levels for each difficulity
+    static let gameCountForEachLevel = 40
+    
+    // Returns remaining lives for specified difficulity
+    static func getRemainingLivesFor(difficulity: Difficulity) -> Int {
+        switch difficulity {
+        case .easy:
+            return 5
+        case .medium:
+            return 10
+        case .hard:
+            return 15
+        }
+    }
+    
+    // Returns the base point for each correct guess
+    // depending of difficulity
+    static func getBasePointFor(difficulity: Difficulity) -> Int {
+        switch difficulity {
+        case .easy:
+            return 50
+        case .medium:
+            return 100
+        case .hard:
+            return 150
+        }
+    }
+    
     // Returns difficulity
     // with specified label
     static func getDifficulityFor(label: String) -> Difficulity {
@@ -104,14 +132,16 @@ enum GameUtils {
     
     static func getComboPointFor(comboCount: Int) -> Int {
         switch comboCount {
-        case 1...2:
+        case 1:
+            return 50
+        case 2:
             return 100
-        case 2...4:
+        case 3:
+            return 150
+        case 4:
             return 200
-        case 4...6:
-            return 300
-        case 6...Int.max:
-            return 400
+        case 5...Int.max:
+            return 250
         default:
             return 0
         }

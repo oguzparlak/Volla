@@ -12,6 +12,7 @@ target 'GameDemo' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'ActivityRings'
+  pod 'JSSAlertView'
   
   target 'GameDemoTests' do
     inherit! :search_paths
