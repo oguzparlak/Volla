@@ -13,6 +13,7 @@ target 'GameDemo' do
   pod 'Crashlytics'
   pod 'ActivityRings'
   pod 'JSSAlertView'
+  pod 'Google-Mobile-Ads-SDK'
   
   target 'GameDemoTests' do
     inherit! :search_paths

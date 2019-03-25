@@ -5,6 +5,7 @@ PODS:
   - Crashlytics (3.11.1):
     - Fabric (~> 1.8.1)
   - Fabric (1.8.2)
+  - Google-Mobile-Ads-SDK (7.41.0)
   - JSSAlertView (4.2.0)
   - lottie-ios (2.5.2)
 
@@ -14,6 +15,7 @@ DEPENDENCIES:
   - Comets
   - Crashlytics
   - Fabric
+  - Google-Mobile-Ads-SDK
   - JSSAlertView
   - lottie-ios
 
@@ -24,6 +26,7 @@ SPEC REPOS:
     - Comets
     - Crashlytics
     - Fabric
+    - Google-Mobile-Ads-SDK
     - JSSAlertView
     - lottie-ios
 
@@ -33,9 +36,10 @@ SPEC CHECKSUMS:
   Comets: 3ef4bca8ecdf76e9389ef2feb8c89f9690df3387
   Crashlytics: ca7ab4bc304aa216bdc2e4c1a96389ee77252203
   Fabric: d2b22f443ba195d8a7cc204da230977c72733b40
+  Google-Mobile-Ads-SDK: 101ce89b94fdf60ec64ba7b6e9b9d812dc765936
   JSSAlertView: 84ec53a0cbcfaa25a09293751356afed09484023
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
 
-PODFILE CHECKSUM: 40f636ec2e80254f6bda06410c2776d1b118083b
+PODFILE CHECKSUM: bd62710b7476ec80c4e7f7d09dc5379471ac77f9
 
 COCOAPODS: 1.5.3

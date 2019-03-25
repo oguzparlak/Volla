@@ -10,9 +10,10 @@ import SpriteKit
 import GameplayKit
 import UIKit
 import BubbleTransition
+import GoogleMobileAds
 
-class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate {
-    
+class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate, GADRewardBasedVideoAdDelegate {
+
     var pointCalculator: PointCalculator!
     
     // GameViewController
@@ -42,6 +43,8 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate {
     // where user can see all the squares
     // for a limited amount of time
     var inLookUpSession = true
+    
+    var adLoaded = false
     
     // The countdown timer
     var timer: Timer!
@@ -115,6 +118,10 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate {
         addChild(remainingLivesNode)
         // Init AlertPresenter
         self.alertPresenter = AlertPresenter(with: viewController!)
+        // Set Ad Delegate
+        // Load Ad
+        GADRewardBasedVideoAd.sharedInstance().load(DFPRequest(), withAdUnitID: "/6499/example/rewarded-video")
+        GADRewardBasedVideoAd.sharedInstance().delegate = self
     }
     
     @objc func updateTime() {
@@ -149,10 +156,17 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate {
             // do nothing just close the dialog
         }) {
             // Exit Tapped
-            // TODO Decrement the current level by 1
             // Dismiss the GameVC
-            self.viewController?.dismiss(animated: true, completion: nil)
+            self.timer.invalidate()
+            self.dissmissVCOnLose()
         }
+    }
+    
+    private func dissmissVCOnLose() {
+        StandardUtils.decrementCurrentLevelByOne()
+        let initialViewController = self.view?.window?.rootViewController as! InitialViewController
+        initialViewController.updateLevelLabel(level: GameUtils.currentLevel ?? 1)
+        self.viewController?.dismiss(animated: true, completion: nil)
     }
     
     func detectFinish() {
@@ -180,11 +194,40 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate {
         squaresAsAWhole.forEach { (square) in
             square.state = .disabled
         }
-        // TODO Play music
         let gameLostSound = SKAction.playSoundFileNamed("game_lost", waitForCompletion: false)
         run(gameLostSound)
-        viewController?.playLottie(isSucess: false, completion: nil)
-        presentEndViewController(isSuccess: false)
+        alertPresenter.showAdDialog(onWatchAdTapped: {
+            if self.adLoaded {
+                GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self.viewController!)
+            } else {
+                self.alertPresenter.showInternetConnectionDialog(onCloseTapped: {
+                    // Close Tapped
+                    self.dissmissVCOnLose()
+                })
+            }
+        }) {
+            // Close Tapped
+            self.dissmissVCOnLose()
+        }
+    }
+    
+    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
+        print(reward.type)
+        print(reward.amount)
+    }
+    
+    func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        print("Video closed")
+        timer.invalidate()
+        self.viewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        adLoaded = true
+    }
+    
+    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didFailToLoadWithError error: Error) {
+        adLoaded = false
     }
     
     func onLivesEnd() {

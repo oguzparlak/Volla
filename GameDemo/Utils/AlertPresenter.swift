@@ -17,7 +17,7 @@ class AlertPresenter {
         self.rootViewController = rootViewController
     }
     
-    func showAdDialog() {
+    func showAdDialog(onWatchAdTapped: @escaping () -> Void, onCloseTapped: @escaping () -> Void) {
         let alertView = JSSAlertView().show(
             rootViewController,
             title: "An opportunity !",
@@ -30,6 +30,9 @@ class AlertPresenter {
         alertView.setTextFont("Avenir")
         alertView.setTitleFont("Avenir")
         alertView.setButtonFont("Avenir")
+        
+        alertView.addAction(onWatchAdTapped)
+        alertView.addCancelAction(onCloseTapped)
     }
     
     func showWarningDialog(onStayTapped: @escaping () -> Void, onExitTapped: @escaping () -> Void) {
@@ -48,6 +51,22 @@ class AlertPresenter {
         
         alertView.addAction(onStayTapped)
         alertView.addCancelAction(onExitTapped)
+    }
+    
+    func showInternetConnectionDialog(onCloseTapped: @escaping () -> Void) {
+        let alertView = JSSAlertView().show(
+            rootViewController,
+            title: "Ooops !",
+            text: "No active Internet connection found. Your level is downgraded.",
+            buttonText: "OK",
+            color: Colors.clouds,
+            iconImage: UIImage(named: "ic_warning"))
+        
+        alertView.setTextFont("Avenir")
+        alertView.setTitleFont("Avenir")
+        alertView.setButtonFont("Avenir")
+        
+        alertView.addAction(onCloseTapped)
     }
     
     func showAchievementDialog() {

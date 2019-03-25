@@ -92,6 +92,16 @@ enum StandardUtils {
         return userDefaults.bool(forKey: Keys.getIsLockedKey(difficulity))
     }
     
+    static func decrementCurrentLevelByOne() {
+        let userDefaults = UserDefaults.standard
+        let key = StandardUtils.getKeyFor(difficulity: GameUtils.currentDifficulity ?? .easy)
+        let level = userDefaults.integer(forKey: key)
+        let previousLevel = level - 1
+        if previousLevel == 0 { return }
+        GameUtils.currentLevel = previousLevel
+        userDefaults.set(previousLevel, forKey: key)
+    }
+    
     static func enableDifficulity(_ difficulity: Difficulity) {
         let userDefaults = UserDefaults.standard
         userDefaults.set(true, forKey: Keys.getIsLockedKey(difficulity))
