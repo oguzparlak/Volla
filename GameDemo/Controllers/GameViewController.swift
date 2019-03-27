@@ -60,10 +60,6 @@ class GameViewController: UIViewController, UIViewControllerTransitioningDelegat
         let closeImage = NodeUtils.darkModeEnabled ? UIImage(named: "ic_close") : UIImage(named: "ic_close_blue")
         closeButton.setImage(closeImage, for: .normal)
         
-        let displaySize: CGRect = UIScreen.main.bounds
-        let displayWidth = displaySize.width
-        let displayHeight = displaySize.height
-        // Set transition delegate
         self.transitioningDelegate = self
         
         if let view = self.view as! SKView? {
@@ -75,8 +71,8 @@ class GameViewController: UIViewController, UIViewControllerTransitioningDelegat
                 self.gameSceneDelegate = scene
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
-                // Reassign size of the frame
-                scene.size = CGSize(width: displayWidth, height: displayHeight)
+                scene.size = view.bounds.size
+                view.ignoresSiblingOrder = true
                 // UpdateUI according to theme preference
                 let isDarkModeEnabled = userDefaults.bool(forKey: "dark_mode_enabled")
                 let backgroundColor = isDarkModeEnabled ? Colors.midnightBlue : Colors.clouds
@@ -86,6 +82,10 @@ class GameViewController: UIViewController, UIViewControllerTransitioningDelegat
             }
             view.ignoresSiblingOrder = true
         }
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     @IBAction func closeButtonTapped(_ sender: UIButton) {
@@ -102,10 +102,6 @@ class GameViewController: UIViewController, UIViewControllerTransitioningDelegat
         } else {
             return .all
         }
-    }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
     }
 }
 
@@ -131,9 +127,9 @@ extension GameViewController {
         lottieAnimationView.isHidden = true
     }
     
-    func animateCloseButton() {
+    func animateCloseButtonAlpha(by value: CGFloat) {
         UIView.animate(withDuration: 0.5) {
-            self.closeButton.alpha = 0.0
+            self.closeButton.alpha = value
         }
     }
     

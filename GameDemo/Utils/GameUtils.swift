@@ -45,6 +45,26 @@ enum GameUtils {
     // 40 levels for each difficulity
     static let gameCountForEachLevel = 40
     
+    // The remaining lives will increment by this value
+    // when 3 successive answer is achieved by the user
+    static let remainingLivesToIncrementWhenComboHappened = 5
+    
+    // The successive correct answer count to
+    // gain the lives
+    static let comboCountToAchieveRemainingLives = 2
+    
+    static func shouldEarnLives(currentComboPoint: Int) -> Bool {
+        return currentComboPoint != 0 && currentComboPoint % comboCountToAchieveRemainingLives == 0
+    }
+    
+    static func isCheckPoint() -> Bool {
+        return (currentLevel! + 1) % 10 == 0
+    }
+    
+    static func newLevelUnlocked() -> Bool {
+        return currentDifficulity! != .hard && currentLevel! + 1 == gameCountForEachLevel
+    }
+    
     // Returns remaining lives for specified difficulity
     static func getRemainingLivesFor(difficulity: Difficulity) -> Int {
         switch difficulity {
@@ -145,13 +165,6 @@ enum GameUtils {
         default:
             return 0
         }
-    }
-    
-    // Updates the current level with specified difficulity
-    static func updateCurrentLevel(_ level: RawLevel, with difficulity: Difficulity) {
-        GameUtils.currentLevel = level.level
-        let difficulityKeyForLevel = StandardUtils.getKeyFor(difficulity: difficulity)
-        UserDefaults.standard.set(GameUtils.currentLevel, forKey: difficulityKeyForLevel)
     }
     
     static func load(level: Int, with difficulity: Difficulity) -> RawLevel? {

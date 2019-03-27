@@ -47,5 +47,236 @@
         "cols": 3,
         "contentType": "plants",
         "difficulity": "easy"
+    },
+    {
+        "level": 8,
+        "rows": 1,
+        "cols": 4,
+        "contentType": "animals",
+        "difficulity": "easy"
+    },
+    {
+        "level": 9,
+        "rows": 1,
+        "cols": 5,
+        "contentType": "foods",
+        "difficulity": "easy"
+    },
+    {
+        "level": 10,
+        "rows": 1,
+        "cols": 5,
+        "contentType": "technology",
+        "difficulity": "easy"
+    },
+    {
+        "level": 11,
+        "rows": 1,
+        "cols": 6,
+        "contentType": "clothes",
+        "difficulity": "easy"
+    },
+    {
+        "level": 12,
+        "rows": 2,
+        "cols": 3,
+        "contentType": "sports",
+        "difficulity": "easy"
+    },
+    {
+        "level": 13,
+        "rows": 2,
+        "cols": 3,
+        "contentType": "plants",
+        "difficulity": "easy"
+    },
+    {
+        "level": 14,
+        "rows": 1,
+        "cols": 2,
+        "contentType": "smiley",
+        "difficulity": "easy"
+    },
+    {
+        "level": 15,
+        "rows": 1,
+        "cols": 4,
+        "contentType": "animals",
+        "difficulity": "easy"
+    },
+    {
+        "level": 16,
+        "rows": 1,
+        "cols": 5,
+        "contentType": "foods",
+        "difficulity": "easy"
+    },
+    {
+        "level": 17,
+        "rows": 1,
+        "cols": 5,
+        "contentType": "technology",
+        "difficulity": "easy"
+    },
+    {
+        "level": 18,
+        "rows": 1,
+        "cols": 6,
+        "contentType": "clothes",
+        "difficulity": "easy"
+    },
+    {
+        "level": 19,
+        "rows": 2,
+        "cols": 3,
+        "contentType": "sports",
+        "difficulity": "easy"
+    },
+    {
+        "level": 20,
+        "rows": 2,
+        "cols": 3,
+        "contentType": "plants",
+        "difficulity": "easy"
+    },
+    {
+        "level": 21,
+        "rows": 1,
+        "cols": 4,
+        "contentType": "animals",
+        "difficulity": "easy"
+    },
+    {
+        "level": 22,
+        "rows": 1,
+        "cols": 5,
+        "contentType": "foods",
+        "difficulity": "easy"
+    },
+    {
+        "level": 23,
+        "rows": 1,
+        "cols": 5,
+        "contentType": "technology",
+        "difficulity": "easy"
+    },
+    {
+        "level": 24,
+        "rows": 1,
+        "cols": 6,
+        "contentType": "clothes",
+        "difficulity": "easy"
+    },
+    {
+        "level": 25,
+        "rows": 2,
+        "cols": 3,
+        "contentType": "sports",
+        "difficulity": "easy"
+    },
+    {
+        "level": 26,
+        "rows": 2,
+        "cols": 3,
+        "contentType": "plants",
+        "difficulity": "easy"
+    },
+    {
+        "level": 27,
+        "rows": 1,
+        "cols": 2,
+        "contentType": "smiley",
+        "difficulity": "easy"
+    },
+    {
+        "level": 28,
+        "rows": 1,
+        "cols": 4,
+        "contentType": "animals",
+        "difficulity": "easy"
+    },
+    {
+        "level": 29,
+        "rows": 1,
+        "cols": 5,
+        "contentType": "foods",
+        "difficulity": "easy"
+    },
+    {
+        "level": 30,
+        "rows": 1,
+        "cols": 5,
+        "contentType": "technology",
+        "difficulity": "easy"
+    },
+    {
+        "level": 31,
+        "rows": 1,
+        "cols": 6,
+        "contentType": "clothes",
+        "difficulity": "easy"
+    },
+    {
+        "level": 32,
+        "rows": 2,
+        "cols": 3,
+        "contentType": "sports",
+        "difficulity": "easy"
+    },
+    {
+        "level": 33,
+        "rows": 2,
+        "cols": 3,
+        "contentType": "plants",
+        "difficulity": "easy"
+    },
+    {
+        "level": 34,
+        "rows": 1,
+        "cols": 4,
+        "contentType": "animals",
+        "difficulity": "easy"
+    },
+    {
+        "level": 35,
+        "rows": 1,
+        "cols": 5,
+        "contentType": "foods",
+        "difficulity": "easy"
+    },
+    {
+        "level": 36,
+        "rows": 1,
+        "cols": 5,
+        "contentType": "technology",
+        "difficulity": "easy"
+    },
+    {
+        "level": 37,
+        "rows": 1,
+        "cols": 6,
+        "contentType": "clothes",
+        "difficulity": "easy"
+    },
+    {
+        "level": 38,
+        "rows": 2,
+        "cols": 3,
+        "contentType": "sports",
+        "difficulity": "easy"
+    },
+    {
+        "level": 39,
+        "rows": 2,
+        "cols": 3,
+        "contentType": "plants",
+        "difficulity": "easy"
+    },
+    {
+        "level": 40,
+        "rows": 2,
+        "cols": 3,
+        "contentType": "plants",
+        "difficulity": "easy"
     }
 ]

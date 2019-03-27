@@ -69,14 +69,47 @@ class AlertPresenter {
         alertView.addAction(onCloseTapped)
     }
     
-    func showAchievementDialog() {
+    func showTryAgainDialog(onCloseTapped: @escaping () -> Void, onTryAgainTapped: @escaping () -> Void) {
+        let alertView = JSSAlertView().show(
+            rootViewController,
+            title: "Again ?",
+            text: "Checkpoint saved your life. You can try again.",
+            buttonText: "Try Again",
+            cancelButtonText: "Cancel",
+            color: Colors.clouds,
+            iconImage: UIImage(named: "ic_restart"))
+        
+        alertView.setTextFont("Avenir")
+        alertView.setTitleFont("Avenir")
+        alertView.setButtonFont("Avenir")
+        
+        alertView.addAction(onTryAgainTapped)
+        alertView.addCancelAction(onCloseTapped)
+    }
+    
+    func showAchievementDialog(passedLevel: Int, onOkTapped: @escaping () -> Void) {
         let alertView = JSSAlertView().show(
             rootViewController,
             title: "Good job !",
-            text: "Level 10 passed. New checkpoint unlocked !",
-            cancelButtonText: "Close",
+            text: "Level \(passedLevel) passed. New checkpoint unlocked !",
+            buttonText: "OK",
             color: Colors.clouds,
-            iconImage: UIImage(named: "ic_warning"))
+            iconImage: UIImage(named: "ic_trophy"))
+        
+        alertView.setTextFont("Avenir")
+        alertView.setTitleFont("Avenir")
+        alertView.setButtonFont("Avenir")
+        alertView.addAction(onOkTapped)
+    }
+    
+    func showDifficulityPassedDialog() {
+        let alertView = JSSAlertView().show(
+            rootViewController,
+            title: "Good job !",
+            text: "\(GameUtils.getTitleFor(difficulity: GameUtils.currentDifficulity ?? .easy)) completed. New difficulity level unlocked !",
+            buttonText: "OK",
+            color: Colors.clouds,
+            iconImage: UIImage(named: "ic_trophy"))
         
         alertView.setTextFont("Avenir")
         alertView.setTitleFont("Avenir")

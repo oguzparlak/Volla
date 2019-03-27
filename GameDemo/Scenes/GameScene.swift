@@ -11,6 +11,7 @@ import GameplayKit
 import UIKit
 import BubbleTransition
 import GoogleMobileAds
+import Crashlytics
 
 class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate, GADRewardBasedVideoAdDelegate {
 
@@ -120,8 +121,18 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate, GADR
         self.alertPresenter = AlertPresenter(with: viewController!)
         // Set Ad Delegate
         // Load Ad
-        GADRewardBasedVideoAd.sharedInstance().load(DFPRequest(), withAdUnitID: "/6499/example/rewarded-video")
+        loadAd()
         GADRewardBasedVideoAd.sharedInstance().delegate = self
+        // Log current level
+        Answers.logLevelStart(GameUtils.currentLevel?.description, customAttributes: nil)
+    }
+    
+    func loadAd() {
+        #if DEBUG
+            GADRewardBasedVideoAd.sharedInstance().load(DFPRequest(), withAdUnitID: "/6499/example/rewarded-video")
+        #else
+            GADRewardBasedVideoAd.sharedInstance().load(DFPRequest(), withAdUnitID: "ca-app-pub-9117862267622132/2207219880")
+        #endif
     }
     
     @objc func updateTime() {
@@ -151,14 +162,16 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate, GADR
     }
     
     func onCloseButtonTapped() {
-        alertPresenter.showWarningDialog(onStayTapped: {
-            // Stay tapped
-            // do nothing just close the dialog
-        }) {
-            // Exit Tapped
-            // Dismiss the GameVC
+        if self.currentRawLevel?.isCheckPoint() ?? false {
             self.timer.invalidate()
-            self.dissmissVCOnLose()
+            self.viewController?.dismiss(animated: true, completion: nil)
+        } else {
+            alertPresenter.showWarningDialog(onStayTapped: {
+                // do nothing just close the dialog
+            }) {
+                self.timer.invalidate()
+                self.dissmissVCOnLose()
+            }
         }
     }
     
@@ -179,14 +192,26 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate, GADR
         // Stop timer
         timer.invalidate()
         // Animate
-        countDownNode.run(SKAction.moveBy(x: 0, y: 160, duration: 1.0))
-        bottomLabel.run(SKAction.moveBy(x: 0, y: -160, duration: 1.0))
-        viewController?.animateCloseButton()
+        animateOnGameEnd()
         if countDownEnded {
             onLose()
         } else {
-            onWin()
+            if GameUtils.isCheckPoint() {
+                self.run(SKAction.playSoundFileNamed("achievement.wav", waitForCompletion: false))
+                alertPresenter.showAchievementDialog(passedLevel: GameUtils.currentLevel! + 1, onOkTapped: {
+                    self.onWin()
+                })
+            } else {
+                self.onWin()
+            }
         }
+    }
+    
+    func animateOnGameEnd() {
+        countDownNode.run(SKAction.moveBy(x: 0, y: 160, duration: 1.0))
+        bottomLabel.run(SKAction.moveBy(x: 0, y: -160, duration: 1.0))
+        remainingLivesNode.run(SKAction.moveBy(x: 0, y: 160, duration: 1.0))
+        viewController?.animateCloseButtonAlpha(by: 0)
     }
     
     private func onLose() {
@@ -196,18 +221,30 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate, GADR
         }
         let gameLostSound = SKAction.playSoundFileNamed("game_lost", waitForCompletion: false)
         run(gameLostSound)
-        alertPresenter.showAdDialog(onWatchAdTapped: {
-            if self.adLoaded {
-                GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self.viewController!)
-            } else {
-                self.alertPresenter.showInternetConnectionDialog(onCloseTapped: {
-                    // Close Tapped
-                    self.dissmissVCOnLose()
-                })
+        // If not on checkpoint show ad dialog
+        if currentRawLevel?.isCheckPoint() ?? false {
+            alertPresenter.showTryAgainDialog(onCloseTapped: {
+                // Dismiss the ViewController
+                self.viewController?.dismiss(animated: true, completion: nil)
+            }) {
+                // Re-Create the ViewController
+                self.viewController?.viewDidLoad()
+                self.viewController?.animateCloseButtonAlpha(by: 1)
             }
-        }) {
-            // Close Tapped
-            self.dissmissVCOnLose()
+        } else {
+            alertPresenter.showAdDialog(onWatchAdTapped: {
+                if self.adLoaded {
+                    GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self.viewController!)
+                } else {
+                    self.alertPresenter.showInternetConnectionDialog(onCloseTapped: {
+                        // Close Tapped
+                        self.dissmissVCOnLose()
+                    })
+                }
+            }) {
+                // Close Tapped
+                self.dissmissVCOnLose()
+            }
         }
     }
     
@@ -244,6 +281,11 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate, GADR
     }
     
     private func onWin() {
+        if GameUtils.newLevelUnlocked() {
+            // Show achievement
+            alertPresenter.showDifficulityPassedDialog()
+        }
+        timer.invalidate()
         let tada = SKAction.playSoundFileNamed("tada.wav", waitForCompletion: false)
         run(tada)
         // Lottie
@@ -331,6 +373,11 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate, GADR
                         let currentPoint = self.pointCalculator.calculatePointOnCorrectGuess()
                         // Update label
                         self.updateBottomLabel(with: currentPoint.description)
+                        // Check if user should gain lives
+                        let currentComboCount = self.pointCalculator.getComboCount()
+                        if GameUtils.shouldEarnLives(currentComboPoint: currentComboCount) {
+                            self.remainingLivesNode.updateAppeareanceOnCombo()
+                        }
                     }
                 } else {
                     // No match close them both

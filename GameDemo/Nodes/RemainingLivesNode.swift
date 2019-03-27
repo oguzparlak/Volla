@@ -39,7 +39,7 @@ class RemainingLivesNode: SKShapeNode {
         // Assign currentLives
         self.currentLives = currentLives
         // Set fill color to emerald
-        fillColor = Colors.emerald
+        fillColor = Colors.peterRiver
         // Clear the stroke
         strokeColor = .clear
         // Set antialiasing true
@@ -52,12 +52,19 @@ class RemainingLivesNode: SKShapeNode {
         currentLives -= 1
     }
     
+    func updateAppeareanceOnCombo() {
+        self.currentLives += GameUtils.remainingLivesToIncrementWhenComboHappened
+        self.run(SKAction.scale(by: 1.1, duration: 0.3))
+        self.run(SKAction.colorTransitionAction(fromColor: self.fillColor, toColor: Colors.emerald))
+    }
+    
     private func updateAppeareance() {
         let maximumLives = GameUtils.getRemainingLivesFor(difficulity: GameUtils.currentDifficulity ?? .easy)
-        // Change the color of the node if needed
         if Double(currentLives) < Double(maximumLives / 2) {
             // Change the color
             self.run(SKAction.colorTransitionAction(fromColor: self.fillColor, toColor: Colors.wisteria))
+            // Scale down
+            self.run(SKAction.scale(by: 0.98, duration: 0.3))
         }
         // Update label
         labelNode.text = currentLives.description

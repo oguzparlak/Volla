@@ -81,6 +81,10 @@ class EndingViewController: UIViewController, UIViewControllerTransitioningDeleg
         return transition
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     private func updateUI(when success: Bool) {
         indicatorLabel.text = success ? NSLocalizedString("success", comment: "Success") : NSLocalizedString("failure", comment: "")
         

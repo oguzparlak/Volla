@@ -53,6 +53,10 @@ class ProgressViewController: UIViewController {
         
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     private func updateSelectedSegment() {
         let difficulity = GameUtils.currentDifficulity
         var selectedIndex = 0

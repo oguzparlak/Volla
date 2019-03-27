@@ -24,7 +24,7 @@ enum Keys {
     
     static let hardLevelsKey = "hard_levels"
     
-    static let levelsParsedKey = "levels_parsed"
+    static let levelsParsedKey = "all_levels_parsed"
     
     static func getIsLockedKey(_ difficulity: Difficulity) -> String {
         return "is_locked_\(difficulity.rawValue)"

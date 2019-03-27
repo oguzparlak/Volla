@@ -11,6 +11,7 @@
 		70A9B9CBBA13B2A2D78F4111 /* Pods_GameDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FCA33D4519D9356C220165E /* Pods_GameDemoUITests.framework */; };
 		BF23AD3B223D2CFC00F64556 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23AD3A223D2CFC00F64556 /* ProgressViewController.swift */; };
 		BF2982032223031400832123 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = BF2982022223031400832123 /* success.json */; };
+		BF2D1C20224BDA4800A6F294 /* RawLevelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D1C1F224BDA4800A6F294 /* RawLevelExtensions.swift */; };
 		BF3A750322206A7700E5E2BD /* LevelDescriptionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A750222206A7700E5E2BD /* LevelDescriptionNode.swift */; };
 		BF3A75062220703E00E5E2BD /* SquareStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A75052220703E00E5E2BD /* SquareStack.swift */; };
 		BF3EB7E32232E357009BA132 /* game_lost.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF3EB7E22232E357009BA132 /* game_lost.mp3 */; };
@@ -90,6 +91,7 @@
 		934D58175ACC6339092C8BDA /* Pods_GameDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GameDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF23AD3A223D2CFC00F64556 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		BF2982022223031400832123 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
+		BF2D1C1F224BDA4800A6F294 /* RawLevelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawLevelExtensions.swift; sourceTree = "<group>"; };
 		BF3A750222206A7700E5E2BD /* LevelDescriptionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDescriptionNode.swift; sourceTree = "<group>"; };
 		BF3A75052220703E00E5E2BD /* SquareStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareStack.swift; sourceTree = "<group>"; };
 		BF3EB7E22232E357009BA132 /* game_lost.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_lost.mp3; sourceTree = "<group>"; };
@@ -203,6 +205,14 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
+		BF2D1C1E224BDA1B00A6F294 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BF2D1C1F224BDA4800A6F294 /* RawLevelExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		BF3A75042220702500E5E2BD /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +250,7 @@
 		BF5F75D9220B4D25004D5F99 /* GameDemo */ = {
 			isa = PBXGroup;
 			children = (
+				BF2D1C1E224BDA1B00A6F294 /* Extensions */,
 				BF3A75042220702500E5E2BD /* Model */,
 				BF5F75DA220B4D25004D5F99 /* AppDelegate.swift */,
 				BF5F75EC220B4D26004D5F99 /* Info.plist */,
@@ -667,6 +678,7 @@
 				BFCD74B1220C980D006C3E79 /* SKProtocols.swift in Sources */,
 				BF5ABC012247C15D002B8183 /* AlertPresenter.swift in Sources */,
 				BFCD74A6220C955F006C3E79 /* NodeUtils.swift in Sources */,
+				BF2D1C20224BDA4800A6F294 /* RawLevelExtensions.swift in Sources */,
 				BF5F75E3220B4D25004D5F99 /* GameViewController.swift in Sources */,
 				BFCD74B7220C9B09006C3E79 /* Errors.swift in Sources */,
 				BF45908222189DF600FC31E1 /* CountDownLabel.swift in Sources */,

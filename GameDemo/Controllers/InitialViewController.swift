@@ -132,11 +132,12 @@ class InitialViewController: UIViewController {
     }
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
-        // Log an Event to Fabric
-        let currentLevel = userDefaults.integer(forKey: "current_level")
-        Answers.logLevelStart(currentLevel.description, customAttributes: nil)
         let gameViewController = storyboard?.instantiateViewController(withIdentifier: "game_vc") as! GameViewController
         self.present(gameViewController, animated: true, completion: nil)
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     private func startParticleAnimation() {
