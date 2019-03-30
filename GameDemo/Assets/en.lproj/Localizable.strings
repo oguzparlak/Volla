@@ -41,3 +41,7 @@
 "hard" = "Hard";
 
 "cancel" = "Cancel";
+
+"pointsFromCombo" = "Score via Combo";
+
+"basePoints" = "Base Point";

@@ -47,6 +47,8 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate, GADR
     
     var adLoaded = false
     
+    var adRewarded = false
+    
     // The countdown timer
     var timer: Timer!
     
@@ -125,6 +127,7 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate, GADR
         GADRewardBasedVideoAd.sharedInstance().delegate = self
         // Log current level
         Answers.logLevelStart(GameUtils.currentLevel?.description, customAttributes: nil)
+        GameUtils.inGame = true
     }
     
     func loadAd() {
@@ -162,6 +165,7 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate, GADR
     }
     
     func onCloseButtonTapped() {
+        GameUtils.inGame = false
         if self.currentRawLevel?.isCheckPoint() ?? false {
             self.timer.invalidate()
             self.viewController?.dismiss(animated: true, completion: nil)
@@ -188,6 +192,7 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate, GADR
     }
     
     func finishGame(countDownEnded : Bool = false) {
+        GameUtils.inGame = false
         pointCalculator.finishedTime = Double(remainingTime)
         // Stop timer
         timer.invalidate()
@@ -197,14 +202,32 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate, GADR
             onLose()
         } else {
             if GameUtils.isCheckPoint() {
-                self.run(SKAction.playSoundFileNamed("achievement.wav", waitForCompletion: false))
-                alertPresenter.showAchievementDialog(passedLevel: GameUtils.currentLevel! + 1, onOkTapped: {
-                    self.onWin()
-                })
-            } else {
-                self.onWin()
+                self.onCheckPoint()
+                return
             }
+            if GameUtils.newLevelUnlocked() {
+                self.onDifficulityPassed()
+                return
+            }
+            // if non of the conditions above is satisfied
+            // just call onWin()
+            self.onWin()
         }
+    }
+    
+    func onDifficulityPassed() {
+        self.run(SKAction.playSoundFileNamed("achievement.wav", waitForCompletion: false))
+        // Show achievement
+        self.alertPresenter.showDifficulityPassedDialog {
+            self.onWin()
+        }
+    }
+    
+    func onCheckPoint() {
+        self.run(SKAction.playSoundFileNamed("achievement.wav", waitForCompletion: false))
+        alertPresenter.showAchievementDialog(passedLevel: GameUtils.currentLevel! + 1, onOkTapped: {
+            self.onWin()
+        })
     }
     
     func animateOnGameEnd() {
@@ -212,6 +235,48 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate, GADR
         bottomLabel.run(SKAction.moveBy(x: 0, y: -160, duration: 1.0))
         remainingLivesNode.run(SKAction.moveBy(x: 0, y: 160, duration: 1.0))
         viewController?.animateCloseButtonAlpha(by: 0)
+    }
+    
+    private func onWin() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            
+            self.timer.invalidate()
+            let tada = SKAction.playSoundFileNamed("tada.wav", waitForCompletion: false)
+            self.run(tada)
+            // Lottie
+            self.viewController?.playLottie(completion: nil)
+            // Save the points
+            let pointDictionary = self.getPointDictionary()
+            // Increment current level
+            GameUtils.incrementCurrentLevel()
+            // Update Level Label
+            let initialViewController = self.view?.window?.rootViewController as! InitialViewController
+            initialViewController.updateLevelLabel(level: GameUtils.currentLevel ?? 1)
+            initialViewController.updateUiOnDifficulityChanged()
+            self.presentEndViewController(isSuccess: true, extras: pointDictionary)
+            
+        }
+    }
+    
+    private func getPointDictionary() -> [String: Int] {
+        // Total Point
+        let totalPoint = pointCalculator.getTotal()
+        // Base Point
+        let baseScore = pointCalculator.getBaseScore()
+        // Combo Point
+        let totalComboPoints = pointCalculator.getTotalComboPoints()
+        // Calculate Point based on time
+        let pointBasedOnTime = pointCalculator.calculateScoreBasedOnTime()
+        // Save the score
+        StandardUtils.updateHighScore(with: GameUtils.currentDifficulity ?? .easy, point: totalPoint)
+        StandardUtils.updateTotalPoint(with: GameUtils.currentDifficulity ?? .easy, point: totalPoint)
+        // Finally return
+        return [
+            "scoreBasedOnTime" : pointBasedOnTime,
+            "baseScore" : baseScore,
+            "totalComboPoint": totalComboPoints,
+            "total": totalPoint
+        ]
     }
     
     private func onLose() {
@@ -251,12 +316,17 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate, GADR
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
         print(reward.type)
         print(reward.amount)
+        adRewarded = true
     }
     
     func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
         print("Video closed")
         timer.invalidate()
-        self.viewController?.dismiss(animated: true, completion: nil)
+        if adRewarded {
+            self.viewController?.dismiss(animated: true, completion: nil)
+        } else {
+            self.dissmissVCOnLose()
+        }
     }
     
     func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
@@ -265,6 +335,10 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate, GADR
     
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didFailToLoadWithError error: Error) {
         adLoaded = false
+    }
+    
+    func rewardBasedVideoAdWillLeaveApplication(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        print("Video ad left the application")
     }
     
     func onLivesEnd() {
@@ -278,39 +352,6 @@ class GameScene: SKScene, SquareDelegate, GameSceneDelegate, LivesDelegate, GADR
         comboNode.fadeOutAndIn(with: 0.8, reverse: true)
         comboNode.fontSize = 28
         addChild(comboNode)
-    }
-    
-    private func onWin() {
-        if GameUtils.newLevelUnlocked() {
-            // Show achievement
-            alertPresenter.showDifficulityPassedDialog()
-        }
-        timer.invalidate()
-        let tada = SKAction.playSoundFileNamed("tada.wav", waitForCompletion: false)
-        run(tada)
-        // Lottie
-        viewController?.playLottie(completion: nil)
-        // Calculate Point based on time
-        let pointBasedOnTime = pointCalculator.calculateScoreBasedOnTime()
-        // Combo Points
-        let comboCount = pointCalculator.getComboCount()
-        // Difficulity multiplier
-        let difficulityMultiplier = GameUtils.getDifficulityMultiplierFor(difficulity: Difficulity(rawValue: (currentRawLevel?.difficulity)!)!)
-        // Total Point
-        let totalPoint = pointCalculator.calculateTotal()
-        let pointDictionary = [
-            "scoreBasedOnTime" : pointBasedOnTime,
-            "comboCount" : comboCount,
-            "difficulityMultiplier": difficulityMultiplier,
-            "total": totalPoint
-        ]
-        // Increment current level
-        GameUtils.incrementCurrentLevel()
-        // Update Level Label
-        let initialViewController = self.view?.window?.rootViewController as! InitialViewController
-        initialViewController.updateLevelLabel(level: GameUtils.currentLevel ?? 1)
-        initialViewController.updateUiOnDifficulityChanged()
-        presentEndViewController(isSuccess: true, extras: pointDictionary)
     }
     
     func presentEndViewController(isSuccess: Bool = true, extras: Dictionary<String, Any>? = nil) {

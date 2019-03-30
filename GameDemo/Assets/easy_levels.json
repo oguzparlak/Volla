@@ -52,231 +52,231 @@
         "level": 8,
         "rows": 1,
         "cols": 4,
-        "contentType": "animals",
+        "contentType": "sports",
         "difficulity": "easy"
     },
     {
         "level": 9,
         "rows": 1,
         "cols": 5,
-        "contentType": "foods",
+        "contentType": "weather",
         "difficulity": "easy"
     },
     {
         "level": 10,
         "rows": 1,
         "cols": 5,
-        "contentType": "technology",
+        "contentType": "transport",
         "difficulity": "easy"
     },
     {
         "level": 11,
         "rows": 1,
         "cols": 6,
-        "contentType": "clothes",
+        "contentType": "weather",
         "difficulity": "easy"
     },
     {
         "level": 12,
         "rows": 2,
         "cols": 3,
-        "contentType": "sports",
+        "contentType": "animals",
         "difficulity": "easy"
     },
     {
         "level": 13,
         "rows": 2,
         "cols": 3,
-        "contentType": "plants",
+        "contentType": "smiley",
         "difficulity": "easy"
     },
     {
         "level": 14,
         "rows": 1,
-        "cols": 2,
-        "contentType": "smiley",
+        "cols": 6,
+        "contentType": "symbol",
         "difficulity": "easy"
     },
     {
         "level": 15,
-        "rows": 1,
+        "rows": 2,
         "cols": 4,
-        "contentType": "animals",
+        "contentType": "transport",
         "difficulity": "easy"
     },
     {
         "level": 16,
-        "rows": 1,
-        "cols": 5,
-        "contentType": "foods",
+        "rows": 2,
+        "cols": 4,
+        "contentType": "numbers",
         "difficulity": "easy"
     },
     {
         "level": 17,
-        "rows": 1,
-        "cols": 5,
-        "contentType": "technology",
+        "rows": 2,
+        "cols": 4,
+        "contentType": "clothes",
         "difficulity": "easy"
     },
     {
         "level": 18,
-        "rows": 1,
-        "cols": 6,
-        "contentType": "clothes",
+        "rows": 2,
+        "cols": 5,
+        "contentType": "weather",
         "difficulity": "easy"
     },
     {
         "level": 19,
         "rows": 2,
-        "cols": 3,
-        "contentType": "sports",
+        "cols": 5,
+        "contentType": "animals",
         "difficulity": "easy"
     },
     {
         "level": 20,
         "rows": 2,
-        "cols": 3,
+        "cols": 5,
         "contentType": "plants",
         "difficulity": "easy"
     },
     {
         "level": 21,
-        "rows": 1,
-        "cols": 4,
-        "contentType": "animals",
-        "difficulity": "easy"
-    },
-    {
-        "level": 22,
-        "rows": 1,
+        "rows": 2,
         "cols": 5,
         "contentType": "foods",
         "difficulity": "easy"
     },
     {
+        "level": 22,
+        "rows": 2,
+        "cols": 5,
+        "contentType": "transport",
+        "difficulity": "easy"
+    },
+    {
         "level": 23,
-        "rows": 1,
+        "rows": 2,
         "cols": 5,
         "contentType": "technology",
         "difficulity": "easy"
     },
     {
         "level": 24,
-        "rows": 1,
-        "cols": 6,
-        "contentType": "clothes",
+        "rows": 2,
+        "cols": 5,
+        "contentType": "sports",
         "difficulity": "easy"
     },
     {
         "level": 25,
         "rows": 2,
-        "cols": 3,
-        "contentType": "sports",
+        "cols": 5,
+        "contentType": "symbol",
         "difficulity": "easy"
     },
     {
         "level": 26,
         "rows": 2,
-        "cols": 3,
-        "contentType": "plants",
-        "difficulity": "easy"
-    },
-    {
-        "level": 27,
-        "rows": 1,
-        "cols": 2,
+        "cols": 5,
         "contentType": "smiley",
         "difficulity": "easy"
     },
     {
-        "level": 28,
-        "rows": 1,
-        "cols": 4,
+        "level": 27,
+        "rows": 2,
+        "cols": 6,
         "contentType": "animals",
         "difficulity": "easy"
     },
     {
-        "level": 29,
-        "rows": 1,
-        "cols": 5,
+        "level": 28,
+        "rows": 2,
+        "cols": 6,
         "contentType": "foods",
         "difficulity": "easy"
     },
     {
+        "level": 29,
+        "rows": 2,
+        "cols": 6,
+        "contentType": "plants",
+        "difficulity": "easy"
+    },
+    {
         "level": 30,
-        "rows": 1,
-        "cols": 5,
+        "rows": 2,
+        "cols": 6,
         "contentType": "technology",
         "difficulity": "easy"
     },
     {
         "level": 31,
-        "rows": 1,
+        "rows": 2,
         "cols": 6,
         "contentType": "clothes",
         "difficulity": "easy"
     },
     {
         "level": 32,
-        "rows": 2,
-        "cols": 3,
+        "rows": 3,
+        "cols": 4,
         "contentType": "sports",
         "difficulity": "easy"
     },
     {
         "level": 33,
-        "rows": 2,
-        "cols": 3,
-        "contentType": "plants",
+        "rows": 3,
+        "cols": 4,
+        "contentType": "weather",
         "difficulity": "easy"
     },
     {
         "level": 34,
-        "rows": 1,
+        "rows": 3,
+        "cols": 4,
+        "contentType": "foods",
+        "difficulity": "easy"
+    },
+    {
+        "level": 35,
+        "rows": 3,
         "cols": 4,
         "contentType": "animals",
         "difficulity": "easy"
     },
     {
-        "level": 35,
-        "rows": 1,
-        "cols": 5,
-        "contentType": "foods",
-        "difficulity": "easy"
-    },
-    {
         "level": 36,
-        "rows": 1,
-        "cols": 5,
+        "rows": 4,
+        "cols": 4,
         "contentType": "technology",
         "difficulity": "easy"
     },
     {
         "level": 37,
-        "rows": 1,
-        "cols": 6,
+        "rows": 4,
+        "cols": 4,
         "contentType": "clothes",
         "difficulity": "easy"
     },
     {
         "level": 38,
-        "rows": 2,
-        "cols": 3,
-        "contentType": "sports",
+        "rows": 4,
+        "cols": 4,
+        "contentType": "smiley",
         "difficulity": "easy"
     },
     {
         "level": 39,
-        "rows": 2,
-        "cols": 3,
-        "contentType": "plants",
+        "rows": 4,
+        "cols": 4,
+        "contentType": "transport",
         "difficulity": "easy"
     },
     {
         "level": 40,
-        "rows": 2,
-        "cols": 3,
-        "contentType": "plants",
+        "rows": 4,
+        "cols": 4,
+        "contentType": "symbol",
         "difficulity": "easy"
     }
 ]

@@ -77,7 +77,7 @@ class ProgressViewController: UIViewController {
         for i in 0...segmentCount - 1 {
             let segmentTitle = segmentedControl.titleForSegment(at: i)
             let difficulity: Difficulity = GameUtils.getDifficulityFor(label: segmentTitle!)
-            let isEnabled = StandardUtils.isDifficulityEnabled(difficulity)
+            let isEnabled = StandardUtils.isDifficulityLocked(difficulity)
             segmentedControl.setEnabled(isEnabled, forSegmentAt: i)
         }
     }
@@ -115,6 +115,11 @@ class ProgressViewController: UIViewController {
         remainingLevelsLabel.textColor = activeTabColor
         progressTitleLabel.textColor = activeTabColor
         closeButton.setImage(getImageFor(color: activeTabColor!), for: .normal)
+        // Update total scores
+        let highScore = StandardUtils.getHighScore(of: difficulity)
+        let totalScore = StandardUtils.getTotalScore(of: difficulity)
+        totalValueLabel.text = totalScore.formatNumber()
+        highScoreValueLabel.text = highScore.formatNumber()
     }
     
     private func getImageFor(color: UIColor) -> UIImage? {

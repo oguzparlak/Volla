@@ -26,6 +26,14 @@ enum Keys {
     
     static let levelsParsedKey = "all_levels_parsed"
     
+    static func highScoreKey(for difficulity: Difficulity) -> String {
+        return "high_score_\(difficulity.rawValue)"
+    }
+    
+    static func totalScoreKey(for difficulity: Difficulity) -> String {
+        return "total_score_\(difficulity.rawValue)"
+    }
+    
     static func getIsLockedKey(_ difficulity: Difficulity) -> String {
         return "is_locked_\(difficulity.rawValue)"
     }
@@ -33,6 +41,36 @@ enum Keys {
 }
 
 enum StandardUtils {
+    
+    static func updateTotalPoint(with difficulity: Difficulity, point: Int) {
+        let userDefaults = UserDefaults.standard
+        let key = Keys.totalScoreKey(for: difficulity)
+        // Get previous score
+        let previousScore = userDefaults.integer(forKey: key)
+        // Add the new score and store it
+        userDefaults.set(point + previousScore, forKey: key)
+    }
+    
+    static func updateHighScore(with difficulity: Difficulity, point: Int) {
+        let userDefaults = UserDefaults.standard
+        let key = Keys.highScoreKey(for: difficulity)
+        let previousHighScore = userDefaults.integer(forKey: key)
+        if point > previousHighScore {
+            userDefaults.set(point, forKey: key)
+        }
+    }
+    
+    static func getHighScore(of difficulity: Difficulity) -> Int {
+        let userDefaults = UserDefaults.standard
+        let key = Keys.highScoreKey(for: difficulity)
+        return userDefaults.integer(forKey: key)
+    }
+    
+    static func getTotalScore(of difficulity: Difficulity) -> Int {
+        let userDefaults = UserDefaults.standard
+        let key = Keys.totalScoreKey(for: difficulity)
+        return userDefaults.integer(forKey: key)
+    }
     
     static func getKeyOfLevelLabel(by difficulity: Difficulity) -> String {
         switch difficulity {
@@ -87,7 +125,7 @@ enum StandardUtils {
     }
     
     // Returns true if the difficulity is locked
-    static func isDifficulityEnabled(_ difficulity: Difficulity) -> Bool {
+    static func isDifficulityLocked(_ difficulity: Difficulity) -> Bool {
         let userDefaults = UserDefaults.standard
         return userDefaults.bool(forKey: Keys.getIsLockedKey(difficulity))
     }

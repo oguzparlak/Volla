@@ -45,6 +45,10 @@ enum GameUtils {
     // 40 levels for each difficulity
     static let gameCountForEachLevel = 40
     
+    // A flag that indicates whether user is
+    // currently playing or not
+    static var inGame: Bool = false
+    
     // The remaining lives will increment by this value
     // when 3 successive answer is achieved by the user
     static let remainingLivesToIncrementWhenComboHappened = 5
@@ -62,7 +66,7 @@ enum GameUtils {
     }
     
     static func newLevelUnlocked() -> Bool {
-        return currentDifficulity! != .hard && currentLevel! + 1 == gameCountForEachLevel
+        return !StandardUtils.isDifficulityLocked(currentDifficulity?.next() ?? .easy) && currentDifficulity! != .hard && currentLevel! == gameCountForEachLevel
     }
     
     // Returns remaining lives for specified difficulity

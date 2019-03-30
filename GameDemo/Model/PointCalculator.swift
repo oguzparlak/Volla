@@ -22,7 +22,11 @@ class PointCalculator {
     // Accumulated combo points so far
     private var accumulatedPointFromComboPoints = 0
     
+    // Total Point earned so far
     private var totalPointFromBasePoint = 0
+    
+    // Total bonus points earned
+    private var totalBonusPointsEarned = 0
     
     // Difficulity of the current level
     var difficulity: Difficulity!
@@ -35,13 +39,10 @@ class PointCalculator {
         return Int((finishedTime! / maximumTime) * 1000)
     }
     
-    func calculateTotal() -> Int {
-        return (calculateScoreBasedOnTime() + accumulatedPointFromComboPoints) * GameUtils.getDifficulityMultiplierFor(difficulity: difficulity)
-    }
-    
     func incrementComboCount() {
         comboCount += 1
         accumulatedPointFromComboPoints += GameUtils.getComboPointFor(comboCount: comboCount)
+        totalBonusPointsEarned += accumulatedPointFromComboPoints
     }
     
     func getAccumulatedComboPoints() -> Int {
@@ -62,5 +63,16 @@ class PointCalculator {
         return comboCount
     }
     
+    func getTotalComboPoints() -> Int {
+        return totalBonusPointsEarned
+    }
+    
+    func getBaseScore() -> Int {
+        return totalPointFromBasePoint
+    }
+    
+    func getTotal() -> Int {
+        return totalPointFromBasePoint + totalBonusPointsEarned + calculateScoreBasedOnTime()
+    }
     
 }

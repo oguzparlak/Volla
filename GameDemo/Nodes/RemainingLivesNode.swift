@@ -54,7 +54,7 @@ class RemainingLivesNode: SKShapeNode {
     
     func updateAppeareanceOnCombo() {
         self.currentLives += GameUtils.remainingLivesToIncrementWhenComboHappened
-        self.run(SKAction.scale(by: 1.1, duration: 0.3))
+        self.run(SKAction.scale(by: 1.05, duration: 0.3))
         self.run(SKAction.colorTransitionAction(fromColor: self.fillColor, toColor: Colors.emerald))
     }
     

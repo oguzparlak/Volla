@@ -20,6 +20,7 @@
 		BF5ABBFD2247A0C2002B8183 /* achievement.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF5ABBFB2247A0C2002B8183 /* achievement.wav */; };
 		BF5ABBFF2247A4F4002B8183 /* RemainingLivesNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5ABBFE2247A4F4002B8183 /* RemainingLivesNode.swift */; };
 		BF5ABC012247C15D002B8183 /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5ABC002247C15D002B8183 /* AlertPresenter.swift */; };
+		BF5DB0C6224FD0C500CA13C2 /* NumberExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5DB0C5224FD0C400CA13C2 /* NumberExtensions.swift */; };
 		BF5F3FB42222ECE000794A19 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F3FB32222ECE000794A19 /* InitialViewController.swift */; };
 		BF5F75DB220B4D25004D5F99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F75DA220B4D25004D5F99 /* AppDelegate.swift */; };
 		BF5F75DD220B4D25004D5F99 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BF5F75DC220B4D25004D5F99 /* GameScene.sks */; };
@@ -100,6 +101,7 @@
 		BF5ABBFB2247A0C2002B8183 /* achievement.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = achievement.wav; sourceTree = "<group>"; };
 		BF5ABBFE2247A4F4002B8183 /* RemainingLivesNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingLivesNode.swift; sourceTree = "<group>"; };
 		BF5ABC002247C15D002B8183 /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
+		BF5DB0C5224FD0C400CA13C2 /* NumberExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberExtensions.swift; sourceTree = "<group>"; };
 		BF5F3FB32222ECE000794A19 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		BF5F75D7220B4D25004D5F99 /* GameDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5F75DA220B4D25004D5F99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				BF2D1C1F224BDA4800A6F294 /* RawLevelExtensions.swift */,
+				BF5DB0C5224FD0C400CA13C2 /* NumberExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -684,6 +687,7 @@
 				BF45908222189DF600FC31E1 /* CountDownLabel.swift in Sources */,
 				BFEA614A22272A95001E2876 /* Shape.swift in Sources */,
 				BFCDE06722196C5000A9484B /* ContentCreator.swift in Sources */,
+				BF5DB0C6224FD0C500CA13C2 /* NumberExtensions.swift in Sources */,
 				BFEA614C22272B14001E2876 /* Value.swift in Sources */,
 				BFB9F5BB222BE962007364BE /* GameUtils.swift in Sources */,
 				BFCD74B3220C98FC006C3E79 /* Board.swift in Sources */,

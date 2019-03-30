@@ -3,7 +3,7 @@
         "level": 1,
         "rows": 2,
         "cols": 4,
-        "contentType": "numbers",
+        "contentType": "animals",
         "difficulity": "medium"
     },
     {
@@ -31,14 +31,14 @@
         "level": 5,
         "rows": 3,
         "cols": 3,
-        "contentType": "numbers",
+        "contentType": "symbol",
         "difficulity": "medium"
     },
     {
         "level": 6,
         "rows": 3,
         "cols": 3,
-        "contentType": "smiley",
+        "contentType": "transport",
         "difficulity": "medium"
     },
     {
@@ -52,7 +52,7 @@
         "level": 8,
         "rows": 3,
         "cols": 4,
-        "contentType": "foods",
+        "contentType": "plants",
         "difficulity": "medium"
     },
     {
@@ -101,63 +101,182 @@
         "level": 15,
         "rows": 4,
         "cols": 6,
-        "contentType": "numbers",
+        "contentType": "transport",
         "difficulity": "medium"
     },
     {
         "level": 16,
         "rows": 4,
         "cols": 6,
-        "contentType": "animals",
+        "contentType": "weather",
         "difficulity": "medium"
     },
     {
         "level": 17,
         "rows": 4,
         "cols": 6,
-        "contentType": "plants",
+        "contentType": "symbol",
         "difficulity": "medium"
     },
     {
         "level": 18,
-        "rows": 5,
+        "rows": 4,
         "cols": 6,
         "contentType": "smiley",
         "difficulity": "medium"
     },
     {
         "level": 19,
+        "rows": 4,
+        "cols": 6,
+        "contentType": "clothes",
+        "difficulity": "medium"
+    },
+    {
+        "level": 20,
+        "rows": 4,
+        "cols": 6,
+        "contentType": "plants",
+        "difficulity": "medium"
+    },
+    {
+        "level": 21,
+        "rows": 4,
+        "cols": 6,
+        "contentType": "animals",
+        "difficulity": "medium"
+    },
+    {
+        "level": 22,
+        "rows": 4,
+        "cols": 6,
+        "contentType": "technology",
+        "difficulity": "medium"
+    },
+    {
+        "level": 23,
+        "rows": 4,
+        "cols": 6,
+        "contentType": "sports",
+        "difficulity": "medium"
+    },
+    {
+        "level": 24,
+        "rows": 5,
+        "cols": 5,
+        "contentType": "smiley",
+        "difficulity": "medium"
+    },
+    {
+        "level": 25,
+        "rows": 5,
+        "cols": 5,
+        "contentType": "clothes",
+        "difficulity": "medium"
+    },
+    {
+        "level": 26,
+        "rows": 5,
+        "cols": 5,
+        "contentType": "plants",
+        "difficulity": "medium"
+    },
+    {
+        "level": 27,
+        "rows": 5,
+        "cols": 5,
+        "contentType": "animals",
+        "difficulity": "medium"
+    },
+    {
+        "level": 28,
+        "rows": 5,
+        "cols": 5,
+        "contentType": "technology",
+        "difficulity": "medium"
+    },
+    {
+        "level": 29,
+        "rows": 5,
+        "cols": 5,
+        "contentType": "sports",
+        "difficulity": "medium"
+    },
+    {
+        "level": 30,
+        "rows": 5,
+        "cols": 6,
+        "contentType": "weather",
+        "difficulity": "medium"
+    },
+    {
+        "level": 31,
         "rows": 5,
         "cols": 6,
         "contentType": "technology",
         "difficulity": "medium"
     },
     {
-        "level": 20,
+        "level": 32,
+        "rows": 5,
+        "cols": 6,
+        "contentType": "symbol",
+        "difficulity": "medium"
+    },
+    {
+        "level": 33,
+        "rows": 5,
+        "cols": 6,
+        "contentType": "transport",
+        "difficulity": "medium"
+    },
+    {
+        "level": 34,
+        "rows": 5,
+        "cols": 5,
+        "contentType": "sports",
+        "difficulity": "medium"
+    },
+    {
+        "level": 35,
+        "rows": 5,
+        "cols": 6,
+        "contentType": "technology",
+        "difficulity": "medium"
+    },
+    {
+        "level": 36,
+        "rows": 5,
+        "cols": 6,
+        "contentType": "animals",
+        "difficulity": "medium"
+    },
+    {
+        "level": 37,
+        "rows": 5,
+        "cols": 6,
+        "contentType": "plants",
+        "difficulity": "medium"
+    },
+    {
+        "level": 38,
         "rows": 5,
         "cols": 6,
         "contentType": "smiley",
         "difficulity": "medium"
     },
     {
-        "level": 21,
+        "level": 39,
         "rows": 5,
         "cols": 6,
-        "contentType": "sports",
+        "contentType": "foods",
         "difficulity": "medium"
     },
     {
-        "level": 22,
+        "level": 40,
         "rows": 5,
         "cols": 6,
-        "contentType": "numbers",
-        "difficulity": "medium"
-    },
-    {
-        "level": 23,
-        "rows": 5,
-        "cols": 6,
-        "contentType": "plants",
+        "contentType": "weather",
         "difficulity": "medium"
     }
 ]    

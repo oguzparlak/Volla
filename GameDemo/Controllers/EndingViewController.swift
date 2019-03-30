@@ -98,15 +98,15 @@ class EndingViewController: UIViewController, UIViewControllerTransitioningDeleg
         scoreBaseOnTimeValue.isHidden = !success
         
         scoreBaseOnTimeLabel.text = NSLocalizedString("scoreBasedOnTime", comment: "")
-        difficulityMultiplierLabel.text = NSLocalizedString("difficulityMultiplier", comment: "")
-        comboCountLabel.text = NSLocalizedString("comboCount", comment: "")
+        difficulityMultiplierLabel.text = NSLocalizedString("basePoints", comment: "")
+        comboCountLabel.text = NSLocalizedString("pointsFromCombo", comment: "")
         totalLabel.text = NSLocalizedString("total", comment: "")
         
         if success {
-            scoreBaseOnTimeValue.text = String(pointDictionary!["scoreBasedOnTime"] as! Int)
-            comboCountValue.text = String(pointDictionary!["comboCount"] as! Int)
-            difficulityMultiplierValue.text = "x" + String(((pointDictionary!["difficulityMultiplier"] as! Int)))
-            totalValue.text = String(pointDictionary!["total"] as! Int)
+            scoreBaseOnTimeValue.text = (pointDictionary!["scoreBasedOnTime"] as! Int).formatNumber()
+            comboCountValue.text = (pointDictionary!["totalComboPoint"] as! Int).formatNumber()
+            difficulityMultiplierValue.text = (pointDictionary!["baseScore"] as! Int).formatNumber()
+            totalValue.text = (pointDictionary!["total"] as! Int).formatNumber()
         }
         
         let endButtonTitle = success ? NSLocalizedString("continue", comment: "") : NSLocalizedString("tryAgain", comment: "")

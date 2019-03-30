@@ -94,7 +94,7 @@ class AlertPresenter {
             text: "Level \(passedLevel) passed. New checkpoint unlocked !",
             buttonText: "OK",
             color: Colors.clouds,
-            iconImage: UIImage(named: "ic_trophy"))
+            iconImage: UIImage(named: "ic_flag"))
         
         alertView.setTextFont("Avenir")
         alertView.setTitleFont("Avenir")
@@ -102,7 +102,7 @@ class AlertPresenter {
         alertView.addAction(onOkTapped)
     }
     
-    func showDifficulityPassedDialog() {
+    func showDifficulityPassedDialog(onOkTapped: @escaping () -> Void) {
         let alertView = JSSAlertView().show(
             rootViewController,
             title: "Good job !",
@@ -111,6 +111,7 @@ class AlertPresenter {
             color: Colors.clouds,
             iconImage: UIImage(named: "ic_trophy"))
         
+        alertView.addAction(onOkTapped)
         alertView.setTextFont("Avenir")
         alertView.setTitleFont("Avenir")
         alertView.setButtonFont("Avenir")
