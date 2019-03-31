@@ -20,10 +20,10 @@ class AlertPresenter {
     func showAdDialog(onWatchAdTapped: @escaping () -> Void, onCloseTapped: @escaping () -> Void) {
         let alertView = JSSAlertView().show(
             rootViewController,
-            title: "An opportunity !",
-            text: "You'll be downgraded 1 level back. Watch an ad to play again.",
-            buttonText: "Watch Ad",
-            cancelButtonText: "Close",
+            title: NSLocalizedString("opportunity", comment: ""),
+            text: NSLocalizedString("downgradeWarning", comment: ""),
+            buttonText: NSLocalizedString("watchAd", comment: ""),
+            cancelButtonText: NSLocalizedString("close", comment: ""),
             color: Colors.clouds,
             iconImage: UIImage(named: "ic_glasses"))
         
@@ -38,10 +38,10 @@ class AlertPresenter {
     func showWarningDialog(onStayTapped: @escaping () -> Void, onExitTapped: @escaping () -> Void) {
         let alertView = JSSAlertView().show(
             rootViewController,
-            title: "Warning !",
-            text: "If you close the game your level will be downgraded.",
-            buttonText: "Stay",
-            cancelButtonText: "Exit",
+            title: NSLocalizedString("warning", comment: ""),
+            text: NSLocalizedString("levelDowngradeWarning", comment: ""),
+            buttonText: NSLocalizedString("stay", comment: ""),
+            cancelButtonText: NSLocalizedString("exit", comment: ""),
             color: Colors.clouds,
             iconImage: UIImage(named: "ic_warning"))
         
@@ -57,7 +57,7 @@ class AlertPresenter {
         let alertView = JSSAlertView().show(
             rootViewController,
             title: "Ooops !",
-            text: "No active Internet connection found. Your level is downgraded.",
+            text: NSLocalizedString("downgradeOnNoConnection", comment: ""),
             buttonText: "OK",
             color: Colors.clouds,
             iconImage: UIImage(named: "ic_warning"))
@@ -72,10 +72,10 @@ class AlertPresenter {
     func showTryAgainDialog(onCloseTapped: @escaping () -> Void, onTryAgainTapped: @escaping () -> Void) {
         let alertView = JSSAlertView().show(
             rootViewController,
-            title: "Again ?",
-            text: "Checkpoint saved your life. You can try again.",
-            buttonText: "Try Again",
-            cancelButtonText: "Cancel",
+            title: NSLocalizedString("again", comment: ""),
+            text: NSLocalizedString("checkpointMessage", comment: ""),
+            buttonText: NSLocalizedString("tryAgain", comment: ""),
+            cancelButtonText: NSLocalizedString("cancel", comment: ""),
             color: Colors.clouds,
             iconImage: UIImage(named: "ic_restart"))
         
@@ -90,8 +90,8 @@ class AlertPresenter {
     func showAchievementDialog(passedLevel: Int, onOkTapped: @escaping () -> Void) {
         let alertView = JSSAlertView().show(
             rootViewController,
-            title: "Good job !",
-            text: "Level \(passedLevel) passed. New checkpoint unlocked !",
+            title: NSLocalizedString("goodJob", comment: ""),
+            text: String(format: NSLocalizedString("levelPassed", comment: ""), passedLevel),
             buttonText: "OK",
             color: Colors.clouds,
             iconImage: UIImage(named: "ic_flag"))
@@ -103,10 +103,11 @@ class AlertPresenter {
     }
     
     func showDifficulityPassedDialog(onOkTapped: @escaping () -> Void) {
+        let difficulity = GameUtils.getTitleFor(difficulity: GameUtils.currentDifficulity ?? .easy)
         let alertView = JSSAlertView().show(
             rootViewController,
             title: "Good job !",
-            text: "\(GameUtils.getTitleFor(difficulity: GameUtils.currentDifficulity ?? .easy)) completed. New difficulity level unlocked !",
+            text: String(format: NSLocalizedString("difficulityPassed", comment: ""), difficulity),
             buttonText: "OK",
             color: Colors.clouds,
             iconImage: UIImage(named: "ic_trophy"))

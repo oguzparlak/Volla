@@ -59,7 +59,7 @@ class InitialViewController: UIViewController {
     
     @objc func onDifficulitySelected(_ sender: AnyObject) {
         // Open an ActionSheet to choose desired difficulity
-        let alertController = UIAlertController(title: nil, message: "Choose difficulity", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: nil, message: NSLocalizedString("chooseDifficulity", comment: ""), preferredStyle: .actionSheet)
         // Create actions
         let easyAction = UIAlertAction(title: Difficulities.easy, style: .default, handler: handleOnActionSelected)
         let mediumAction = UIAlertAction(title: Difficulities.medium, style: .default, handler: handleOnActionSelected)

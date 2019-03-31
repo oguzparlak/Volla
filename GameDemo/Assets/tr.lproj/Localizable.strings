@@ -10,9 +10,9 @@
 
 "total" = "Toplam";
 
-"continue" = "Devam";
+"highScore" = "En Yüksek Puan";
 
-"tryAgain" = "Tekrar Dene";
+"continue" = "Devam";
 
 "matchSmileys" = "Emojileri eşleştir";
 
@@ -45,3 +45,39 @@
 "pointsFromCombo" = "Kombo Puanın";
 
 "basePoints" = "Baz Puan";
+
+"opportunity" = "Fırsat !";
+
+"downgradeWarning" = "1 seviye geri düşeceksin. Reklam izleyerek tekrar oynayabilirsin.";
+
+"levelDowngradeWarning" = "Oyundan çıkarsan 1 seviye geri düşeceksin.";
+
+"downgradeOnNoConnection" = "İnternet bağlantınızda bir sorun var.";
+
+"watchAd" = "Reklam İzle";
+
+"close" = "Kapat";
+
+"warning" = "Uyarı";
+
+"stay" = "Oyunda Kal";
+
+"exit" = "Çık";
+
+"again" = "Bir Daha ?";
+
+"checkpointMessage" = "Checkpoint hayatını kurtardı. Tekrar deneyebilirsin.";
+
+"tryAgain" = "Tekrar Dene";
+
+"cancel" = "İptal";
+
+"goodJob" = "Tebrikler !";
+
+"levelPassed" = "Level %d geçildi. Yeni checkpoint açıldı.";
+
+"difficulityPassed" = "%@ geçildi. Yeni zorluk seviyesi açıldı !";
+
+"chooseDifficulity" = "Zorluk seviyesi seç";
+
+"progress" = "Gelişim";

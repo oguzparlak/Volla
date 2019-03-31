@@ -9,6 +9,7 @@
 import UIKit
 import Fabric
 import Crashlytics
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         StandardUtils.unlockEasy()
         // Init Fabric
         Fabric.with([Crashlytics.self, Answers.self])
+        // Google Ads
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         return true
     }
 

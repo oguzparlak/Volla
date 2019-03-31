@@ -36,6 +36,8 @@ class ProgressViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Init segments
+        initSegmentTitles()
         // Respond the changes to the theme
         self.view.backgroundColor = NodeUtils.darkModeEnabled ? Colors.midnightBlue : Colors.clouds
         // Set active tab color
@@ -50,7 +52,17 @@ class ProgressViewController: UIViewController {
         updateSegmentAvailability()
         // Select segment
         updateSelectedSegment()
+        // Update titles with localized strings
+        progressTitleLabel.text = NSLocalizedString("progress", comment: "")
+        totalLabel.text = NSLocalizedString("total", comment: "")
+        highScoreLabel.text = NSLocalizedString("highScore", comment: "")
         
+    }
+    
+    private func initSegmentTitles() {
+        segmentedControl.setTitle(Difficulities.easy, forSegmentAt: 0)
+        segmentedControl.setTitle(Difficulities.medium, forSegmentAt: 1)
+        segmentedControl.setTitle(Difficulities.hard, forSegmentAt: 2)
     }
     
     override var prefersStatusBarHidden: Bool {

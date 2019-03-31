@@ -10,9 +10,9 @@
 
 "total" = "Total";
 
-"continue" = "Continue";
+"highScore" = "Highscore";
 
-"tryAgain" = "Try Again";
+"continue" = "Continue";
 
 "matchSmileys" = "Try to match\nsmileys with each other";
 
@@ -45,3 +45,39 @@
 "pointsFromCombo" = "Score via Combo";
 
 "basePoints" = "Base Point";
+
+"opportunity" = "An opportunity !";
+
+"downgradeWarning" = "You'll be downgraded 1 level back. Watch an ad to play again.";
+
+"levelDowngradeWarning" = "If you close the game your level will be downgraded.";
+
+"downgradeOnNoConnection" = "No active Internet connection found. Your level is downgraded.";
+
+"watchAd" = "Watch Ad";
+
+"close" = "Close";
+
+"warning" = "Warning";
+
+"stay" = "Stay";
+
+"exit" = "Exit";
+
+"again" = "Again ?";
+
+"checkpointMessage" = "Checkpoint saved your life. You can try again.";
+
+"tryAgain" = "Try Again";
+
+"cancel" = "Cancel";
+
+"goodJob" = "Good Job !";
+
+"levelPassed" = "Level %d passed. New checkpoint unlocked !";
+
+"difficulityPassed" = "%@ passed. New difficulity unlocked !";
+
+"chooseDifficulity" = "Choose difficulity";
+
+"progress" = "Progress";
