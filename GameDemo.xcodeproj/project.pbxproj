@@ -12,6 +12,7 @@
 		BF23AD3B223D2CFC00F64556 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23AD3A223D2CFC00F64556 /* ProgressViewController.swift */; };
 		BF2982032223031400832123 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = BF2982022223031400832123 /* success.json */; };
 		BF2D1C20224BDA4800A6F294 /* RawLevelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D1C1F224BDA4800A6F294 /* RawLevelExtensions.swift */; };
+		BF3674D6225C75B50077BD54 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF3674D5225C75B50077BD54 /* GoogleService-Info.plist */; };
 		BF3A750322206A7700E5E2BD /* LevelDescriptionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A750222206A7700E5E2BD /* LevelDescriptionNode.swift */; };
 		BF3A75062220703E00E5E2BD /* SquareStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A75052220703E00E5E2BD /* SquareStack.swift */; };
 		BF3EB7E32232E357009BA132 /* game_lost.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF3EB7E22232E357009BA132 /* game_lost.mp3 */; };
@@ -93,6 +94,7 @@
 		BF23AD3A223D2CFC00F64556 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		BF2982022223031400832123 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		BF2D1C1F224BDA4800A6F294 /* RawLevelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawLevelExtensions.swift; sourceTree = "<group>"; };
+		BF3674D5225C75B50077BD54 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BF3A750222206A7700E5E2BD /* LevelDescriptionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDescriptionNode.swift; sourceTree = "<group>"; };
 		BF3A75052220703E00E5E2BD /* SquareStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareStack.swift; sourceTree = "<group>"; };
 		BF3EB7E22232E357009BA132 /* game_lost.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_lost.mp3; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				BF3A75042220702500E5E2BD /* Model */,
 				BF5F75DA220B4D25004D5F99 /* AppDelegate.swift */,
 				BF5F75EC220B4D26004D5F99 /* Info.plist */,
+				BF3674D5225C75B50077BD54 /* GoogleService-Info.plist */,
 				BFCD74AF220C97F2006C3E79 /* Protocols */,
 				BFCD74AC220C9688006C3E79 /* Utils */,
 				BFCD74AB220C9676006C3E79 /* Assets */,
@@ -521,6 +524,7 @@
 				BFD154862215CE1C007FC209 /* tick.mp3 in Resources */,
 				BF5F75EB220B4D26004D5F99 /* LaunchScreen.storyboard in Resources */,
 				BFAE0259222DABF20000B48C /* Localizable.strings in Resources */,
+				BF3674D6225C75B50077BD54 /* GoogleService-Info.plist in Resources */,
 				BF5F75DF220B4D25004D5F99 /* Actions.sks in Resources */,
 				BFD154882215CE31007FC209 /* ping.mp3 in Resources */,
 			);
@@ -639,8 +643,10 @@
 				"${BUILT_PRODUCTS_DIR}/ActivityRings/ActivityRings.framework",
 				"${BUILT_PRODUCTS_DIR}/BubbleTransition/BubbleTransition.framework",
 				"${BUILT_PRODUCTS_DIR}/Comets/Comets.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/JSSAlertView/JSSAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -649,8 +655,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActivityRings.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BubbleTransition.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Comets.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSSAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

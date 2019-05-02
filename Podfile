@@ -14,6 +14,8 @@ target 'GameDemo' do
   pod 'ActivityRings'
   pod 'JSSAlertView'
   pod 'Google-Mobile-Ads-SDK'
+  pod 'Firebase/Core'
+  
   
   target 'GameDemoTests' do
     inherit! :search_paths

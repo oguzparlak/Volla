@@ -5,6 +5,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 firebase-debug.log*
+volla_dev.mobileprovision
+volla_dist.mobileprovision
+firebase.json
+GameDemo/GoogleService-Info.plist
 
 # Firebase cache
 .firebase/
